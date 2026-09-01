@@ -1,0 +1,114 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id          String @id @default(uuid())
+  openId      String @unique
+  type        Int    @default(0)
+  nickname    String
+  avatar      String
+  phone       String @unique
+  balance     Int    @default(0)
+  points      Int    @default(0)
+  description String
+  createdAt   Int    @default(0)
+  updatedAt   Int    @default(0)
+  deletedAt   Int    @default(0)
+
+  reservations Reservation[]
+
+  @@map("users")
+}
+
+model Store {
+  id          String  @id @default(uuid())
+  name        String
+  address     String
+  longitude   Float
+  latitude    Float
+  phone       String
+  openingTime String
+  closingTime String
+  isActive    Boolean @default(true)
+  description String
+  createdAt   Int     @default(0)
+  updatedAt   Int     @default(0)
+  deletedAt   Int     @default(0)
+
+  rooms Room[]
+
+  @@map("stores")
+}
+
+model Room {
+  id          String  @id @default(uuid())
+  storeId     String
+  name        String
+  sort        Int     @default(0)
+  isActive    Boolean @default(true)
+  bgImage     String
+  description String
+  createdAt   Int     @default(0)
+  updatedAt   Int     @default(0)
+  deletedAt   Int     @default(0)
+
+  store Store  @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  seats Seat[]
+
+  @@index([storeId])
+  @@map("rooms")
+}
+
+model Seat {
+  id          String  @id @default(uuid())
+  roomId      String
+  seatNo      String
+  x           Float
+  y           Float
+  width       Float
+  height      Float
+  hasPower    Boolean @default(true)
+  status      Int     @default(0)
+  description String?
+  createdAt   Int     @default(0)
+  updatedAt   Int     @default(0)
+  deletedAt   Int     @default(0)
+
+  room         Room          @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  reservations Reservation[]
+
+  @@unique([roomId, seatNo])
+  @@index([roomId])
+  @@map("seats")
+}
+
+model Reservation {
+  id        String   @id @default(uuid())
+  userId    String
+  seatId    String
+  startTime DateTime
+  endTime   DateTime
+  status    Int      @default(0)
+  createdAt Int      @default(0)
+  updatedAt Int      @default(0)
+  deletedAt Int      @default(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  seat Seat @relation(fields: [seatId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([seatId])
+  @@map("reservations")
+}
