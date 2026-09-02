@@ -53,9 +53,9 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   User: 'User',
   Store: 'Store',
-  Room: 'Room',
+  Area: 'Area',
   Seat: 'Seat',
-  Reservation: 'Reservation'
+  Order: 'Order'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -96,12 +96,21 @@ export const StoreScalarFieldEnum = {
   id: 'id',
   name: 'name',
   address: 'address',
+  district: 'district',
   longitude: 'longitude',
   latitude: 'latitude',
+  seatCount: 'seatCount',
   phone: 'phone',
-  openingTime: 'openingTime',
-  closingTime: 'closingTime',
+  is24Hours: 'is24Hours',
+  openTime: 'openTime',
+  closeTime: 'closeTime',
   isActive: 'isActive',
+  features: 'features',
+  promotion: 'promotion',
+  price: 'price',
+  reviews: 'reviews',
+  sales: 'sales',
+  coverImages: 'coverImages',
   description: 'description',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
@@ -111,25 +120,27 @@ export const StoreScalarFieldEnum = {
 export type StoreScalarFieldEnum = (typeof StoreScalarFieldEnum)[keyof typeof StoreScalarFieldEnum]
 
 
-export const RoomScalarFieldEnum = {
+export const AreaScalarFieldEnum = {
   id: 'id',
   storeId: 'storeId',
   name: 'name',
+  seatCount: 'seatCount',
   sort: 'sort',
   isActive: 'isActive',
-  bgImage: 'bgImage',
   description: 'description',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
 } as const
 
-export type RoomScalarFieldEnum = (typeof RoomScalarFieldEnum)[keyof typeof RoomScalarFieldEnum]
+export type AreaScalarFieldEnum = (typeof AreaScalarFieldEnum)[keyof typeof AreaScalarFieldEnum]
 
 
 export const SeatScalarFieldEnum = {
   id: 'id',
-  roomId: 'roomId',
+  storeId: 'storeId',
+  areaId: 'areaId',
+  type: 'type',
   seatNo: 'seatNo',
   x: 'x',
   y: 'y',
@@ -146,10 +157,13 @@ export const SeatScalarFieldEnum = {
 export type SeatScalarFieldEnum = (typeof SeatScalarFieldEnum)[keyof typeof SeatScalarFieldEnum]
 
 
-export const ReservationScalarFieldEnum = {
+export const OrderScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
+  storeId: 'storeId',
   seatId: 'seatId',
+  category: 'category',
+  userId: 'userId',
+  type: 'type',
   startTime: 'startTime',
   endTime: 'endTime',
   status: 'status',
@@ -158,7 +172,7 @@ export const ReservationScalarFieldEnum = {
   deletedAt: 'deletedAt'
 } as const
 
-export type ReservationScalarFieldEnum = (typeof ReservationScalarFieldEnum)[keyof typeof ReservationScalarFieldEnum]
+export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -175,12 +189,4 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

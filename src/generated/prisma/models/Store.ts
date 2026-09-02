@@ -29,6 +29,10 @@ export type AggregateStore = {
 export type StoreAvgAggregateOutputType = {
   longitude: number | null
   latitude: number | null
+  seatCount: number | null
+  price: number | null
+  reviews: number | null
+  sales: number | null
   createdAt: number | null
   updatedAt: number | null
   deletedAt: number | null
@@ -37,53 +41,84 @@ export type StoreAvgAggregateOutputType = {
 export type StoreSumAggregateOutputType = {
   longitude: number | null
   latitude: number | null
-  createdAt: number | null
-  updatedAt: number | null
-  deletedAt: number | null
+  seatCount: number | null
+  price: number | null
+  reviews: number | null
+  sales: number | null
+  createdAt: bigint | null
+  updatedAt: bigint | null
+  deletedAt: bigint | null
 }
 
 export type StoreMinAggregateOutputType = {
   id: string | null
   name: string | null
   address: string | null
+  district: string | null
   longitude: number | null
   latitude: number | null
+  seatCount: number | null
   phone: string | null
-  openingTime: string | null
-  closingTime: string | null
+  is24Hours: boolean | null
+  openTime: string | null
+  closeTime: string | null
   isActive: boolean | null
+  features: string | null
+  promotion: string | null
+  price: number | null
+  reviews: number | null
+  sales: number | null
+  coverImages: string | null
   description: string | null
-  createdAt: number | null
-  updatedAt: number | null
-  deletedAt: number | null
+  createdAt: bigint | null
+  updatedAt: bigint | null
+  deletedAt: bigint | null
 }
 
 export type StoreMaxAggregateOutputType = {
   id: string | null
   name: string | null
   address: string | null
+  district: string | null
   longitude: number | null
   latitude: number | null
+  seatCount: number | null
   phone: string | null
-  openingTime: string | null
-  closingTime: string | null
+  is24Hours: boolean | null
+  openTime: string | null
+  closeTime: string | null
   isActive: boolean | null
+  features: string | null
+  promotion: string | null
+  price: number | null
+  reviews: number | null
+  sales: number | null
+  coverImages: string | null
   description: string | null
-  createdAt: number | null
-  updatedAt: number | null
-  deletedAt: number | null
+  createdAt: bigint | null
+  updatedAt: bigint | null
+  deletedAt: bigint | null
 }
 
 export type StoreCountAggregateOutputType = {
   id: number
   name: number
   address: number
+  district: number
   longitude: number
   latitude: number
+  seatCount: number
   phone: number
-  openingTime: number
-  closingTime: number
+  is24Hours: number
+  openTime: number
+  closeTime: number
   isActive: number
+  features: number
+  promotion: number
+  price: number
+  reviews: number
+  sales: number
+  coverImages: number
   description: number
   createdAt: number
   updatedAt: number
@@ -95,6 +130,10 @@ export type StoreCountAggregateOutputType = {
 export type StoreAvgAggregateInputType = {
   longitude?: true
   latitude?: true
+  seatCount?: true
+  price?: true
+  reviews?: true
+  sales?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -103,6 +142,10 @@ export type StoreAvgAggregateInputType = {
 export type StoreSumAggregateInputType = {
   longitude?: true
   latitude?: true
+  seatCount?: true
+  price?: true
+  reviews?: true
+  sales?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -112,12 +155,21 @@ export type StoreMinAggregateInputType = {
   id?: true
   name?: true
   address?: true
+  district?: true
   longitude?: true
   latitude?: true
+  seatCount?: true
   phone?: true
-  openingTime?: true
-  closingTime?: true
+  is24Hours?: true
+  openTime?: true
+  closeTime?: true
   isActive?: true
+  features?: true
+  promotion?: true
+  price?: true
+  reviews?: true
+  sales?: true
+  coverImages?: true
   description?: true
   createdAt?: true
   updatedAt?: true
@@ -128,12 +180,21 @@ export type StoreMaxAggregateInputType = {
   id?: true
   name?: true
   address?: true
+  district?: true
   longitude?: true
   latitude?: true
+  seatCount?: true
   phone?: true
-  openingTime?: true
-  closingTime?: true
+  is24Hours?: true
+  openTime?: true
+  closeTime?: true
   isActive?: true
+  features?: true
+  promotion?: true
+  price?: true
+  reviews?: true
+  sales?: true
+  coverImages?: true
   description?: true
   createdAt?: true
   updatedAt?: true
@@ -144,12 +205,21 @@ export type StoreCountAggregateInputType = {
   id?: true
   name?: true
   address?: true
+  district?: true
   longitude?: true
   latitude?: true
+  seatCount?: true
   phone?: true
-  openingTime?: true
-  closingTime?: true
+  is24Hours?: true
+  openTime?: true
+  closeTime?: true
   isActive?: true
+  features?: true
+  promotion?: true
+  price?: true
+  reviews?: true
+  sales?: true
+  coverImages?: true
   description?: true
   createdAt?: true
   updatedAt?: true
@@ -219,11 +289,11 @@ export type StoreAggregateArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 export type GetStoreAggregateType<T extends StoreAggregateArgs> = {
-  [P in keyof T & keyof AggregateStore]: P extends '_count' | 'count'
-  ? T[P] extends true
-  ? number
-  : Prisma.GetScalarType<T[P], AggregateStore[P]>
-  : Prisma.GetScalarType<T[P], AggregateStore[P]>
+      [P in keyof T & keyof AggregateStore]: P extends '_count' | 'count'
+    ? T[P] extends true
+      ? number
+      : Prisma.GetScalarType<T[P], AggregateStore[P]>
+    : Prisma.GetScalarType<T[P], AggregateStore[P]>
 }
 
 
@@ -247,16 +317,25 @@ export type StoreGroupByOutputType = {
   id: string
   name: string
   address: string
+  district: string
   longitude: number
   latitude: number
+  seatCount: number
   phone: string
-  openingTime: string
-  closingTime: string
+  is24Hours: boolean
+  openTime: string
+  closeTime: string
   isActive: boolean
+  features: string
+  promotion: string
+  price: number
+  reviews: number
+  sales: number
+  coverImages: string
   description: string
-  createdAt: number
-  updatedAt: number
-  deletedAt: number
+  createdAt: bigint
+  updatedAt: bigint
+  deletedAt: bigint
   _count: StoreCountAggregateOutputType | null
   _avg: StoreAvgAggregateOutputType | null
   _sum: StoreSumAggregateOutputType | null
@@ -267,15 +346,15 @@ export type StoreGroupByOutputType = {
 export type GetStoreGroupByPayload<T extends StoreGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<StoreGroupByOutputType, T['by']> &
-    {
-      [P in ((keyof T) & (keyof StoreGroupByOutputType))]: P extends '_count'
-      ? T[P] extends boolean
-      ? number
-      : Prisma.GetScalarType<T[P], StoreGroupByOutputType[P]>
-      : Prisma.GetScalarType<T[P], StoreGroupByOutputType[P]>
-    }
+      {
+        [P in ((keyof T) & (keyof StoreGroupByOutputType))]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : Prisma.GetScalarType<T[P], StoreGroupByOutputType[P]>
+          : Prisma.GetScalarType<T[P], StoreGroupByOutputType[P]>
+      }
+    >
   >
->
 
 
 
@@ -286,34 +365,54 @@ export type StoreWhereInput = {
   id?: Prisma.StringFilter<"Store"> | string
   name?: Prisma.StringFilter<"Store"> | string
   address?: Prisma.StringFilter<"Store"> | string
+  district?: Prisma.StringFilter<"Store"> | string
   longitude?: Prisma.FloatFilter<"Store"> | number
   latitude?: Prisma.FloatFilter<"Store"> | number
+  seatCount?: Prisma.IntFilter<"Store"> | number
   phone?: Prisma.StringFilter<"Store"> | string
-  openingTime?: Prisma.StringFilter<"Store"> | string
-  closingTime?: Prisma.StringFilter<"Store"> | string
+  is24Hours?: Prisma.BoolFilter<"Store"> | boolean
+  openTime?: Prisma.StringFilter<"Store"> | string
+  closeTime?: Prisma.StringFilter<"Store"> | string
   isActive?: Prisma.BoolFilter<"Store"> | boolean
+  features?: Prisma.StringFilter<"Store"> | string
+  promotion?: Prisma.StringFilter<"Store"> | string
+  price?: Prisma.IntFilter<"Store"> | number
+  reviews?: Prisma.IntFilter<"Store"> | number
+  sales?: Prisma.IntFilter<"Store"> | number
+  coverImages?: Prisma.StringFilter<"Store"> | string
   description?: Prisma.StringFilter<"Store"> | string
-  createdAt?: Prisma.IntFilter<"Store"> | number
-  updatedAt?: Prisma.IntFilter<"Store"> | number
-  deletedAt?: Prisma.IntFilter<"Store"> | number
-  rooms?: Prisma.RoomListRelationFilter
+  createdAt?: Prisma.BigIntFilter<"Store"> | bigint | number
+  updatedAt?: Prisma.BigIntFilter<"Store"> | bigint | number
+  deletedAt?: Prisma.BigIntFilter<"Store"> | bigint | number
+  areas?: Prisma.AreaListRelationFilter
+  seats?: Prisma.SeatListRelationFilter
 }
 
 export type StoreOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
+  district?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
+  seatCount?: Prisma.SortOrder
   phone?: Prisma.SortOrder
-  openingTime?: Prisma.SortOrder
-  closingTime?: Prisma.SortOrder
+  is24Hours?: Prisma.SortOrder
+  openTime?: Prisma.SortOrder
+  closeTime?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  features?: Prisma.SortOrder
+  promotion?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  reviews?: Prisma.SortOrder
+  sales?: Prisma.SortOrder
+  coverImages?: Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
-  rooms?: Prisma.RoomOrderByRelationAggregateInput
+  areas?: Prisma.AreaOrderByRelationAggregateInput
+  seats?: Prisma.SeatOrderByRelationAggregateInput
 }
 
 export type StoreWhereUniqueInput = Prisma.AtLeast<{
@@ -323,29 +422,48 @@ export type StoreWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.StoreWhereInput | Prisma.StoreWhereInput[]
   name?: Prisma.StringFilter<"Store"> | string
   address?: Prisma.StringFilter<"Store"> | string
+  district?: Prisma.StringFilter<"Store"> | string
   longitude?: Prisma.FloatFilter<"Store"> | number
   latitude?: Prisma.FloatFilter<"Store"> | number
+  seatCount?: Prisma.IntFilter<"Store"> | number
   phone?: Prisma.StringFilter<"Store"> | string
-  openingTime?: Prisma.StringFilter<"Store"> | string
-  closingTime?: Prisma.StringFilter<"Store"> | string
+  is24Hours?: Prisma.BoolFilter<"Store"> | boolean
+  openTime?: Prisma.StringFilter<"Store"> | string
+  closeTime?: Prisma.StringFilter<"Store"> | string
   isActive?: Prisma.BoolFilter<"Store"> | boolean
+  features?: Prisma.StringFilter<"Store"> | string
+  promotion?: Prisma.StringFilter<"Store"> | string
+  price?: Prisma.IntFilter<"Store"> | number
+  reviews?: Prisma.IntFilter<"Store"> | number
+  sales?: Prisma.IntFilter<"Store"> | number
+  coverImages?: Prisma.StringFilter<"Store"> | string
   description?: Prisma.StringFilter<"Store"> | string
-  createdAt?: Prisma.IntFilter<"Store"> | number
-  updatedAt?: Prisma.IntFilter<"Store"> | number
-  deletedAt?: Prisma.IntFilter<"Store"> | number
-  rooms?: Prisma.RoomListRelationFilter
+  createdAt?: Prisma.BigIntFilter<"Store"> | bigint | number
+  updatedAt?: Prisma.BigIntFilter<"Store"> | bigint | number
+  deletedAt?: Prisma.BigIntFilter<"Store"> | bigint | number
+  areas?: Prisma.AreaListRelationFilter
+  seats?: Prisma.SeatListRelationFilter
 }, "id">
 
 export type StoreOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
+  district?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
+  seatCount?: Prisma.SortOrder
   phone?: Prisma.SortOrder
-  openingTime?: Prisma.SortOrder
-  closingTime?: Prisma.SortOrder
+  is24Hours?: Prisma.SortOrder
+  openTime?: Prisma.SortOrder
+  closeTime?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  features?: Prisma.SortOrder
+  promotion?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  reviews?: Prisma.SortOrder
+  sales?: Prisma.SortOrder
+  coverImages?: Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -364,144 +482,229 @@ export type StoreScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Store"> | string
   name?: Prisma.StringWithAggregatesFilter<"Store"> | string
   address?: Prisma.StringWithAggregatesFilter<"Store"> | string
+  district?: Prisma.StringWithAggregatesFilter<"Store"> | string
   longitude?: Prisma.FloatWithAggregatesFilter<"Store"> | number
   latitude?: Prisma.FloatWithAggregatesFilter<"Store"> | number
+  seatCount?: Prisma.IntWithAggregatesFilter<"Store"> | number
   phone?: Prisma.StringWithAggregatesFilter<"Store"> | string
-  openingTime?: Prisma.StringWithAggregatesFilter<"Store"> | string
-  closingTime?: Prisma.StringWithAggregatesFilter<"Store"> | string
+  is24Hours?: Prisma.BoolWithAggregatesFilter<"Store"> | boolean
+  openTime?: Prisma.StringWithAggregatesFilter<"Store"> | string
+  closeTime?: Prisma.StringWithAggregatesFilter<"Store"> | string
   isActive?: Prisma.BoolWithAggregatesFilter<"Store"> | boolean
+  features?: Prisma.StringWithAggregatesFilter<"Store"> | string
+  promotion?: Prisma.StringWithAggregatesFilter<"Store"> | string
+  price?: Prisma.IntWithAggregatesFilter<"Store"> | number
+  reviews?: Prisma.IntWithAggregatesFilter<"Store"> | number
+  sales?: Prisma.IntWithAggregatesFilter<"Store"> | number
+  coverImages?: Prisma.StringWithAggregatesFilter<"Store"> | string
   description?: Prisma.StringWithAggregatesFilter<"Store"> | string
-  createdAt?: Prisma.IntWithAggregatesFilter<"Store"> | number
-  updatedAt?: Prisma.IntWithAggregatesFilter<"Store"> | number
-  deletedAt?: Prisma.IntWithAggregatesFilter<"Store"> | number
+  createdAt?: Prisma.BigIntWithAggregatesFilter<"Store"> | bigint | number
+  updatedAt?: Prisma.BigIntWithAggregatesFilter<"Store"> | bigint | number
+  deletedAt?: Prisma.BigIntWithAggregatesFilter<"Store"> | bigint | number
 }
 
 export type StoreCreateInput = {
   id?: string
-  name: string
-  address: string
-  longitude: number
-  latitude: number
-  phone: string
-  openingTime: string
-  closingTime: string
+  name?: string
+  address?: string
+  district?: string
+  longitude?: number
+  latitude?: number
+  seatCount?: number
+  phone?: string
+  is24Hours?: boolean
+  openTime?: string
+  closeTime?: string
   isActive?: boolean
-  description: string
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
-  rooms?: Prisma.RoomCreateNestedManyWithoutStoreInput
+  features?: string
+  promotion?: string
+  price?: number
+  reviews?: number
+  sales?: number
+  coverImages?: string
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+  areas?: Prisma.AreaCreateNestedManyWithoutStoreInput
+  seats?: Prisma.SeatCreateNestedManyWithoutStoreInput
 }
 
 export type StoreUncheckedCreateInput = {
   id?: string
-  name: string
-  address: string
-  longitude: number
-  latitude: number
-  phone: string
-  openingTime: string
-  closingTime: string
+  name?: string
+  address?: string
+  district?: string
+  longitude?: number
+  latitude?: number
+  seatCount?: number
+  phone?: string
+  is24Hours?: boolean
+  openTime?: string
+  closeTime?: string
   isActive?: boolean
-  description: string
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
-  rooms?: Prisma.RoomUncheckedCreateNestedManyWithoutStoreInput
+  features?: string
+  promotion?: string
+  price?: number
+  reviews?: number
+  sales?: number
+  coverImages?: string
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+  areas?: Prisma.AreaUncheckedCreateNestedManyWithoutStoreInput
+  seats?: Prisma.SeatUncheckedCreateNestedManyWithoutStoreInput
 }
 
 export type StoreUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
+  district?: Prisma.StringFieldUpdateOperationsInput | string
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  seatCount?: Prisma.IntFieldUpdateOperationsInput | number
   phone?: Prisma.StringFieldUpdateOperationsInput | string
-  openingTime?: Prisma.StringFieldUpdateOperationsInput | string
-  closingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  is24Hours?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  openTime?: Prisma.StringFieldUpdateOperationsInput | string
+  closeTime?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  features?: Prisma.StringFieldUpdateOperationsInput | string
+  promotion?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  reviews?: Prisma.IntFieldUpdateOperationsInput | number
+  sales?: Prisma.IntFieldUpdateOperationsInput | number
+  coverImages?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  rooms?: Prisma.RoomUpdateManyWithoutStoreNestedInput
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  areas?: Prisma.AreaUpdateManyWithoutStoreNestedInput
+  seats?: Prisma.SeatUpdateManyWithoutStoreNestedInput
 }
 
 export type StoreUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
+  district?: Prisma.StringFieldUpdateOperationsInput | string
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  seatCount?: Prisma.IntFieldUpdateOperationsInput | number
   phone?: Prisma.StringFieldUpdateOperationsInput | string
-  openingTime?: Prisma.StringFieldUpdateOperationsInput | string
-  closingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  is24Hours?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  openTime?: Prisma.StringFieldUpdateOperationsInput | string
+  closeTime?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  features?: Prisma.StringFieldUpdateOperationsInput | string
+  promotion?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  reviews?: Prisma.IntFieldUpdateOperationsInput | number
+  sales?: Prisma.IntFieldUpdateOperationsInput | number
+  coverImages?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  rooms?: Prisma.RoomUncheckedUpdateManyWithoutStoreNestedInput
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  areas?: Prisma.AreaUncheckedUpdateManyWithoutStoreNestedInput
+  seats?: Prisma.SeatUncheckedUpdateManyWithoutStoreNestedInput
 }
 
 export type StoreCreateManyInput = {
   id?: string
-  name: string
-  address: string
-  longitude: number
-  latitude: number
-  phone: string
-  openingTime: string
-  closingTime: string
+  name?: string
+  address?: string
+  district?: string
+  longitude?: number
+  latitude?: number
+  seatCount?: number
+  phone?: string
+  is24Hours?: boolean
+  openTime?: string
+  closeTime?: string
   isActive?: boolean
-  description: string
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
+  features?: string
+  promotion?: string
+  price?: number
+  reviews?: number
+  sales?: number
+  coverImages?: string
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
 }
 
 export type StoreUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
+  district?: Prisma.StringFieldUpdateOperationsInput | string
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  seatCount?: Prisma.IntFieldUpdateOperationsInput | number
   phone?: Prisma.StringFieldUpdateOperationsInput | string
-  openingTime?: Prisma.StringFieldUpdateOperationsInput | string
-  closingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  is24Hours?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  openTime?: Prisma.StringFieldUpdateOperationsInput | string
+  closeTime?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  features?: Prisma.StringFieldUpdateOperationsInput | string
+  promotion?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  reviews?: Prisma.IntFieldUpdateOperationsInput | number
+  sales?: Prisma.IntFieldUpdateOperationsInput | number
+  coverImages?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
 }
 
 export type StoreUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
+  district?: Prisma.StringFieldUpdateOperationsInput | string
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  seatCount?: Prisma.IntFieldUpdateOperationsInput | number
   phone?: Prisma.StringFieldUpdateOperationsInput | string
-  openingTime?: Prisma.StringFieldUpdateOperationsInput | string
-  closingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  is24Hours?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  openTime?: Prisma.StringFieldUpdateOperationsInput | string
+  closeTime?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  features?: Prisma.StringFieldUpdateOperationsInput | string
+  promotion?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  reviews?: Prisma.IntFieldUpdateOperationsInput | number
+  sales?: Prisma.IntFieldUpdateOperationsInput | number
+  coverImages?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
 }
 
 export type StoreCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
+  district?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
+  seatCount?: Prisma.SortOrder
   phone?: Prisma.SortOrder
-  openingTime?: Prisma.SortOrder
-  closingTime?: Prisma.SortOrder
+  is24Hours?: Prisma.SortOrder
+  openTime?: Prisma.SortOrder
+  closeTime?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  features?: Prisma.SortOrder
+  promotion?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  reviews?: Prisma.SortOrder
+  sales?: Prisma.SortOrder
+  coverImages?: Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -511,6 +714,10 @@ export type StoreCountOrderByAggregateInput = {
 export type StoreAvgOrderByAggregateInput = {
   longitude?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
+  seatCount?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  reviews?: Prisma.SortOrder
+  sales?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -520,12 +727,21 @@ export type StoreMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
+  district?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
+  seatCount?: Prisma.SortOrder
   phone?: Prisma.SortOrder
-  openingTime?: Prisma.SortOrder
-  closingTime?: Prisma.SortOrder
+  is24Hours?: Prisma.SortOrder
+  openTime?: Prisma.SortOrder
+  closeTime?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  features?: Prisma.SortOrder
+  promotion?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  reviews?: Prisma.SortOrder
+  sales?: Prisma.SortOrder
+  coverImages?: Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -536,12 +752,21 @@ export type StoreMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
+  district?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
+  seatCount?: Prisma.SortOrder
   phone?: Prisma.SortOrder
-  openingTime?: Prisma.SortOrder
-  closingTime?: Prisma.SortOrder
+  is24Hours?: Prisma.SortOrder
+  openTime?: Prisma.SortOrder
+  closeTime?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  features?: Prisma.SortOrder
+  promotion?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  reviews?: Prisma.SortOrder
+  sales?: Prisma.SortOrder
+  coverImages?: Prisma.SortOrder
   description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -551,6 +776,10 @@ export type StoreMinOrderByAggregateInput = {
 export type StoreSumOrderByAggregateInput = {
   longitude?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
+  seatCount?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  reviews?: Prisma.SortOrder
+  sales?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -573,98 +802,272 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
-export type StoreCreateNestedOneWithoutRoomsInput = {
-  create?: Prisma.XOR<Prisma.StoreCreateWithoutRoomsInput, Prisma.StoreUncheckedCreateWithoutRoomsInput>
-  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutRoomsInput
+export type StoreCreateNestedOneWithoutAreasInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutAreasInput, Prisma.StoreUncheckedCreateWithoutAreasInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutAreasInput
   connect?: Prisma.StoreWhereUniqueInput
 }
 
-export type StoreUpdateOneRequiredWithoutRoomsNestedInput = {
-  create?: Prisma.XOR<Prisma.StoreCreateWithoutRoomsInput, Prisma.StoreUncheckedCreateWithoutRoomsInput>
-  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutRoomsInput
-  upsert?: Prisma.StoreUpsertWithoutRoomsInput
+export type StoreUpdateOneRequiredWithoutAreasNestedInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutAreasInput, Prisma.StoreUncheckedCreateWithoutAreasInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutAreasInput
+  upsert?: Prisma.StoreUpsertWithoutAreasInput
   connect?: Prisma.StoreWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.StoreUpdateToOneWithWhereWithoutRoomsInput, Prisma.StoreUpdateWithoutRoomsInput>, Prisma.StoreUncheckedUpdateWithoutRoomsInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StoreUpdateToOneWithWhereWithoutAreasInput, Prisma.StoreUpdateWithoutAreasInput>, Prisma.StoreUncheckedUpdateWithoutAreasInput>
 }
 
-export type StoreCreateWithoutRoomsInput = {
+export type StoreCreateNestedOneWithoutSeatsInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutSeatsInput, Prisma.StoreUncheckedCreateWithoutSeatsInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutSeatsInput
+  connect?: Prisma.StoreWhereUniqueInput
+}
+
+export type StoreUpdateOneRequiredWithoutSeatsNestedInput = {
+  create?: Prisma.XOR<Prisma.StoreCreateWithoutSeatsInput, Prisma.StoreUncheckedCreateWithoutSeatsInput>
+  connectOrCreate?: Prisma.StoreCreateOrConnectWithoutSeatsInput
+  upsert?: Prisma.StoreUpsertWithoutSeatsInput
+  connect?: Prisma.StoreWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StoreUpdateToOneWithWhereWithoutSeatsInput, Prisma.StoreUpdateWithoutSeatsInput>, Prisma.StoreUncheckedUpdateWithoutSeatsInput>
+}
+
+export type StoreCreateWithoutAreasInput = {
   id?: string
-  name: string
-  address: string
-  longitude: number
-  latitude: number
-  phone: string
-  openingTime: string
-  closingTime: string
+  name?: string
+  address?: string
+  district?: string
+  longitude?: number
+  latitude?: number
+  seatCount?: number
+  phone?: string
+  is24Hours?: boolean
+  openTime?: string
+  closeTime?: string
   isActive?: boolean
-  description: string
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
+  features?: string
+  promotion?: string
+  price?: number
+  reviews?: number
+  sales?: number
+  coverImages?: string
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+  seats?: Prisma.SeatCreateNestedManyWithoutStoreInput
 }
 
-export type StoreUncheckedCreateWithoutRoomsInput = {
+export type StoreUncheckedCreateWithoutAreasInput = {
   id?: string
-  name: string
-  address: string
-  longitude: number
-  latitude: number
-  phone: string
-  openingTime: string
-  closingTime: string
+  name?: string
+  address?: string
+  district?: string
+  longitude?: number
+  latitude?: number
+  seatCount?: number
+  phone?: string
+  is24Hours?: boolean
+  openTime?: string
+  closeTime?: string
   isActive?: boolean
-  description: string
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
+  features?: string
+  promotion?: string
+  price?: number
+  reviews?: number
+  sales?: number
+  coverImages?: string
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+  seats?: Prisma.SeatUncheckedCreateNestedManyWithoutStoreInput
 }
 
-export type StoreCreateOrConnectWithoutRoomsInput = {
+export type StoreCreateOrConnectWithoutAreasInput = {
   where: Prisma.StoreWhereUniqueInput
-  create: Prisma.XOR<Prisma.StoreCreateWithoutRoomsInput, Prisma.StoreUncheckedCreateWithoutRoomsInput>
+  create: Prisma.XOR<Prisma.StoreCreateWithoutAreasInput, Prisma.StoreUncheckedCreateWithoutAreasInput>
 }
 
-export type StoreUpsertWithoutRoomsInput = {
-  update: Prisma.XOR<Prisma.StoreUpdateWithoutRoomsInput, Prisma.StoreUncheckedUpdateWithoutRoomsInput>
-  create: Prisma.XOR<Prisma.StoreCreateWithoutRoomsInput, Prisma.StoreUncheckedCreateWithoutRoomsInput>
+export type StoreUpsertWithoutAreasInput = {
+  update: Prisma.XOR<Prisma.StoreUpdateWithoutAreasInput, Prisma.StoreUncheckedUpdateWithoutAreasInput>
+  create: Prisma.XOR<Prisma.StoreCreateWithoutAreasInput, Prisma.StoreUncheckedCreateWithoutAreasInput>
   where?: Prisma.StoreWhereInput
 }
 
-export type StoreUpdateToOneWithWhereWithoutRoomsInput = {
+export type StoreUpdateToOneWithWhereWithoutAreasInput = {
   where?: Prisma.StoreWhereInput
-  data: Prisma.XOR<Prisma.StoreUpdateWithoutRoomsInput, Prisma.StoreUncheckedUpdateWithoutRoomsInput>
+  data: Prisma.XOR<Prisma.StoreUpdateWithoutAreasInput, Prisma.StoreUncheckedUpdateWithoutAreasInput>
 }
 
-export type StoreUpdateWithoutRoomsInput = {
+export type StoreUpdateWithoutAreasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
+  district?: Prisma.StringFieldUpdateOperationsInput | string
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  seatCount?: Prisma.IntFieldUpdateOperationsInput | number
   phone?: Prisma.StringFieldUpdateOperationsInput | string
-  openingTime?: Prisma.StringFieldUpdateOperationsInput | string
-  closingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  is24Hours?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  openTime?: Prisma.StringFieldUpdateOperationsInput | string
+  closeTime?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  features?: Prisma.StringFieldUpdateOperationsInput | string
+  promotion?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  reviews?: Prisma.IntFieldUpdateOperationsInput | number
+  sales?: Prisma.IntFieldUpdateOperationsInput | number
+  coverImages?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  seats?: Prisma.SeatUpdateManyWithoutStoreNestedInput
 }
 
-export type StoreUncheckedUpdateWithoutRoomsInput = {
+export type StoreUncheckedUpdateWithoutAreasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
+  district?: Prisma.StringFieldUpdateOperationsInput | string
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  seatCount?: Prisma.IntFieldUpdateOperationsInput | number
   phone?: Prisma.StringFieldUpdateOperationsInput | string
-  openingTime?: Prisma.StringFieldUpdateOperationsInput | string
-  closingTime?: Prisma.StringFieldUpdateOperationsInput | string
+  is24Hours?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  openTime?: Prisma.StringFieldUpdateOperationsInput | string
+  closeTime?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  features?: Prisma.StringFieldUpdateOperationsInput | string
+  promotion?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  reviews?: Prisma.IntFieldUpdateOperationsInput | number
+  sales?: Prisma.IntFieldUpdateOperationsInput | number
+  coverImages?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  seats?: Prisma.SeatUncheckedUpdateManyWithoutStoreNestedInput
+}
+
+export type StoreCreateWithoutSeatsInput = {
+  id?: string
+  name?: string
+  address?: string
+  district?: string
+  longitude?: number
+  latitude?: number
+  seatCount?: number
+  phone?: string
+  is24Hours?: boolean
+  openTime?: string
+  closeTime?: string
+  isActive?: boolean
+  features?: string
+  promotion?: string
+  price?: number
+  reviews?: number
+  sales?: number
+  coverImages?: string
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+  areas?: Prisma.AreaCreateNestedManyWithoutStoreInput
+}
+
+export type StoreUncheckedCreateWithoutSeatsInput = {
+  id?: string
+  name?: string
+  address?: string
+  district?: string
+  longitude?: number
+  latitude?: number
+  seatCount?: number
+  phone?: string
+  is24Hours?: boolean
+  openTime?: string
+  closeTime?: string
+  isActive?: boolean
+  features?: string
+  promotion?: string
+  price?: number
+  reviews?: number
+  sales?: number
+  coverImages?: string
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+  areas?: Prisma.AreaUncheckedCreateNestedManyWithoutStoreInput
+}
+
+export type StoreCreateOrConnectWithoutSeatsInput = {
+  where: Prisma.StoreWhereUniqueInput
+  create: Prisma.XOR<Prisma.StoreCreateWithoutSeatsInput, Prisma.StoreUncheckedCreateWithoutSeatsInput>
+}
+
+export type StoreUpsertWithoutSeatsInput = {
+  update: Prisma.XOR<Prisma.StoreUpdateWithoutSeatsInput, Prisma.StoreUncheckedUpdateWithoutSeatsInput>
+  create: Prisma.XOR<Prisma.StoreCreateWithoutSeatsInput, Prisma.StoreUncheckedCreateWithoutSeatsInput>
+  where?: Prisma.StoreWhereInput
+}
+
+export type StoreUpdateToOneWithWhereWithoutSeatsInput = {
+  where?: Prisma.StoreWhereInput
+  data: Prisma.XOR<Prisma.StoreUpdateWithoutSeatsInput, Prisma.StoreUncheckedUpdateWithoutSeatsInput>
+}
+
+export type StoreUpdateWithoutSeatsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  district?: Prisma.StringFieldUpdateOperationsInput | string
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  seatCount?: Prisma.IntFieldUpdateOperationsInput | number
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  is24Hours?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  openTime?: Prisma.StringFieldUpdateOperationsInput | string
+  closeTime?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  features?: Prisma.StringFieldUpdateOperationsInput | string
+  promotion?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  reviews?: Prisma.IntFieldUpdateOperationsInput | number
+  sales?: Prisma.IntFieldUpdateOperationsInput | number
+  coverImages?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  areas?: Prisma.AreaUpdateManyWithoutStoreNestedInput
+}
+
+export type StoreUncheckedUpdateWithoutSeatsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  district?: Prisma.StringFieldUpdateOperationsInput | string
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  seatCount?: Prisma.IntFieldUpdateOperationsInput | number
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
+  is24Hours?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  openTime?: Prisma.StringFieldUpdateOperationsInput | string
+  closeTime?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  features?: Prisma.StringFieldUpdateOperationsInput | string
+  promotion?: Prisma.StringFieldUpdateOperationsInput | string
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  reviews?: Prisma.IntFieldUpdateOperationsInput | number
+  sales?: Prisma.IntFieldUpdateOperationsInput | number
+  coverImages?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  areas?: Prisma.AreaUncheckedUpdateManyWithoutStoreNestedInput
 }
 
 
@@ -673,11 +1076,13 @@ export type StoreUncheckedUpdateWithoutRoomsInput = {
  */
 
 export type StoreCountOutputType = {
-  rooms: number
+  areas: number
+  seats: number
 }
 
 export type StoreCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  rooms?: boolean | StoreCountOutputTypeCountRoomsArgs
+  areas?: boolean | StoreCountOutputTypeCountAreasArgs
+  seats?: boolean | StoreCountOutputTypeCountSeatsArgs
 }
 
 /**
@@ -693,8 +1098,15 @@ export type StoreCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extens
 /**
  * StoreCountOutputType without action
  */
-export type StoreCountOutputTypeCountRoomsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.RoomWhereInput
+export type StoreCountOutputTypeCountAreasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AreaWhereInput
+}
+
+/**
+ * StoreCountOutputType without action
+ */
+export type StoreCountOutputTypeCountSeatsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SeatWhereInput
 }
 
 
@@ -702,17 +1114,27 @@ export type StoreSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   id?: boolean
   name?: boolean
   address?: boolean
+  district?: boolean
   longitude?: boolean
   latitude?: boolean
+  seatCount?: boolean
   phone?: boolean
-  openingTime?: boolean
-  closingTime?: boolean
+  is24Hours?: boolean
+  openTime?: boolean
+  closeTime?: boolean
   isActive?: boolean
+  features?: boolean
+  promotion?: boolean
+  price?: boolean
+  reviews?: boolean
+  sales?: boolean
+  coverImages?: boolean
   description?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
-  rooms?: boolean | Prisma.Store$roomsArgs<ExtArgs>
+  areas?: boolean | Prisma.Store$areasArgs<ExtArgs>
+  seats?: boolean | Prisma.Store$seatsArgs<ExtArgs>
   _count?: boolean | Prisma.StoreCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["store"]>
 
@@ -720,12 +1142,21 @@ export type StoreSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   name?: boolean
   address?: boolean
+  district?: boolean
   longitude?: boolean
   latitude?: boolean
+  seatCount?: boolean
   phone?: boolean
-  openingTime?: boolean
-  closingTime?: boolean
+  is24Hours?: boolean
+  openTime?: boolean
+  closeTime?: boolean
   isActive?: boolean
+  features?: boolean
+  promotion?: boolean
+  price?: boolean
+  reviews?: boolean
+  sales?: boolean
+  coverImages?: boolean
   description?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -736,12 +1167,21 @@ export type StoreSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   name?: boolean
   address?: boolean
+  district?: boolean
   longitude?: boolean
   latitude?: boolean
+  seatCount?: boolean
   phone?: boolean
-  openingTime?: boolean
-  closingTime?: boolean
+  is24Hours?: boolean
+  openTime?: boolean
+  closeTime?: boolean
   isActive?: boolean
+  features?: boolean
+  promotion?: boolean
+  price?: boolean
+  reviews?: boolean
+  sales?: boolean
+  coverImages?: boolean
   description?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -752,21 +1192,31 @@ export type StoreSelectScalar = {
   id?: boolean
   name?: boolean
   address?: boolean
+  district?: boolean
   longitude?: boolean
   latitude?: boolean
+  seatCount?: boolean
   phone?: boolean
-  openingTime?: boolean
-  closingTime?: boolean
+  is24Hours?: boolean
+  openTime?: boolean
+  closeTime?: boolean
   isActive?: boolean
+  features?: boolean
+  promotion?: boolean
+  price?: boolean
+  reviews?: boolean
+  sales?: boolean
+  coverImages?: boolean
   description?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
 }
 
-export type StoreOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "address" | "longitude" | "latitude" | "phone" | "openingTime" | "closingTime" | "isActive" | "description" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["store"]>
+export type StoreOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "address" | "district" | "longitude" | "latitude" | "seatCount" | "phone" | "is24Hours" | "openTime" | "closeTime" | "isActive" | "features" | "promotion" | "price" | "reviews" | "sales" | "coverImages" | "description" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["store"]>
 export type StoreInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  rooms?: boolean | Prisma.Store$roomsArgs<ExtArgs>
+  areas?: boolean | Prisma.Store$areasArgs<ExtArgs>
+  seats?: boolean | Prisma.Store$seatsArgs<ExtArgs>
   _count?: boolean | Prisma.StoreCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type StoreIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -775,22 +1225,32 @@ export type StoreIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
 export type $StorePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Store"
   objects: {
-    rooms: Prisma.$RoomPayload<ExtArgs>[]
+    areas: Prisma.$AreaPayload<ExtArgs>[]
+    seats: Prisma.$SeatPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
     address: string
+    district: string
     longitude: number
     latitude: number
+    seatCount: number
     phone: string
-    openingTime: string
-    closingTime: string
+    is24Hours: boolean
+    openTime: string
+    closeTime: string
     isActive: boolean
+    features: string
+    promotion: string
+    price: number
+    reviews: number
+    sales: number
+    coverImages: string
     description: string
-    createdAt: number
-    updatedAt: number
-    deletedAt: number
+    createdAt: bigint
+    updatedAt: bigint
+    deletedAt: bigint
   }, ExtArgs["result"]["store"]>
   composites: {}
 }
@@ -1063,10 +1523,10 @@ export interface StoreDelegate<ExtArgs extends runtime.Types.Extensions.Internal
     args?: Prisma.Subset<T, StoreCountArgs>,
   ): Prisma.PrismaPromise<
     T extends runtime.Types.Utils.Record<'select', any>
-    ? T['select'] extends true
-    ? number
-    : Prisma.GetScalarType<T['select'], StoreCountAggregateOutputType>
-    : number
+      ? T['select'] extends true
+        ? number
+        : Prisma.GetScalarType<T['select'], StoreCountAggregateOutputType>
+      : number
   >
 
   /**
@@ -1120,8 +1580,8 @@ export interface StoreDelegate<ExtArgs extends runtime.Types.Extensions.Internal
       Prisma.Extends<'take', Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-    ? { orderBy: StoreGroupByArgs['orderBy'] }
-    : { orderBy?: StoreGroupByArgs['orderBy'] },
+      ? { orderBy: StoreGroupByArgs['orderBy'] }
+      : { orderBy?: StoreGroupByArgs['orderBy'] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>,
     ByFields extends Prisma.MaybeTupleToUnion<T['by']>,
     ByValid extends Prisma.Has<ByFields, OrderFields>,
@@ -1132,49 +1592,49 @@ export interface StoreDelegate<ExtArgs extends runtime.Types.Extensions.Internal
     ? `Error: "by" must not be empty.`
     : HavingValid extends Prisma.False
     ? {
-      [P in HavingFields]: P extends ByFields
-      ? never
-      : P extends string
-      ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-      : [
-        Error,
-        'Field ',
-        P,
-        ` in "having" needs to be provided in "by"`,
-      ]
-    }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+          ? never
+          : P extends string
+          ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+          : [
+              Error,
+              'Field ',
+              P,
+              ` in "having" needs to be provided in "by"`,
+            ]
+      }[HavingFields]
     : 'take' extends Prisma.Keys<T>
     ? 'orderBy' extends Prisma.Keys<T>
-    ? ByValid extends Prisma.True
-    ? {}
-    : {
-      [P in OrderFields]: P extends ByFields
-      ? never
-      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-    }[OrderFields]
-    : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends Prisma.True
+        ? {}
+        : {
+            [P in OrderFields]: P extends ByFields
+              ? never
+              : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+          }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
     : 'skip' extends Prisma.Keys<T>
     ? 'orderBy' extends Prisma.Keys<T>
-    ? ByValid extends Prisma.True
-    ? {}
-    : {
-      [P in OrderFields]: P extends ByFields
-      ? never
-      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-    }[OrderFields]
-    : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends Prisma.True
+        ? {}
+        : {
+            [P in OrderFields]: P extends ByFields
+              ? never
+              : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+          }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
     : ByValid extends Prisma.True
     ? {}
     : {
-      [P in OrderFields]: P extends ByFields
-      ? never
-      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-    }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+          ? never
+          : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
   >(args: Prisma.SubsetIntersection<T, StoreGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStoreGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Store model
-   */
-  readonly fields: StoreFieldRefs;
+/**
+ * Fields of the Store model
+ */
+readonly fields: StoreFieldRefs;
 }
 
 /**
@@ -1185,7 +1645,8 @@ export interface StoreDelegate<ExtArgs extends runtime.Types.Extensions.Internal
  */
 export interface Prisma__StoreClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  rooms<T extends Prisma.Store$roomsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Store$roomsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RoomPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  areas<T extends Prisma.Store$areasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Store$areasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AreaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  seats<T extends Prisma.Store$seatsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Store$seatsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SeatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1218,18 +1679,27 @@ export interface StoreFieldRefs {
   readonly id: Prisma.FieldRef<"Store", 'String'>
   readonly name: Prisma.FieldRef<"Store", 'String'>
   readonly address: Prisma.FieldRef<"Store", 'String'>
+  readonly district: Prisma.FieldRef<"Store", 'String'>
   readonly longitude: Prisma.FieldRef<"Store", 'Float'>
   readonly latitude: Prisma.FieldRef<"Store", 'Float'>
+  readonly seatCount: Prisma.FieldRef<"Store", 'Int'>
   readonly phone: Prisma.FieldRef<"Store", 'String'>
-  readonly openingTime: Prisma.FieldRef<"Store", 'String'>
-  readonly closingTime: Prisma.FieldRef<"Store", 'String'>
+  readonly is24Hours: Prisma.FieldRef<"Store", 'Boolean'>
+  readonly openTime: Prisma.FieldRef<"Store", 'String'>
+  readonly closeTime: Prisma.FieldRef<"Store", 'String'>
   readonly isActive: Prisma.FieldRef<"Store", 'Boolean'>
+  readonly features: Prisma.FieldRef<"Store", 'String'>
+  readonly promotion: Prisma.FieldRef<"Store", 'String'>
+  readonly price: Prisma.FieldRef<"Store", 'Int'>
+  readonly reviews: Prisma.FieldRef<"Store", 'Int'>
+  readonly sales: Prisma.FieldRef<"Store", 'Int'>
+  readonly coverImages: Prisma.FieldRef<"Store", 'String'>
   readonly description: Prisma.FieldRef<"Store", 'String'>
-  readonly createdAt: Prisma.FieldRef<"Store", 'Int'>
-  readonly updatedAt: Prisma.FieldRef<"Store", 'Int'>
-  readonly deletedAt: Prisma.FieldRef<"Store", 'Int'>
+  readonly createdAt: Prisma.FieldRef<"Store", 'BigInt'>
+  readonly updatedAt: Prisma.FieldRef<"Store", 'BigInt'>
+  readonly deletedAt: Prisma.FieldRef<"Store", 'BigInt'>
 }
-
+    
 
 // Custom InputTypes
 /**
@@ -1451,7 +1921,7 @@ export type StoreCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   /**
    * The data needed to create a Store.
    */
-  data: Prisma.XOR<Prisma.StoreCreateInput, Prisma.StoreUncheckedCreateInput>
+  data?: Prisma.XOR<Prisma.StoreCreateInput, Prisma.StoreUncheckedCreateInput>
 }
 
 /**
@@ -1621,27 +2091,51 @@ export type StoreDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
- * Store.rooms
+ * Store.areas
  */
-export type Store$roomsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Store$areasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Room
+   * Select specific fields to fetch from the Area
    */
-  select?: Prisma.RoomSelect<ExtArgs> | null
+  select?: Prisma.AreaSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Room
+   * Omit specific fields from the Area
    */
-  omit?: Prisma.RoomOmit<ExtArgs> | null
+  omit?: Prisma.AreaOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.RoomInclude<ExtArgs> | null
-  where?: Prisma.RoomWhereInput
-  orderBy?: Prisma.RoomOrderByWithRelationInput | Prisma.RoomOrderByWithRelationInput[]
-  cursor?: Prisma.RoomWhereUniqueInput
+  include?: Prisma.AreaInclude<ExtArgs> | null
+  where?: Prisma.AreaWhereInput
+  orderBy?: Prisma.AreaOrderByWithRelationInput | Prisma.AreaOrderByWithRelationInput[]
+  cursor?: Prisma.AreaWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.RoomScalarFieldEnum | Prisma.RoomScalarFieldEnum[]
+  distinct?: Prisma.AreaScalarFieldEnum | Prisma.AreaScalarFieldEnum[]
+}
+
+/**
+ * Store.seats
+ */
+export type Store$seatsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Seat
+   */
+  select?: Prisma.SeatSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Seat
+   */
+  omit?: Prisma.SeatOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SeatInclude<ExtArgs> | null
+  where?: Prisma.SeatWhereInput
+  orderBy?: Prisma.SeatOrderByWithRelationInput | Prisma.SeatOrderByWithRelationInput[]
+  cursor?: Prisma.SeatWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SeatScalarFieldEnum | Prisma.SeatScalarFieldEnum[]
 }
 
 /**

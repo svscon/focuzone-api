@@ -37,11 +37,11 @@ export type UserAvgAggregateOutputType = {
 
 export type UserSumAggregateOutputType = {
   type: number | null
-  balance: number | null
+  balance: bigint | null
   points: number | null
-  createdAt: number | null
-  updatedAt: number | null
-  deletedAt: number | null
+  createdAt: bigint | null
+  updatedAt: bigint | null
+  deletedAt: bigint | null
 }
 
 export type UserMinAggregateOutputType = {
@@ -51,12 +51,12 @@ export type UserMinAggregateOutputType = {
   nickname: string | null
   avatar: string | null
   phone: string | null
-  balance: number | null
+  balance: bigint | null
   points: number | null
   description: string | null
-  createdAt: number | null
-  updatedAt: number | null
-  deletedAt: number | null
+  createdAt: bigint | null
+  updatedAt: bigint | null
+  deletedAt: bigint | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -66,12 +66,12 @@ export type UserMaxAggregateOutputType = {
   nickname: string | null
   avatar: string | null
   phone: string | null
-  balance: number | null
+  balance: bigint | null
   points: number | null
   description: string | null
-  createdAt: number | null
-  updatedAt: number | null
-  deletedAt: number | null
+  createdAt: bigint | null
+  updatedAt: bigint | null
+  deletedAt: bigint | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -248,12 +248,12 @@ export type UserGroupByOutputType = {
   nickname: string
   avatar: string
   phone: string
-  balance: number
+  balance: bigint
   points: number
   description: string
-  createdAt: number
-  updatedAt: number
-  deletedAt: number
+  createdAt: bigint
+  updatedAt: bigint
+  deletedAt: bigint
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -286,13 +286,13 @@ export type UserWhereInput = {
   nickname?: Prisma.StringFilter<"User"> | string
   avatar?: Prisma.StringFilter<"User"> | string
   phone?: Prisma.StringFilter<"User"> | string
-  balance?: Prisma.IntFilter<"User"> | number
+  balance?: Prisma.BigIntFilter<"User"> | bigint | number
   points?: Prisma.IntFilter<"User"> | number
   description?: Prisma.StringFilter<"User"> | string
-  createdAt?: Prisma.IntFilter<"User"> | number
-  updatedAt?: Prisma.IntFilter<"User"> | number
-  deletedAt?: Prisma.IntFilter<"User"> | number
-  reservations?: Prisma.ReservationListRelationFilter
+  createdAt?: Prisma.BigIntFilter<"User"> | bigint | number
+  updatedAt?: Prisma.BigIntFilter<"User"> | bigint | number
+  deletedAt?: Prisma.BigIntFilter<"User"> | bigint | number
+  reservations?: Prisma.OrderListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -308,7 +308,7 @@ export type UserOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
-  reservations?: Prisma.ReservationOrderByRelationAggregateInput
+  reservations?: Prisma.OrderOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -321,13 +321,13 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   type?: Prisma.IntFilter<"User"> | number
   nickname?: Prisma.StringFilter<"User"> | string
   avatar?: Prisma.StringFilter<"User"> | string
-  balance?: Prisma.IntFilter<"User"> | number
+  balance?: Prisma.BigIntFilter<"User"> | bigint | number
   points?: Prisma.IntFilter<"User"> | number
   description?: Prisma.StringFilter<"User"> | string
-  createdAt?: Prisma.IntFilter<"User"> | number
-  updatedAt?: Prisma.IntFilter<"User"> | number
-  deletedAt?: Prisma.IntFilter<"User"> | number
-  reservations?: Prisma.ReservationListRelationFilter
+  createdAt?: Prisma.BigIntFilter<"User"> | bigint | number
+  updatedAt?: Prisma.BigIntFilter<"User"> | bigint | number
+  deletedAt?: Prisma.BigIntFilter<"User"> | bigint | number
+  reservations?: Prisma.OrderListRelationFilter
 }, "id" | "openId" | "phone">
 
 export type UserOrderByWithAggregationInput = {
@@ -360,44 +360,44 @@ export type UserScalarWhereWithAggregatesInput = {
   nickname?: Prisma.StringWithAggregatesFilter<"User"> | string
   avatar?: Prisma.StringWithAggregatesFilter<"User"> | string
   phone?: Prisma.StringWithAggregatesFilter<"User"> | string
-  balance?: Prisma.IntWithAggregatesFilter<"User"> | number
+  balance?: Prisma.BigIntWithAggregatesFilter<"User"> | bigint | number
   points?: Prisma.IntWithAggregatesFilter<"User"> | number
   description?: Prisma.StringWithAggregatesFilter<"User"> | string
-  createdAt?: Prisma.IntWithAggregatesFilter<"User"> | number
-  updatedAt?: Prisma.IntWithAggregatesFilter<"User"> | number
-  deletedAt?: Prisma.IntWithAggregatesFilter<"User"> | number
+  createdAt?: Prisma.BigIntWithAggregatesFilter<"User"> | bigint | number
+  updatedAt?: Prisma.BigIntWithAggregatesFilter<"User"> | bigint | number
+  deletedAt?: Prisma.BigIntWithAggregatesFilter<"User"> | bigint | number
 }
 
 export type UserCreateInput = {
   id?: string
   openId: string
   type?: number
-  nickname: string
-  avatar: string
+  nickname?: string
+  avatar?: string
   phone: string
-  balance?: number
+  balance?: bigint | number
   points?: number
-  description: string
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
-  reservations?: Prisma.ReservationCreateNestedManyWithoutUserInput
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+  reservations?: Prisma.OrderCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
   id?: string
   openId: string
   type?: number
-  nickname: string
-  avatar: string
+  nickname?: string
+  avatar?: string
   phone: string
-  balance?: number
+  balance?: bigint | number
   points?: number
-  description: string
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
-  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutUserInput
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+  reservations?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -407,13 +407,13 @@ export type UserUpdateInput = {
   nickname?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   points?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  reservations?: Prisma.ReservationUpdateManyWithoutUserNestedInput
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  reservations?: Prisma.OrderUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -423,28 +423,28 @@ export type UserUncheckedUpdateInput = {
   nickname?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   points?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutUserNestedInput
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  reservations?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
   id?: string
   openId: string
   type?: number
-  nickname: string
-  avatar: string
+  nickname?: string
+  avatar?: string
   phone: string
-  balance?: number
+  balance?: bigint | number
   points?: number
-  description: string
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
 }
 
 export type UserUpdateManyMutationInput = {
@@ -454,12 +454,12 @@ export type UserUpdateManyMutationInput = {
   nickname?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   points?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -469,12 +469,12 @@ export type UserUncheckedUpdateManyInput = {
   nickname?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   points?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -557,6 +557,14 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type BigIntFieldUpdateOperationsInput = {
+  set?: bigint | number
+  increment?: bigint | number
+  decrement?: bigint | number
+  multiply?: bigint | number
+  divide?: bigint | number
+}
+
 export type UserCreateNestedOneWithoutReservationsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutReservationsInput, Prisma.UserUncheckedCreateWithoutReservationsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutReservationsInput
@@ -575,30 +583,30 @@ export type UserCreateWithoutReservationsInput = {
   id?: string
   openId: string
   type?: number
-  nickname: string
-  avatar: string
+  nickname?: string
+  avatar?: string
   phone: string
-  balance?: number
+  balance?: bigint | number
   points?: number
-  description: string
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
 }
 
 export type UserUncheckedCreateWithoutReservationsInput = {
   id?: string
   openId: string
   type?: number
-  nickname: string
-  avatar: string
+  nickname?: string
+  avatar?: string
   phone: string
-  balance?: number
+  balance?: bigint | number
   points?: number
-  description: string
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
 }
 
 export type UserCreateOrConnectWithoutReservationsInput = {
@@ -624,12 +632,12 @@ export type UserUpdateWithoutReservationsInput = {
   nickname?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   points?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
 }
 
 export type UserUncheckedUpdateWithoutReservationsInput = {
@@ -639,12 +647,12 @@ export type UserUncheckedUpdateWithoutReservationsInput = {
   nickname?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   points?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
 }
 
 
@@ -674,7 +682,7 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountReservationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ReservationWhereInput
+  where?: Prisma.OrderWhereInput
 }
 
 
@@ -751,7 +759,7 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
-    reservations: Prisma.$ReservationPayload<ExtArgs>[]
+    reservations: Prisma.$OrderPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -760,12 +768,12 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     nickname: string
     avatar: string
     phone: string
-    balance: number
+    balance: bigint
     points: number
     description: string
-    createdAt: number
-    updatedAt: number
-    deletedAt: number
+    createdAt: bigint
+    updatedAt: bigint
+    deletedAt: bigint
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1160,7 +1168,7 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  reservations<T extends Prisma.User$reservationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reservationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReservationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reservations<T extends Prisma.User$reservationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reservationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1196,12 +1204,12 @@ export interface UserFieldRefs {
   readonly nickname: Prisma.FieldRef<"User", 'String'>
   readonly avatar: Prisma.FieldRef<"User", 'String'>
   readonly phone: Prisma.FieldRef<"User", 'String'>
-  readonly balance: Prisma.FieldRef<"User", 'Int'>
+  readonly balance: Prisma.FieldRef<"User", 'BigInt'>
   readonly points: Prisma.FieldRef<"User", 'Int'>
   readonly description: Prisma.FieldRef<"User", 'String'>
-  readonly createdAt: Prisma.FieldRef<"User", 'Int'>
-  readonly updatedAt: Prisma.FieldRef<"User", 'Int'>
-  readonly deletedAt: Prisma.FieldRef<"User", 'Int'>
+  readonly createdAt: Prisma.FieldRef<"User", 'BigInt'>
+  readonly updatedAt: Prisma.FieldRef<"User", 'BigInt'>
+  readonly deletedAt: Prisma.FieldRef<"User", 'BigInt'>
 }
     
 
@@ -1599,23 +1607,23 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
  */
 export type User$reservationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Reservation
+   * Select specific fields to fetch from the Order
    */
-  select?: Prisma.ReservationSelect<ExtArgs> | null
+  select?: Prisma.OrderSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Reservation
+   * Omit specific fields from the Order
    */
-  omit?: Prisma.ReservationOmit<ExtArgs> | null
+  omit?: Prisma.OrderOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.ReservationInclude<ExtArgs> | null
-  where?: Prisma.ReservationWhereInput
-  orderBy?: Prisma.ReservationOrderByWithRelationInput | Prisma.ReservationOrderByWithRelationInput[]
-  cursor?: Prisma.ReservationWhereUniqueInput
+  include?: Prisma.OrderInclude<ExtArgs> | null
+  where?: Prisma.OrderWhereInput
+  orderBy?: Prisma.OrderOrderByWithRelationInput | Prisma.OrderOrderByWithRelationInput[]
+  cursor?: Prisma.OrderWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.ReservationScalarFieldEnum | Prisma.ReservationScalarFieldEnum[]
+  distinct?: Prisma.OrderScalarFieldEnum | Prisma.OrderScalarFieldEnum[]
 }
 
 /**

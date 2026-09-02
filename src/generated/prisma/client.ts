@@ -50,17 +50,17 @@ export type User = Prisma.UserModel
  */
 export type Store = Prisma.StoreModel
 /**
- * Model Room
+ * Model Area
  * 
  */
-export type Room = Prisma.RoomModel
+export type Area = Prisma.AreaModel
 /**
  * Model Seat
  * 
  */
 export type Seat = Prisma.SeatModel
 /**
- * Model Reservation
+ * Model Order
  * 
  */
-export type Reservation = Prisma.ReservationModel
+export type Order = Prisma.OrderModel

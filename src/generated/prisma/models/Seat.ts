@@ -27,6 +27,7 @@ export type AggregateSeat = {
 }
 
 export type SeatAvgAggregateOutputType = {
+  type: number | null
   x: number | null
   y: number | null
   width: number | null
@@ -38,19 +39,22 @@ export type SeatAvgAggregateOutputType = {
 }
 
 export type SeatSumAggregateOutputType = {
+  type: number | null
   x: number | null
   y: number | null
   width: number | null
   height: number | null
   status: number | null
-  createdAt: number | null
-  updatedAt: number | null
-  deletedAt: number | null
+  createdAt: bigint | null
+  updatedAt: bigint | null
+  deletedAt: bigint | null
 }
 
 export type SeatMinAggregateOutputType = {
   id: string | null
-  roomId: string | null
+  storeId: string | null
+  areaId: string | null
+  type: number | null
   seatNo: string | null
   x: number | null
   y: number | null
@@ -59,14 +63,16 @@ export type SeatMinAggregateOutputType = {
   hasPower: boolean | null
   status: number | null
   description: string | null
-  createdAt: number | null
-  updatedAt: number | null
-  deletedAt: number | null
+  createdAt: bigint | null
+  updatedAt: bigint | null
+  deletedAt: bigint | null
 }
 
 export type SeatMaxAggregateOutputType = {
   id: string | null
-  roomId: string | null
+  storeId: string | null
+  areaId: string | null
+  type: number | null
   seatNo: string | null
   x: number | null
   y: number | null
@@ -75,14 +81,16 @@ export type SeatMaxAggregateOutputType = {
   hasPower: boolean | null
   status: number | null
   description: string | null
-  createdAt: number | null
-  updatedAt: number | null
-  deletedAt: number | null
+  createdAt: bigint | null
+  updatedAt: bigint | null
+  deletedAt: bigint | null
 }
 
 export type SeatCountAggregateOutputType = {
   id: number
-  roomId: number
+  storeId: number
+  areaId: number
+  type: number
   seatNo: number
   x: number
   y: number
@@ -99,6 +107,7 @@ export type SeatCountAggregateOutputType = {
 
 
 export type SeatAvgAggregateInputType = {
+  type?: true
   x?: true
   y?: true
   width?: true
@@ -110,6 +119,7 @@ export type SeatAvgAggregateInputType = {
 }
 
 export type SeatSumAggregateInputType = {
+  type?: true
   x?: true
   y?: true
   width?: true
@@ -122,7 +132,9 @@ export type SeatSumAggregateInputType = {
 
 export type SeatMinAggregateInputType = {
   id?: true
-  roomId?: true
+  storeId?: true
+  areaId?: true
+  type?: true
   seatNo?: true
   x?: true
   y?: true
@@ -138,7 +150,9 @@ export type SeatMinAggregateInputType = {
 
 export type SeatMaxAggregateInputType = {
   id?: true
-  roomId?: true
+  storeId?: true
+  areaId?: true
+  type?: true
   seatNo?: true
   x?: true
   y?: true
@@ -154,7 +168,9 @@ export type SeatMaxAggregateInputType = {
 
 export type SeatCountAggregateInputType = {
   id?: true
-  roomId?: true
+  storeId?: true
+  areaId?: true
+  type?: true
   seatNo?: true
   x?: true
   y?: true
@@ -257,7 +273,9 @@ export type SeatGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type SeatGroupByOutputType = {
   id: string
-  roomId: string
+  storeId: string
+  areaId: string
+  type: number
   seatNo: string
   x: number
   y: number
@@ -265,10 +283,10 @@ export type SeatGroupByOutputType = {
   height: number
   hasPower: boolean
   status: number
-  description: string | null
-  createdAt: number
-  updatedAt: number
-  deletedAt: number
+  description: string
+  createdAt: bigint
+  updatedAt: bigint
+  deletedAt: bigint
   _count: SeatCountAggregateOutputType | null
   _avg: SeatAvgAggregateOutputType | null
   _sum: SeatSumAggregateOutputType | null
@@ -296,7 +314,9 @@ export type SeatWhereInput = {
   OR?: Prisma.SeatWhereInput[]
   NOT?: Prisma.SeatWhereInput | Prisma.SeatWhereInput[]
   id?: Prisma.StringFilter<"Seat"> | string
-  roomId?: Prisma.StringFilter<"Seat"> | string
+  storeId?: Prisma.StringFilter<"Seat"> | string
+  areaId?: Prisma.StringFilter<"Seat"> | string
+  type?: Prisma.IntFilter<"Seat"> | number
   seatNo?: Prisma.StringFilter<"Seat"> | string
   x?: Prisma.FloatFilter<"Seat"> | number
   y?: Prisma.FloatFilter<"Seat"> | number
@@ -304,17 +324,20 @@ export type SeatWhereInput = {
   height?: Prisma.FloatFilter<"Seat"> | number
   hasPower?: Prisma.BoolFilter<"Seat"> | boolean
   status?: Prisma.IntFilter<"Seat"> | number
-  description?: Prisma.StringNullableFilter<"Seat"> | string | null
-  createdAt?: Prisma.IntFilter<"Seat"> | number
-  updatedAt?: Prisma.IntFilter<"Seat"> | number
-  deletedAt?: Prisma.IntFilter<"Seat"> | number
-  room?: Prisma.XOR<Prisma.RoomScalarRelationFilter, Prisma.RoomWhereInput>
-  reservations?: Prisma.ReservationListRelationFilter
+  description?: Prisma.StringFilter<"Seat"> | string
+  createdAt?: Prisma.BigIntFilter<"Seat"> | bigint | number
+  updatedAt?: Prisma.BigIntFilter<"Seat"> | bigint | number
+  deletedAt?: Prisma.BigIntFilter<"Seat"> | bigint | number
+  store?: Prisma.XOR<Prisma.StoreScalarRelationFilter, Prisma.StoreWhereInput>
+  area?: Prisma.XOR<Prisma.AreaScalarRelationFilter, Prisma.AreaWhereInput>
+  orders?: Prisma.OrderListRelationFilter
 }
 
 export type SeatOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  roomId?: Prisma.SortOrder
+  storeId?: Prisma.SortOrder
+  areaId?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   seatNo?: Prisma.SortOrder
   x?: Prisma.SortOrder
   y?: Prisma.SortOrder
@@ -322,21 +345,24 @@ export type SeatOrderByWithRelationInput = {
   height?: Prisma.SortOrder
   hasPower?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
-  room?: Prisma.RoomOrderByWithRelationInput
-  reservations?: Prisma.ReservationOrderByRelationAggregateInput
+  store?: Prisma.StoreOrderByWithRelationInput
+  area?: Prisma.AreaOrderByWithRelationInput
+  orders?: Prisma.OrderOrderByRelationAggregateInput
 }
 
 export type SeatWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  roomId_seatNo?: Prisma.SeatRoomIdSeatNoCompoundUniqueInput
+  areaId_seatNo?: Prisma.SeatAreaIdSeatNoCompoundUniqueInput
   AND?: Prisma.SeatWhereInput | Prisma.SeatWhereInput[]
   OR?: Prisma.SeatWhereInput[]
   NOT?: Prisma.SeatWhereInput | Prisma.SeatWhereInput[]
-  roomId?: Prisma.StringFilter<"Seat"> | string
+  storeId?: Prisma.StringFilter<"Seat"> | string
+  areaId?: Prisma.StringFilter<"Seat"> | string
+  type?: Prisma.IntFilter<"Seat"> | number
   seatNo?: Prisma.StringFilter<"Seat"> | string
   x?: Prisma.FloatFilter<"Seat"> | number
   y?: Prisma.FloatFilter<"Seat"> | number
@@ -344,17 +370,20 @@ export type SeatWhereUniqueInput = Prisma.AtLeast<{
   height?: Prisma.FloatFilter<"Seat"> | number
   hasPower?: Prisma.BoolFilter<"Seat"> | boolean
   status?: Prisma.IntFilter<"Seat"> | number
-  description?: Prisma.StringNullableFilter<"Seat"> | string | null
-  createdAt?: Prisma.IntFilter<"Seat"> | number
-  updatedAt?: Prisma.IntFilter<"Seat"> | number
-  deletedAt?: Prisma.IntFilter<"Seat"> | number
-  room?: Prisma.XOR<Prisma.RoomScalarRelationFilter, Prisma.RoomWhereInput>
-  reservations?: Prisma.ReservationListRelationFilter
-}, "id" | "roomId_seatNo">
+  description?: Prisma.StringFilter<"Seat"> | string
+  createdAt?: Prisma.BigIntFilter<"Seat"> | bigint | number
+  updatedAt?: Prisma.BigIntFilter<"Seat"> | bigint | number
+  deletedAt?: Prisma.BigIntFilter<"Seat"> | bigint | number
+  store?: Prisma.XOR<Prisma.StoreScalarRelationFilter, Prisma.StoreWhereInput>
+  area?: Prisma.XOR<Prisma.AreaScalarRelationFilter, Prisma.AreaWhereInput>
+  orders?: Prisma.OrderListRelationFilter
+}, "id" | "areaId_seatNo">
 
 export type SeatOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  roomId?: Prisma.SortOrder
+  storeId?: Prisma.SortOrder
+  areaId?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   seatNo?: Prisma.SortOrder
   x?: Prisma.SortOrder
   y?: Prisma.SortOrder
@@ -362,7 +391,7 @@ export type SeatOrderByWithAggregationInput = {
   height?: Prisma.SortOrder
   hasPower?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -378,7 +407,9 @@ export type SeatScalarWhereWithAggregatesInput = {
   OR?: Prisma.SeatScalarWhereWithAggregatesInput[]
   NOT?: Prisma.SeatScalarWhereWithAggregatesInput | Prisma.SeatScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Seat"> | string
-  roomId?: Prisma.StringWithAggregatesFilter<"Seat"> | string
+  storeId?: Prisma.StringWithAggregatesFilter<"Seat"> | string
+  areaId?: Prisma.StringWithAggregatesFilter<"Seat"> | string
+  type?: Prisma.IntWithAggregatesFilter<"Seat"> | number
   seatNo?: Prisma.StringWithAggregatesFilter<"Seat"> | string
   x?: Prisma.FloatWithAggregatesFilter<"Seat"> | number
   y?: Prisma.FloatWithAggregatesFilter<"Seat"> | number
@@ -386,48 +417,53 @@ export type SeatScalarWhereWithAggregatesInput = {
   height?: Prisma.FloatWithAggregatesFilter<"Seat"> | number
   hasPower?: Prisma.BoolWithAggregatesFilter<"Seat"> | boolean
   status?: Prisma.IntWithAggregatesFilter<"Seat"> | number
-  description?: Prisma.StringNullableWithAggregatesFilter<"Seat"> | string | null
-  createdAt?: Prisma.IntWithAggregatesFilter<"Seat"> | number
-  updatedAt?: Prisma.IntWithAggregatesFilter<"Seat"> | number
-  deletedAt?: Prisma.IntWithAggregatesFilter<"Seat"> | number
+  description?: Prisma.StringWithAggregatesFilter<"Seat"> | string
+  createdAt?: Prisma.BigIntWithAggregatesFilter<"Seat"> | bigint | number
+  updatedAt?: Prisma.BigIntWithAggregatesFilter<"Seat"> | bigint | number
+  deletedAt?: Prisma.BigIntWithAggregatesFilter<"Seat"> | bigint | number
 }
 
 export type SeatCreateInput = {
   id?: string
-  seatNo: string
-  x: number
-  y: number
-  width: number
-  height: number
+  type?: number
+  seatNo?: string
+  x?: number
+  y?: number
+  width?: number
+  height?: number
   hasPower?: boolean
   status?: number
-  description?: string | null
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
-  room: Prisma.RoomCreateNestedOneWithoutSeatsInput
-  reservations?: Prisma.ReservationCreateNestedManyWithoutSeatInput
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+  store?: Prisma.StoreCreateNestedOneWithoutSeatsInput
+  area?: Prisma.AreaCreateNestedOneWithoutSeatsInput
+  orders?: Prisma.OrderCreateNestedManyWithoutSeatInput
 }
 
 export type SeatUncheckedCreateInput = {
   id?: string
-  roomId: string
-  seatNo: string
-  x: number
-  y: number
-  width: number
-  height: number
+  storeId?: string
+  areaId?: string
+  type?: number
+  seatNo?: string
+  x?: number
+  y?: number
+  width?: number
+  height?: number
   hasPower?: boolean
   status?: number
-  description?: string | null
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
-  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutSeatInput
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutSeatInput
 }
 
 export type SeatUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
   seatNo?: Prisma.StringFieldUpdateOperationsInput | string
   x?: Prisma.FloatFieldUpdateOperationsInput | number
   y?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -435,17 +471,20 @@ export type SeatUpdateInput = {
   height?: Prisma.FloatFieldUpdateOperationsInput | number
   hasPower?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.IntFieldUpdateOperationsInput | number
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  room?: Prisma.RoomUpdateOneRequiredWithoutSeatsNestedInput
-  reservations?: Prisma.ReservationUpdateManyWithoutSeatNestedInput
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  store?: Prisma.StoreUpdateOneRequiredWithoutSeatsNestedInput
+  area?: Prisma.AreaUpdateOneRequiredWithoutSeatsNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutSeatNestedInput
 }
 
 export type SeatUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  roomId?: Prisma.StringFieldUpdateOperationsInput | string
+  storeId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
   seatNo?: Prisma.StringFieldUpdateOperationsInput | string
   x?: Prisma.FloatFieldUpdateOperationsInput | number
   y?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -453,31 +492,34 @@ export type SeatUncheckedUpdateInput = {
   height?: Prisma.FloatFieldUpdateOperationsInput | number
   hasPower?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.IntFieldUpdateOperationsInput | number
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutSeatNestedInput
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutSeatNestedInput
 }
 
 export type SeatCreateManyInput = {
   id?: string
-  roomId: string
-  seatNo: string
-  x: number
-  y: number
-  width: number
-  height: number
+  storeId?: string
+  areaId?: string
+  type?: number
+  seatNo?: string
+  x?: number
+  y?: number
+  width?: number
+  height?: number
   hasPower?: boolean
   status?: number
-  description?: string | null
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
 }
 
 export type SeatUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
   seatNo?: Prisma.StringFieldUpdateOperationsInput | string
   x?: Prisma.FloatFieldUpdateOperationsInput | number
   y?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -485,15 +527,17 @@ export type SeatUpdateManyMutationInput = {
   height?: Prisma.FloatFieldUpdateOperationsInput | number
   hasPower?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.IntFieldUpdateOperationsInput | number
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
 }
 
 export type SeatUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  roomId?: Prisma.StringFieldUpdateOperationsInput | string
+  storeId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
   seatNo?: Prisma.StringFieldUpdateOperationsInput | string
   x?: Prisma.FloatFieldUpdateOperationsInput | number
   y?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -501,10 +545,10 @@ export type SeatUncheckedUpdateManyInput = {
   height?: Prisma.FloatFieldUpdateOperationsInput | number
   hasPower?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.IntFieldUpdateOperationsInput | number
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
 }
 
 export type SeatListRelationFilter = {
@@ -517,14 +561,16 @@ export type SeatOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type SeatRoomIdSeatNoCompoundUniqueInput = {
-  roomId: string
+export type SeatAreaIdSeatNoCompoundUniqueInput = {
+  areaId: string
   seatNo: string
 }
 
 export type SeatCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  roomId?: Prisma.SortOrder
+  storeId?: Prisma.SortOrder
+  areaId?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   seatNo?: Prisma.SortOrder
   x?: Prisma.SortOrder
   y?: Prisma.SortOrder
@@ -539,6 +585,7 @@ export type SeatCountOrderByAggregateInput = {
 }
 
 export type SeatAvgOrderByAggregateInput = {
+  type?: Prisma.SortOrder
   x?: Prisma.SortOrder
   y?: Prisma.SortOrder
   width?: Prisma.SortOrder
@@ -551,7 +598,9 @@ export type SeatAvgOrderByAggregateInput = {
 
 export type SeatMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  roomId?: Prisma.SortOrder
+  storeId?: Prisma.SortOrder
+  areaId?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   seatNo?: Prisma.SortOrder
   x?: Prisma.SortOrder
   y?: Prisma.SortOrder
@@ -567,7 +616,9 @@ export type SeatMaxOrderByAggregateInput = {
 
 export type SeatMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  roomId?: Prisma.SortOrder
+  storeId?: Prisma.SortOrder
+  areaId?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   seatNo?: Prisma.SortOrder
   x?: Prisma.SortOrder
   y?: Prisma.SortOrder
@@ -582,6 +633,7 @@ export type SeatMinOrderByAggregateInput = {
 }
 
 export type SeatSumOrderByAggregateInput = {
+  type?: Prisma.SortOrder
   x?: Prisma.SortOrder
   y?: Prisma.SortOrder
   width?: Prisma.SortOrder
@@ -597,122 +649,164 @@ export type SeatScalarRelationFilter = {
   isNot?: Prisma.SeatWhereInput
 }
 
-export type SeatCreateNestedManyWithoutRoomInput = {
-  create?: Prisma.XOR<Prisma.SeatCreateWithoutRoomInput, Prisma.SeatUncheckedCreateWithoutRoomInput> | Prisma.SeatCreateWithoutRoomInput[] | Prisma.SeatUncheckedCreateWithoutRoomInput[]
-  connectOrCreate?: Prisma.SeatCreateOrConnectWithoutRoomInput | Prisma.SeatCreateOrConnectWithoutRoomInput[]
-  createMany?: Prisma.SeatCreateManyRoomInputEnvelope
+export type SeatCreateNestedManyWithoutStoreInput = {
+  create?: Prisma.XOR<Prisma.SeatCreateWithoutStoreInput, Prisma.SeatUncheckedCreateWithoutStoreInput> | Prisma.SeatCreateWithoutStoreInput[] | Prisma.SeatUncheckedCreateWithoutStoreInput[]
+  connectOrCreate?: Prisma.SeatCreateOrConnectWithoutStoreInput | Prisma.SeatCreateOrConnectWithoutStoreInput[]
+  createMany?: Prisma.SeatCreateManyStoreInputEnvelope
   connect?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
 }
 
-export type SeatUncheckedCreateNestedManyWithoutRoomInput = {
-  create?: Prisma.XOR<Prisma.SeatCreateWithoutRoomInput, Prisma.SeatUncheckedCreateWithoutRoomInput> | Prisma.SeatCreateWithoutRoomInput[] | Prisma.SeatUncheckedCreateWithoutRoomInput[]
-  connectOrCreate?: Prisma.SeatCreateOrConnectWithoutRoomInput | Prisma.SeatCreateOrConnectWithoutRoomInput[]
-  createMany?: Prisma.SeatCreateManyRoomInputEnvelope
+export type SeatUncheckedCreateNestedManyWithoutStoreInput = {
+  create?: Prisma.XOR<Prisma.SeatCreateWithoutStoreInput, Prisma.SeatUncheckedCreateWithoutStoreInput> | Prisma.SeatCreateWithoutStoreInput[] | Prisma.SeatUncheckedCreateWithoutStoreInput[]
+  connectOrCreate?: Prisma.SeatCreateOrConnectWithoutStoreInput | Prisma.SeatCreateOrConnectWithoutStoreInput[]
+  createMany?: Prisma.SeatCreateManyStoreInputEnvelope
   connect?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
 }
 
-export type SeatUpdateManyWithoutRoomNestedInput = {
-  create?: Prisma.XOR<Prisma.SeatCreateWithoutRoomInput, Prisma.SeatUncheckedCreateWithoutRoomInput> | Prisma.SeatCreateWithoutRoomInput[] | Prisma.SeatUncheckedCreateWithoutRoomInput[]
-  connectOrCreate?: Prisma.SeatCreateOrConnectWithoutRoomInput | Prisma.SeatCreateOrConnectWithoutRoomInput[]
-  upsert?: Prisma.SeatUpsertWithWhereUniqueWithoutRoomInput | Prisma.SeatUpsertWithWhereUniqueWithoutRoomInput[]
-  createMany?: Prisma.SeatCreateManyRoomInputEnvelope
+export type SeatUpdateManyWithoutStoreNestedInput = {
+  create?: Prisma.XOR<Prisma.SeatCreateWithoutStoreInput, Prisma.SeatUncheckedCreateWithoutStoreInput> | Prisma.SeatCreateWithoutStoreInput[] | Prisma.SeatUncheckedCreateWithoutStoreInput[]
+  connectOrCreate?: Prisma.SeatCreateOrConnectWithoutStoreInput | Prisma.SeatCreateOrConnectWithoutStoreInput[]
+  upsert?: Prisma.SeatUpsertWithWhereUniqueWithoutStoreInput | Prisma.SeatUpsertWithWhereUniqueWithoutStoreInput[]
+  createMany?: Prisma.SeatCreateManyStoreInputEnvelope
   set?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
   disconnect?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
   delete?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
   connect?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
-  update?: Prisma.SeatUpdateWithWhereUniqueWithoutRoomInput | Prisma.SeatUpdateWithWhereUniqueWithoutRoomInput[]
-  updateMany?: Prisma.SeatUpdateManyWithWhereWithoutRoomInput | Prisma.SeatUpdateManyWithWhereWithoutRoomInput[]
+  update?: Prisma.SeatUpdateWithWhereUniqueWithoutStoreInput | Prisma.SeatUpdateWithWhereUniqueWithoutStoreInput[]
+  updateMany?: Prisma.SeatUpdateManyWithWhereWithoutStoreInput | Prisma.SeatUpdateManyWithWhereWithoutStoreInput[]
   deleteMany?: Prisma.SeatScalarWhereInput | Prisma.SeatScalarWhereInput[]
 }
 
-export type SeatUncheckedUpdateManyWithoutRoomNestedInput = {
-  create?: Prisma.XOR<Prisma.SeatCreateWithoutRoomInput, Prisma.SeatUncheckedCreateWithoutRoomInput> | Prisma.SeatCreateWithoutRoomInput[] | Prisma.SeatUncheckedCreateWithoutRoomInput[]
-  connectOrCreate?: Prisma.SeatCreateOrConnectWithoutRoomInput | Prisma.SeatCreateOrConnectWithoutRoomInput[]
-  upsert?: Prisma.SeatUpsertWithWhereUniqueWithoutRoomInput | Prisma.SeatUpsertWithWhereUniqueWithoutRoomInput[]
-  createMany?: Prisma.SeatCreateManyRoomInputEnvelope
+export type SeatUncheckedUpdateManyWithoutStoreNestedInput = {
+  create?: Prisma.XOR<Prisma.SeatCreateWithoutStoreInput, Prisma.SeatUncheckedCreateWithoutStoreInput> | Prisma.SeatCreateWithoutStoreInput[] | Prisma.SeatUncheckedCreateWithoutStoreInput[]
+  connectOrCreate?: Prisma.SeatCreateOrConnectWithoutStoreInput | Prisma.SeatCreateOrConnectWithoutStoreInput[]
+  upsert?: Prisma.SeatUpsertWithWhereUniqueWithoutStoreInput | Prisma.SeatUpsertWithWhereUniqueWithoutStoreInput[]
+  createMany?: Prisma.SeatCreateManyStoreInputEnvelope
   set?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
   disconnect?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
   delete?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
   connect?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
-  update?: Prisma.SeatUpdateWithWhereUniqueWithoutRoomInput | Prisma.SeatUpdateWithWhereUniqueWithoutRoomInput[]
-  updateMany?: Prisma.SeatUpdateManyWithWhereWithoutRoomInput | Prisma.SeatUpdateManyWithWhereWithoutRoomInput[]
+  update?: Prisma.SeatUpdateWithWhereUniqueWithoutStoreInput | Prisma.SeatUpdateWithWhereUniqueWithoutStoreInput[]
+  updateMany?: Prisma.SeatUpdateManyWithWhereWithoutStoreInput | Prisma.SeatUpdateManyWithWhereWithoutStoreInput[]
   deleteMany?: Prisma.SeatScalarWhereInput | Prisma.SeatScalarWhereInput[]
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
+export type SeatCreateNestedManyWithoutAreaInput = {
+  create?: Prisma.XOR<Prisma.SeatCreateWithoutAreaInput, Prisma.SeatUncheckedCreateWithoutAreaInput> | Prisma.SeatCreateWithoutAreaInput[] | Prisma.SeatUncheckedCreateWithoutAreaInput[]
+  connectOrCreate?: Prisma.SeatCreateOrConnectWithoutAreaInput | Prisma.SeatCreateOrConnectWithoutAreaInput[]
+  createMany?: Prisma.SeatCreateManyAreaInputEnvelope
+  connect?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
 }
 
-export type SeatCreateNestedOneWithoutReservationsInput = {
-  create?: Prisma.XOR<Prisma.SeatCreateWithoutReservationsInput, Prisma.SeatUncheckedCreateWithoutReservationsInput>
-  connectOrCreate?: Prisma.SeatCreateOrConnectWithoutReservationsInput
+export type SeatUncheckedCreateNestedManyWithoutAreaInput = {
+  create?: Prisma.XOR<Prisma.SeatCreateWithoutAreaInput, Prisma.SeatUncheckedCreateWithoutAreaInput> | Prisma.SeatCreateWithoutAreaInput[] | Prisma.SeatUncheckedCreateWithoutAreaInput[]
+  connectOrCreate?: Prisma.SeatCreateOrConnectWithoutAreaInput | Prisma.SeatCreateOrConnectWithoutAreaInput[]
+  createMany?: Prisma.SeatCreateManyAreaInputEnvelope
+  connect?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
+}
+
+export type SeatUpdateManyWithoutAreaNestedInput = {
+  create?: Prisma.XOR<Prisma.SeatCreateWithoutAreaInput, Prisma.SeatUncheckedCreateWithoutAreaInput> | Prisma.SeatCreateWithoutAreaInput[] | Prisma.SeatUncheckedCreateWithoutAreaInput[]
+  connectOrCreate?: Prisma.SeatCreateOrConnectWithoutAreaInput | Prisma.SeatCreateOrConnectWithoutAreaInput[]
+  upsert?: Prisma.SeatUpsertWithWhereUniqueWithoutAreaInput | Prisma.SeatUpsertWithWhereUniqueWithoutAreaInput[]
+  createMany?: Prisma.SeatCreateManyAreaInputEnvelope
+  set?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
+  disconnect?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
+  delete?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
+  connect?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
+  update?: Prisma.SeatUpdateWithWhereUniqueWithoutAreaInput | Prisma.SeatUpdateWithWhereUniqueWithoutAreaInput[]
+  updateMany?: Prisma.SeatUpdateManyWithWhereWithoutAreaInput | Prisma.SeatUpdateManyWithWhereWithoutAreaInput[]
+  deleteMany?: Prisma.SeatScalarWhereInput | Prisma.SeatScalarWhereInput[]
+}
+
+export type SeatUncheckedUpdateManyWithoutAreaNestedInput = {
+  create?: Prisma.XOR<Prisma.SeatCreateWithoutAreaInput, Prisma.SeatUncheckedCreateWithoutAreaInput> | Prisma.SeatCreateWithoutAreaInput[] | Prisma.SeatUncheckedCreateWithoutAreaInput[]
+  connectOrCreate?: Prisma.SeatCreateOrConnectWithoutAreaInput | Prisma.SeatCreateOrConnectWithoutAreaInput[]
+  upsert?: Prisma.SeatUpsertWithWhereUniqueWithoutAreaInput | Prisma.SeatUpsertWithWhereUniqueWithoutAreaInput[]
+  createMany?: Prisma.SeatCreateManyAreaInputEnvelope
+  set?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
+  disconnect?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
+  delete?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
+  connect?: Prisma.SeatWhereUniqueInput | Prisma.SeatWhereUniqueInput[]
+  update?: Prisma.SeatUpdateWithWhereUniqueWithoutAreaInput | Prisma.SeatUpdateWithWhereUniqueWithoutAreaInput[]
+  updateMany?: Prisma.SeatUpdateManyWithWhereWithoutAreaInput | Prisma.SeatUpdateManyWithWhereWithoutAreaInput[]
+  deleteMany?: Prisma.SeatScalarWhereInput | Prisma.SeatScalarWhereInput[]
+}
+
+export type SeatCreateNestedOneWithoutOrdersInput = {
+  create?: Prisma.XOR<Prisma.SeatCreateWithoutOrdersInput, Prisma.SeatUncheckedCreateWithoutOrdersInput>
+  connectOrCreate?: Prisma.SeatCreateOrConnectWithoutOrdersInput
   connect?: Prisma.SeatWhereUniqueInput
 }
 
-export type SeatUpdateOneRequiredWithoutReservationsNestedInput = {
-  create?: Prisma.XOR<Prisma.SeatCreateWithoutReservationsInput, Prisma.SeatUncheckedCreateWithoutReservationsInput>
-  connectOrCreate?: Prisma.SeatCreateOrConnectWithoutReservationsInput
-  upsert?: Prisma.SeatUpsertWithoutReservationsInput
+export type SeatUpdateOneRequiredWithoutOrdersNestedInput = {
+  create?: Prisma.XOR<Prisma.SeatCreateWithoutOrdersInput, Prisma.SeatUncheckedCreateWithoutOrdersInput>
+  connectOrCreate?: Prisma.SeatCreateOrConnectWithoutOrdersInput
+  upsert?: Prisma.SeatUpsertWithoutOrdersInput
   connect?: Prisma.SeatWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.SeatUpdateToOneWithWhereWithoutReservationsInput, Prisma.SeatUpdateWithoutReservationsInput>, Prisma.SeatUncheckedUpdateWithoutReservationsInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SeatUpdateToOneWithWhereWithoutOrdersInput, Prisma.SeatUpdateWithoutOrdersInput>, Prisma.SeatUncheckedUpdateWithoutOrdersInput>
 }
 
-export type SeatCreateWithoutRoomInput = {
+export type SeatCreateWithoutStoreInput = {
   id?: string
-  seatNo: string
-  x: number
-  y: number
-  width: number
-  height: number
+  type?: number
+  seatNo?: string
+  x?: number
+  y?: number
+  width?: number
+  height?: number
   hasPower?: boolean
   status?: number
-  description?: string | null
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
-  reservations?: Prisma.ReservationCreateNestedManyWithoutSeatInput
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+  area?: Prisma.AreaCreateNestedOneWithoutSeatsInput
+  orders?: Prisma.OrderCreateNestedManyWithoutSeatInput
 }
 
-export type SeatUncheckedCreateWithoutRoomInput = {
+export type SeatUncheckedCreateWithoutStoreInput = {
   id?: string
-  seatNo: string
-  x: number
-  y: number
-  width: number
-  height: number
+  areaId?: string
+  type?: number
+  seatNo?: string
+  x?: number
+  y?: number
+  width?: number
+  height?: number
   hasPower?: boolean
   status?: number
-  description?: string | null
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
-  reservations?: Prisma.ReservationUncheckedCreateNestedManyWithoutSeatInput
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutSeatInput
 }
 
-export type SeatCreateOrConnectWithoutRoomInput = {
+export type SeatCreateOrConnectWithoutStoreInput = {
   where: Prisma.SeatWhereUniqueInput
-  create: Prisma.XOR<Prisma.SeatCreateWithoutRoomInput, Prisma.SeatUncheckedCreateWithoutRoomInput>
+  create: Prisma.XOR<Prisma.SeatCreateWithoutStoreInput, Prisma.SeatUncheckedCreateWithoutStoreInput>
 }
 
-export type SeatCreateManyRoomInputEnvelope = {
-  data: Prisma.SeatCreateManyRoomInput | Prisma.SeatCreateManyRoomInput[]
+export type SeatCreateManyStoreInputEnvelope = {
+  data: Prisma.SeatCreateManyStoreInput | Prisma.SeatCreateManyStoreInput[]
   skipDuplicates?: boolean
 }
 
-export type SeatUpsertWithWhereUniqueWithoutRoomInput = {
+export type SeatUpsertWithWhereUniqueWithoutStoreInput = {
   where: Prisma.SeatWhereUniqueInput
-  update: Prisma.XOR<Prisma.SeatUpdateWithoutRoomInput, Prisma.SeatUncheckedUpdateWithoutRoomInput>
-  create: Prisma.XOR<Prisma.SeatCreateWithoutRoomInput, Prisma.SeatUncheckedCreateWithoutRoomInput>
+  update: Prisma.XOR<Prisma.SeatUpdateWithoutStoreInput, Prisma.SeatUncheckedUpdateWithoutStoreInput>
+  create: Prisma.XOR<Prisma.SeatCreateWithoutStoreInput, Prisma.SeatUncheckedCreateWithoutStoreInput>
 }
 
-export type SeatUpdateWithWhereUniqueWithoutRoomInput = {
+export type SeatUpdateWithWhereUniqueWithoutStoreInput = {
   where: Prisma.SeatWhereUniqueInput
-  data: Prisma.XOR<Prisma.SeatUpdateWithoutRoomInput, Prisma.SeatUncheckedUpdateWithoutRoomInput>
+  data: Prisma.XOR<Prisma.SeatUpdateWithoutStoreInput, Prisma.SeatUncheckedUpdateWithoutStoreInput>
 }
 
-export type SeatUpdateManyWithWhereWithoutRoomInput = {
+export type SeatUpdateManyWithWhereWithoutStoreInput = {
   where: Prisma.SeatScalarWhereInput
-  data: Prisma.XOR<Prisma.SeatUpdateManyMutationInput, Prisma.SeatUncheckedUpdateManyWithoutRoomInput>
+  data: Prisma.XOR<Prisma.SeatUpdateManyMutationInput, Prisma.SeatUncheckedUpdateManyWithoutStoreInput>
 }
 
 export type SeatScalarWhereInput = {
@@ -720,7 +814,9 @@ export type SeatScalarWhereInput = {
   OR?: Prisma.SeatScalarWhereInput[]
   NOT?: Prisma.SeatScalarWhereInput | Prisma.SeatScalarWhereInput[]
   id?: Prisma.StringFilter<"Seat"> | string
-  roomId?: Prisma.StringFilter<"Seat"> | string
+  storeId?: Prisma.StringFilter<"Seat"> | string
+  areaId?: Prisma.StringFilter<"Seat"> | string
+  type?: Prisma.IntFilter<"Seat"> | number
   seatNo?: Prisma.StringFilter<"Seat"> | string
   x?: Prisma.FloatFilter<"Seat"> | number
   y?: Prisma.FloatFilter<"Seat"> | number
@@ -728,109 +824,129 @@ export type SeatScalarWhereInput = {
   height?: Prisma.FloatFilter<"Seat"> | number
   hasPower?: Prisma.BoolFilter<"Seat"> | boolean
   status?: Prisma.IntFilter<"Seat"> | number
-  description?: Prisma.StringNullableFilter<"Seat"> | string | null
-  createdAt?: Prisma.IntFilter<"Seat"> | number
-  updatedAt?: Prisma.IntFilter<"Seat"> | number
-  deletedAt?: Prisma.IntFilter<"Seat"> | number
+  description?: Prisma.StringFilter<"Seat"> | string
+  createdAt?: Prisma.BigIntFilter<"Seat"> | bigint | number
+  updatedAt?: Prisma.BigIntFilter<"Seat"> | bigint | number
+  deletedAt?: Prisma.BigIntFilter<"Seat"> | bigint | number
 }
 
-export type SeatCreateWithoutReservationsInput = {
+export type SeatCreateWithoutAreaInput = {
   id?: string
-  seatNo: string
-  x: number
-  y: number
-  width: number
-  height: number
+  type?: number
+  seatNo?: string
+  x?: number
+  y?: number
+  width?: number
+  height?: number
   hasPower?: boolean
   status?: number
-  description?: string | null
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
-  room: Prisma.RoomCreateNestedOneWithoutSeatsInput
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+  store?: Prisma.StoreCreateNestedOneWithoutSeatsInput
+  orders?: Prisma.OrderCreateNestedManyWithoutSeatInput
 }
 
-export type SeatUncheckedCreateWithoutReservationsInput = {
+export type SeatUncheckedCreateWithoutAreaInput = {
   id?: string
-  roomId: string
-  seatNo: string
-  x: number
-  y: number
-  width: number
-  height: number
+  storeId?: string
+  type?: number
+  seatNo?: string
+  x?: number
+  y?: number
+  width?: number
+  height?: number
   hasPower?: boolean
   status?: number
-  description?: string | null
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutSeatInput
 }
 
-export type SeatCreateOrConnectWithoutReservationsInput = {
+export type SeatCreateOrConnectWithoutAreaInput = {
   where: Prisma.SeatWhereUniqueInput
-  create: Prisma.XOR<Prisma.SeatCreateWithoutReservationsInput, Prisma.SeatUncheckedCreateWithoutReservationsInput>
+  create: Prisma.XOR<Prisma.SeatCreateWithoutAreaInput, Prisma.SeatUncheckedCreateWithoutAreaInput>
 }
 
-export type SeatUpsertWithoutReservationsInput = {
-  update: Prisma.XOR<Prisma.SeatUpdateWithoutReservationsInput, Prisma.SeatUncheckedUpdateWithoutReservationsInput>
-  create: Prisma.XOR<Prisma.SeatCreateWithoutReservationsInput, Prisma.SeatUncheckedCreateWithoutReservationsInput>
-  where?: Prisma.SeatWhereInput
+export type SeatCreateManyAreaInputEnvelope = {
+  data: Prisma.SeatCreateManyAreaInput | Prisma.SeatCreateManyAreaInput[]
+  skipDuplicates?: boolean
 }
 
-export type SeatUpdateToOneWithWhereWithoutReservationsInput = {
-  where?: Prisma.SeatWhereInput
-  data: Prisma.XOR<Prisma.SeatUpdateWithoutReservationsInput, Prisma.SeatUncheckedUpdateWithoutReservationsInput>
+export type SeatUpsertWithWhereUniqueWithoutAreaInput = {
+  where: Prisma.SeatWhereUniqueInput
+  update: Prisma.XOR<Prisma.SeatUpdateWithoutAreaInput, Prisma.SeatUncheckedUpdateWithoutAreaInput>
+  create: Prisma.XOR<Prisma.SeatCreateWithoutAreaInput, Prisma.SeatUncheckedCreateWithoutAreaInput>
 }
 
-export type SeatUpdateWithoutReservationsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  seatNo?: Prisma.StringFieldUpdateOperationsInput | string
-  x?: Prisma.FloatFieldUpdateOperationsInput | number
-  y?: Prisma.FloatFieldUpdateOperationsInput | number
-  width?: Prisma.FloatFieldUpdateOperationsInput | number
-  height?: Prisma.FloatFieldUpdateOperationsInput | number
-  hasPower?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.IntFieldUpdateOperationsInput | number
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  room?: Prisma.RoomUpdateOneRequiredWithoutSeatsNestedInput
+export type SeatUpdateWithWhereUniqueWithoutAreaInput = {
+  where: Prisma.SeatWhereUniqueInput
+  data: Prisma.XOR<Prisma.SeatUpdateWithoutAreaInput, Prisma.SeatUncheckedUpdateWithoutAreaInput>
 }
 
-export type SeatUncheckedUpdateWithoutReservationsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  roomId?: Prisma.StringFieldUpdateOperationsInput | string
-  seatNo?: Prisma.StringFieldUpdateOperationsInput | string
-  x?: Prisma.FloatFieldUpdateOperationsInput | number
-  y?: Prisma.FloatFieldUpdateOperationsInput | number
-  width?: Prisma.FloatFieldUpdateOperationsInput | number
-  height?: Prisma.FloatFieldUpdateOperationsInput | number
-  hasPower?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  status?: Prisma.IntFieldUpdateOperationsInput | number
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
+export type SeatUpdateManyWithWhereWithoutAreaInput = {
+  where: Prisma.SeatScalarWhereInput
+  data: Prisma.XOR<Prisma.SeatUpdateManyMutationInput, Prisma.SeatUncheckedUpdateManyWithoutAreaInput>
 }
 
-export type SeatCreateManyRoomInput = {
+export type SeatCreateWithoutOrdersInput = {
   id?: string
-  seatNo: string
-  x: number
-  y: number
-  width: number
-  height: number
+  type?: number
+  seatNo?: string
+  x?: number
+  y?: number
+  width?: number
+  height?: number
   hasPower?: boolean
   status?: number
-  description?: string | null
-  createdAt?: number
-  updatedAt?: number
-  deletedAt?: number
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+  store?: Prisma.StoreCreateNestedOneWithoutSeatsInput
+  area?: Prisma.AreaCreateNestedOneWithoutSeatsInput
 }
 
-export type SeatUpdateWithoutRoomInput = {
+export type SeatUncheckedCreateWithoutOrdersInput = {
+  id?: string
+  storeId?: string
+  areaId?: string
+  type?: number
+  seatNo?: string
+  x?: number
+  y?: number
+  width?: number
+  height?: number
+  hasPower?: boolean
+  status?: number
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+}
+
+export type SeatCreateOrConnectWithoutOrdersInput = {
+  where: Prisma.SeatWhereUniqueInput
+  create: Prisma.XOR<Prisma.SeatCreateWithoutOrdersInput, Prisma.SeatUncheckedCreateWithoutOrdersInput>
+}
+
+export type SeatUpsertWithoutOrdersInput = {
+  update: Prisma.XOR<Prisma.SeatUpdateWithoutOrdersInput, Prisma.SeatUncheckedUpdateWithoutOrdersInput>
+  create: Prisma.XOR<Prisma.SeatCreateWithoutOrdersInput, Prisma.SeatUncheckedCreateWithoutOrdersInput>
+  where?: Prisma.SeatWhereInput
+}
+
+export type SeatUpdateToOneWithWhereWithoutOrdersInput = {
+  where?: Prisma.SeatWhereInput
+  data: Prisma.XOR<Prisma.SeatUpdateWithoutOrdersInput, Prisma.SeatUncheckedUpdateWithoutOrdersInput>
+}
+
+export type SeatUpdateWithoutOrdersInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
   seatNo?: Prisma.StringFieldUpdateOperationsInput | string
   x?: Prisma.FloatFieldUpdateOperationsInput | number
   y?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -838,15 +954,19 @@ export type SeatUpdateWithoutRoomInput = {
   height?: Prisma.FloatFieldUpdateOperationsInput | number
   hasPower?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.IntFieldUpdateOperationsInput | number
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  reservations?: Prisma.ReservationUpdateManyWithoutSeatNestedInput
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  store?: Prisma.StoreUpdateOneRequiredWithoutSeatsNestedInput
+  area?: Prisma.AreaUpdateOneRequiredWithoutSeatsNestedInput
 }
 
-export type SeatUncheckedUpdateWithoutRoomInput = {
+export type SeatUncheckedUpdateWithoutOrdersInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  storeId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
   seatNo?: Prisma.StringFieldUpdateOperationsInput | string
   x?: Prisma.FloatFieldUpdateOperationsInput | number
   y?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -854,15 +974,32 @@ export type SeatUncheckedUpdateWithoutRoomInput = {
   height?: Prisma.FloatFieldUpdateOperationsInput | number
   hasPower?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.IntFieldUpdateOperationsInput | number
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  reservations?: Prisma.ReservationUncheckedUpdateManyWithoutSeatNestedInput
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
 }
 
-export type SeatUncheckedUpdateManyWithoutRoomInput = {
+export type SeatCreateManyStoreInput = {
+  id?: string
+  areaId?: string
+  type?: number
+  seatNo?: string
+  x?: number
+  y?: number
+  width?: number
+  height?: number
+  hasPower?: boolean
+  status?: number
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+}
+
+export type SeatUpdateWithoutStoreInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
   seatNo?: Prisma.StringFieldUpdateOperationsInput | string
   x?: Prisma.FloatFieldUpdateOperationsInput | number
   y?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -870,10 +1007,117 @@ export type SeatUncheckedUpdateManyWithoutRoomInput = {
   height?: Prisma.FloatFieldUpdateOperationsInput | number
   hasPower?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.IntFieldUpdateOperationsInput | number
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.IntFieldUpdateOperationsInput | number
-  updatedAt?: Prisma.IntFieldUpdateOperationsInput | number
-  deletedAt?: Prisma.IntFieldUpdateOperationsInput | number
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  area?: Prisma.AreaUpdateOneRequiredWithoutSeatsNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutSeatNestedInput
+}
+
+export type SeatUncheckedUpdateWithoutStoreInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
+  seatNo?: Prisma.StringFieldUpdateOperationsInput | string
+  x?: Prisma.FloatFieldUpdateOperationsInput | number
+  y?: Prisma.FloatFieldUpdateOperationsInput | number
+  width?: Prisma.FloatFieldUpdateOperationsInput | number
+  height?: Prisma.FloatFieldUpdateOperationsInput | number
+  hasPower?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.IntFieldUpdateOperationsInput | number
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutSeatNestedInput
+}
+
+export type SeatUncheckedUpdateManyWithoutStoreInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
+  seatNo?: Prisma.StringFieldUpdateOperationsInput | string
+  x?: Prisma.FloatFieldUpdateOperationsInput | number
+  y?: Prisma.FloatFieldUpdateOperationsInput | number
+  width?: Prisma.FloatFieldUpdateOperationsInput | number
+  height?: Prisma.FloatFieldUpdateOperationsInput | number
+  hasPower?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.IntFieldUpdateOperationsInput | number
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+}
+
+export type SeatCreateManyAreaInput = {
+  id?: string
+  storeId?: string
+  type?: number
+  seatNo?: string
+  x?: number
+  y?: number
+  width?: number
+  height?: number
+  hasPower?: boolean
+  status?: number
+  description?: string
+  createdAt?: bigint | number
+  updatedAt?: bigint | number
+  deletedAt?: bigint | number
+}
+
+export type SeatUpdateWithoutAreaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
+  seatNo?: Prisma.StringFieldUpdateOperationsInput | string
+  x?: Prisma.FloatFieldUpdateOperationsInput | number
+  y?: Prisma.FloatFieldUpdateOperationsInput | number
+  width?: Prisma.FloatFieldUpdateOperationsInput | number
+  height?: Prisma.FloatFieldUpdateOperationsInput | number
+  hasPower?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.IntFieldUpdateOperationsInput | number
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  store?: Prisma.StoreUpdateOneRequiredWithoutSeatsNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutSeatNestedInput
+}
+
+export type SeatUncheckedUpdateWithoutAreaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  storeId?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
+  seatNo?: Prisma.StringFieldUpdateOperationsInput | string
+  x?: Prisma.FloatFieldUpdateOperationsInput | number
+  y?: Prisma.FloatFieldUpdateOperationsInput | number
+  width?: Prisma.FloatFieldUpdateOperationsInput | number
+  height?: Prisma.FloatFieldUpdateOperationsInput | number
+  hasPower?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.IntFieldUpdateOperationsInput | number
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutSeatNestedInput
+}
+
+export type SeatUncheckedUpdateManyWithoutAreaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  storeId?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
+  seatNo?: Prisma.StringFieldUpdateOperationsInput | string
+  x?: Prisma.FloatFieldUpdateOperationsInput | number
+  y?: Prisma.FloatFieldUpdateOperationsInput | number
+  width?: Prisma.FloatFieldUpdateOperationsInput | number
+  height?: Prisma.FloatFieldUpdateOperationsInput | number
+  hasPower?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.IntFieldUpdateOperationsInput | number
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  deletedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
 }
 
 
@@ -882,11 +1126,11 @@ export type SeatUncheckedUpdateManyWithoutRoomInput = {
  */
 
 export type SeatCountOutputType = {
-  reservations: number
+  orders: number
 }
 
 export type SeatCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  reservations?: boolean | SeatCountOutputTypeCountReservationsArgs
+  orders?: boolean | SeatCountOutputTypeCountOrdersArgs
 }
 
 /**
@@ -902,14 +1146,16 @@ export type SeatCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
 /**
  * SeatCountOutputType without action
  */
-export type SeatCountOutputTypeCountReservationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ReservationWhereInput
+export type SeatCountOutputTypeCountOrdersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OrderWhereInput
 }
 
 
 export type SeatSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  roomId?: boolean
+  storeId?: boolean
+  areaId?: boolean
+  type?: boolean
   seatNo?: boolean
   x?: boolean
   y?: boolean
@@ -921,14 +1167,17 @@ export type SeatSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
-  room?: boolean | Prisma.RoomDefaultArgs<ExtArgs>
-  reservations?: boolean | Prisma.Seat$reservationsArgs<ExtArgs>
+  store?: boolean | Prisma.StoreDefaultArgs<ExtArgs>
+  area?: boolean | Prisma.AreaDefaultArgs<ExtArgs>
+  orders?: boolean | Prisma.Seat$ordersArgs<ExtArgs>
   _count?: boolean | Prisma.SeatCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["seat"]>
 
 export type SeatSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  roomId?: boolean
+  storeId?: boolean
+  areaId?: boolean
+  type?: boolean
   seatNo?: boolean
   x?: boolean
   y?: boolean
@@ -940,12 +1189,15 @@ export type SeatSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
-  room?: boolean | Prisma.RoomDefaultArgs<ExtArgs>
+  store?: boolean | Prisma.StoreDefaultArgs<ExtArgs>
+  area?: boolean | Prisma.AreaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["seat"]>
 
 export type SeatSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  roomId?: boolean
+  storeId?: boolean
+  areaId?: boolean
+  type?: boolean
   seatNo?: boolean
   x?: boolean
   y?: boolean
@@ -957,12 +1209,15 @@ export type SeatSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
-  room?: boolean | Prisma.RoomDefaultArgs<ExtArgs>
+  store?: boolean | Prisma.StoreDefaultArgs<ExtArgs>
+  area?: boolean | Prisma.AreaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["seat"]>
 
 export type SeatSelectScalar = {
   id?: boolean
-  roomId?: boolean
+  storeId?: boolean
+  areaId?: boolean
+  type?: boolean
   seatNo?: boolean
   x?: boolean
   y?: boolean
@@ -976,28 +1231,34 @@ export type SeatSelectScalar = {
   deletedAt?: boolean
 }
 
-export type SeatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "roomId" | "seatNo" | "x" | "y" | "width" | "height" | "hasPower" | "status" | "description" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["seat"]>
+export type SeatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "storeId" | "areaId" | "type" | "seatNo" | "x" | "y" | "width" | "height" | "hasPower" | "status" | "description" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["seat"]>
 export type SeatInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  room?: boolean | Prisma.RoomDefaultArgs<ExtArgs>
-  reservations?: boolean | Prisma.Seat$reservationsArgs<ExtArgs>
+  store?: boolean | Prisma.StoreDefaultArgs<ExtArgs>
+  area?: boolean | Prisma.AreaDefaultArgs<ExtArgs>
+  orders?: boolean | Prisma.Seat$ordersArgs<ExtArgs>
   _count?: boolean | Prisma.SeatCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SeatIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  room?: boolean | Prisma.RoomDefaultArgs<ExtArgs>
+  store?: boolean | Prisma.StoreDefaultArgs<ExtArgs>
+  area?: boolean | Prisma.AreaDefaultArgs<ExtArgs>
 }
 export type SeatIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  room?: boolean | Prisma.RoomDefaultArgs<ExtArgs>
+  store?: boolean | Prisma.StoreDefaultArgs<ExtArgs>
+  area?: boolean | Prisma.AreaDefaultArgs<ExtArgs>
 }
 
 export type $SeatPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Seat"
   objects: {
-    room: Prisma.$RoomPayload<ExtArgs>
-    reservations: Prisma.$ReservationPayload<ExtArgs>[]
+    store: Prisma.$StorePayload<ExtArgs>
+    area: Prisma.$AreaPayload<ExtArgs>
+    orders: Prisma.$OrderPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    roomId: string
+    storeId: string
+    areaId: string
+    type: number
     seatNo: string
     x: number
     y: number
@@ -1005,10 +1266,10 @@ export type $SeatPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     height: number
     hasPower: boolean
     status: number
-    description: string | null
-    createdAt: number
-    updatedAt: number
-    deletedAt: number
+    description: string
+    createdAt: bigint
+    updatedAt: bigint
+    deletedAt: bigint
   }, ExtArgs["result"]["seat"]>
   composites: {}
 }
@@ -1403,8 +1664,9 @@ readonly fields: SeatFieldRefs;
  */
 export interface Prisma__SeatClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  room<T extends Prisma.RoomDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RoomDefaultArgs<ExtArgs>>): Prisma.Prisma__RoomClient<runtime.Types.Result.GetResult<Prisma.$RoomPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  reservations<T extends Prisma.Seat$reservationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Seat$reservationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReservationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  store<T extends Prisma.StoreDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.StoreDefaultArgs<ExtArgs>>): Prisma.Prisma__StoreClient<runtime.Types.Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  area<T extends Prisma.AreaDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AreaDefaultArgs<ExtArgs>>): Prisma.Prisma__AreaClient<runtime.Types.Result.GetResult<Prisma.$AreaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  orders<T extends Prisma.Seat$ordersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Seat$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1435,7 +1697,9 @@ export interface Prisma__SeatClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface SeatFieldRefs {
   readonly id: Prisma.FieldRef<"Seat", 'String'>
-  readonly roomId: Prisma.FieldRef<"Seat", 'String'>
+  readonly storeId: Prisma.FieldRef<"Seat", 'String'>
+  readonly areaId: Prisma.FieldRef<"Seat", 'String'>
+  readonly type: Prisma.FieldRef<"Seat", 'Int'>
   readonly seatNo: Prisma.FieldRef<"Seat", 'String'>
   readonly x: Prisma.FieldRef<"Seat", 'Float'>
   readonly y: Prisma.FieldRef<"Seat", 'Float'>
@@ -1444,9 +1708,9 @@ export interface SeatFieldRefs {
   readonly hasPower: Prisma.FieldRef<"Seat", 'Boolean'>
   readonly status: Prisma.FieldRef<"Seat", 'Int'>
   readonly description: Prisma.FieldRef<"Seat", 'String'>
-  readonly createdAt: Prisma.FieldRef<"Seat", 'Int'>
-  readonly updatedAt: Prisma.FieldRef<"Seat", 'Int'>
-  readonly deletedAt: Prisma.FieldRef<"Seat", 'Int'>
+  readonly createdAt: Prisma.FieldRef<"Seat", 'BigInt'>
+  readonly updatedAt: Prisma.FieldRef<"Seat", 'BigInt'>
+  readonly deletedAt: Prisma.FieldRef<"Seat", 'BigInt'>
 }
     
 
@@ -1848,27 +2112,27 @@ export type SeatDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * Seat.reservations
+ * Seat.orders
  */
-export type Seat$reservationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Seat$ordersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Reservation
+   * Select specific fields to fetch from the Order
    */
-  select?: Prisma.ReservationSelect<ExtArgs> | null
+  select?: Prisma.OrderSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Reservation
+   * Omit specific fields from the Order
    */
-  omit?: Prisma.ReservationOmit<ExtArgs> | null
+  omit?: Prisma.OrderOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.ReservationInclude<ExtArgs> | null
-  where?: Prisma.ReservationWhereInput
-  orderBy?: Prisma.ReservationOrderByWithRelationInput | Prisma.ReservationOrderByWithRelationInput[]
-  cursor?: Prisma.ReservationWhereUniqueInput
+  include?: Prisma.OrderInclude<ExtArgs> | null
+  where?: Prisma.OrderWhereInput
+  orderBy?: Prisma.OrderOrderByWithRelationInput | Prisma.OrderOrderByWithRelationInput[]
+  cursor?: Prisma.OrderWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.ReservationScalarFieldEnum | Prisma.ReservationScalarFieldEnum[]
+  distinct?: Prisma.OrderScalarFieldEnum | Prisma.OrderScalarFieldEnum[]
 }
 
 /**

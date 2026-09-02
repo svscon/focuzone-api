@@ -10,7 +10,7 @@
  */
 export type * from './models/User'
 export type * from './models/Store'
-export type * from './models/Room'
+export type * from './models/Area'
 export type * from './models/Seat'
-export type * from './models/Reservation'
+export type * from './models/Order'
 export type * from './commonInputTypes'
