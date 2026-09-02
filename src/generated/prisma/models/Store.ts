@@ -27,6 +27,7 @@ export type AggregateStore = {
 }
 
 export type StoreAvgAggregateOutputType = {
+  type: number | null
   longitude: number | null
   latitude: number | null
   seatCount: number | null
@@ -39,6 +40,7 @@ export type StoreAvgAggregateOutputType = {
 }
 
 export type StoreSumAggregateOutputType = {
+  type: number | null
   longitude: number | null
   latitude: number | null
   seatCount: number | null
@@ -52,8 +54,11 @@ export type StoreSumAggregateOutputType = {
 
 export type StoreMinAggregateOutputType = {
   id: string | null
+  type: number | null
   name: string | null
   address: string | null
+  province: string | null
+  city: string | null
   district: string | null
   longitude: number | null
   latitude: number | null
@@ -77,8 +82,11 @@ export type StoreMinAggregateOutputType = {
 
 export type StoreMaxAggregateOutputType = {
   id: string | null
+  type: number | null
   name: string | null
   address: string | null
+  province: string | null
+  city: string | null
   district: string | null
   longitude: number | null
   latitude: number | null
@@ -102,8 +110,11 @@ export type StoreMaxAggregateOutputType = {
 
 export type StoreCountAggregateOutputType = {
   id: number
+  type: number
   name: number
   address: number
+  province: number
+  city: number
   district: number
   longitude: number
   latitude: number
@@ -128,6 +139,7 @@ export type StoreCountAggregateOutputType = {
 
 
 export type StoreAvgAggregateInputType = {
+  type?: true
   longitude?: true
   latitude?: true
   seatCount?: true
@@ -140,6 +152,7 @@ export type StoreAvgAggregateInputType = {
 }
 
 export type StoreSumAggregateInputType = {
+  type?: true
   longitude?: true
   latitude?: true
   seatCount?: true
@@ -153,8 +166,11 @@ export type StoreSumAggregateInputType = {
 
 export type StoreMinAggregateInputType = {
   id?: true
+  type?: true
   name?: true
   address?: true
+  province?: true
+  city?: true
   district?: true
   longitude?: true
   latitude?: true
@@ -178,8 +194,11 @@ export type StoreMinAggregateInputType = {
 
 export type StoreMaxAggregateInputType = {
   id?: true
+  type?: true
   name?: true
   address?: true
+  province?: true
+  city?: true
   district?: true
   longitude?: true
   latitude?: true
@@ -203,8 +222,11 @@ export type StoreMaxAggregateInputType = {
 
 export type StoreCountAggregateInputType = {
   id?: true
+  type?: true
   name?: true
   address?: true
+  province?: true
+  city?: true
   district?: true
   longitude?: true
   latitude?: true
@@ -315,8 +337,11 @@ export type StoreGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 
 export type StoreGroupByOutputType = {
   id: string
+  type: number
   name: string
   address: string
+  province: string
+  city: string
   district: string
   longitude: number
   latitude: number
@@ -363,8 +388,11 @@ export type StoreWhereInput = {
   OR?: Prisma.StoreWhereInput[]
   NOT?: Prisma.StoreWhereInput | Prisma.StoreWhereInput[]
   id?: Prisma.StringFilter<"Store"> | string
+  type?: Prisma.IntFilter<"Store"> | number
   name?: Prisma.StringFilter<"Store"> | string
   address?: Prisma.StringFilter<"Store"> | string
+  province?: Prisma.StringFilter<"Store"> | string
+  city?: Prisma.StringFilter<"Store"> | string
   district?: Prisma.StringFilter<"Store"> | string
   longitude?: Prisma.FloatFilter<"Store"> | number
   latitude?: Prisma.FloatFilter<"Store"> | number
@@ -390,8 +418,11 @@ export type StoreWhereInput = {
 
 export type StoreOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
+  province?: Prisma.SortOrder
+  city?: Prisma.SortOrder
   district?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
@@ -420,8 +451,11 @@ export type StoreWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.StoreWhereInput | Prisma.StoreWhereInput[]
   OR?: Prisma.StoreWhereInput[]
   NOT?: Prisma.StoreWhereInput | Prisma.StoreWhereInput[]
+  type?: Prisma.IntFilter<"Store"> | number
   name?: Prisma.StringFilter<"Store"> | string
   address?: Prisma.StringFilter<"Store"> | string
+  province?: Prisma.StringFilter<"Store"> | string
+  city?: Prisma.StringFilter<"Store"> | string
   district?: Prisma.StringFilter<"Store"> | string
   longitude?: Prisma.FloatFilter<"Store"> | number
   latitude?: Prisma.FloatFilter<"Store"> | number
@@ -447,8 +481,11 @@ export type StoreWhereUniqueInput = Prisma.AtLeast<{
 
 export type StoreOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
+  province?: Prisma.SortOrder
+  city?: Prisma.SortOrder
   district?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
@@ -480,8 +517,11 @@ export type StoreScalarWhereWithAggregatesInput = {
   OR?: Prisma.StoreScalarWhereWithAggregatesInput[]
   NOT?: Prisma.StoreScalarWhereWithAggregatesInput | Prisma.StoreScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Store"> | string
+  type?: Prisma.IntWithAggregatesFilter<"Store"> | number
   name?: Prisma.StringWithAggregatesFilter<"Store"> | string
   address?: Prisma.StringWithAggregatesFilter<"Store"> | string
+  province?: Prisma.StringWithAggregatesFilter<"Store"> | string
+  city?: Prisma.StringWithAggregatesFilter<"Store"> | string
   district?: Prisma.StringWithAggregatesFilter<"Store"> | string
   longitude?: Prisma.FloatWithAggregatesFilter<"Store"> | number
   latitude?: Prisma.FloatWithAggregatesFilter<"Store"> | number
@@ -505,8 +545,11 @@ export type StoreScalarWhereWithAggregatesInput = {
 
 export type StoreCreateInput = {
   id?: string
+  type?: number
   name?: string
   address?: string
+  province?: string
+  city?: string
   district?: string
   longitude?: number
   latitude?: number
@@ -532,8 +575,11 @@ export type StoreCreateInput = {
 
 export type StoreUncheckedCreateInput = {
   id?: string
+  type?: number
   name?: string
   address?: string
+  province?: string
+  city?: string
   district?: string
   longitude?: number
   latitude?: number
@@ -559,8 +605,11 @@ export type StoreUncheckedCreateInput = {
 
 export type StoreUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
+  province?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   district?: Prisma.StringFieldUpdateOperationsInput | string
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -586,8 +635,11 @@ export type StoreUpdateInput = {
 
 export type StoreUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
+  province?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   district?: Prisma.StringFieldUpdateOperationsInput | string
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -613,8 +665,11 @@ export type StoreUncheckedUpdateInput = {
 
 export type StoreCreateManyInput = {
   id?: string
+  type?: number
   name?: string
   address?: string
+  province?: string
+  city?: string
   district?: string
   longitude?: number
   latitude?: number
@@ -638,8 +693,11 @@ export type StoreCreateManyInput = {
 
 export type StoreUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
+  province?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   district?: Prisma.StringFieldUpdateOperationsInput | string
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -663,8 +721,11 @@ export type StoreUpdateManyMutationInput = {
 
 export type StoreUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
+  province?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   district?: Prisma.StringFieldUpdateOperationsInput | string
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -688,8 +749,11 @@ export type StoreUncheckedUpdateManyInput = {
 
 export type StoreCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
+  province?: Prisma.SortOrder
+  city?: Prisma.SortOrder
   district?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
@@ -712,6 +776,7 @@ export type StoreCountOrderByAggregateInput = {
 }
 
 export type StoreAvgOrderByAggregateInput = {
+  type?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   seatCount?: Prisma.SortOrder
@@ -725,8 +790,11 @@ export type StoreAvgOrderByAggregateInput = {
 
 export type StoreMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
+  province?: Prisma.SortOrder
+  city?: Prisma.SortOrder
   district?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
@@ -750,8 +818,11 @@ export type StoreMaxOrderByAggregateInput = {
 
 export type StoreMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
+  province?: Prisma.SortOrder
+  city?: Prisma.SortOrder
   district?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
@@ -774,6 +845,7 @@ export type StoreMinOrderByAggregateInput = {
 }
 
 export type StoreSumOrderByAggregateInput = {
+  type?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   seatCount?: Prisma.SortOrder
@@ -832,8 +904,11 @@ export type StoreUpdateOneRequiredWithoutSeatsNestedInput = {
 
 export type StoreCreateWithoutAreasInput = {
   id?: string
+  type?: number
   name?: string
   address?: string
+  province?: string
+  city?: string
   district?: string
   longitude?: number
   latitude?: number
@@ -858,8 +933,11 @@ export type StoreCreateWithoutAreasInput = {
 
 export type StoreUncheckedCreateWithoutAreasInput = {
   id?: string
+  type?: number
   name?: string
   address?: string
+  province?: string
+  city?: string
   district?: string
   longitude?: number
   latitude?: number
@@ -900,8 +978,11 @@ export type StoreUpdateToOneWithWhereWithoutAreasInput = {
 
 export type StoreUpdateWithoutAreasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
+  province?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   district?: Prisma.StringFieldUpdateOperationsInput | string
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -926,8 +1007,11 @@ export type StoreUpdateWithoutAreasInput = {
 
 export type StoreUncheckedUpdateWithoutAreasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
+  province?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   district?: Prisma.StringFieldUpdateOperationsInput | string
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -952,8 +1036,11 @@ export type StoreUncheckedUpdateWithoutAreasInput = {
 
 export type StoreCreateWithoutSeatsInput = {
   id?: string
+  type?: number
   name?: string
   address?: string
+  province?: string
+  city?: string
   district?: string
   longitude?: number
   latitude?: number
@@ -978,8 +1065,11 @@ export type StoreCreateWithoutSeatsInput = {
 
 export type StoreUncheckedCreateWithoutSeatsInput = {
   id?: string
+  type?: number
   name?: string
   address?: string
+  province?: string
+  city?: string
   district?: string
   longitude?: number
   latitude?: number
@@ -1020,8 +1110,11 @@ export type StoreUpdateToOneWithWhereWithoutSeatsInput = {
 
 export type StoreUpdateWithoutSeatsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
+  province?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   district?: Prisma.StringFieldUpdateOperationsInput | string
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1046,8 +1139,11 @@ export type StoreUpdateWithoutSeatsInput = {
 
 export type StoreUncheckedUpdateWithoutSeatsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
+  province?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   district?: Prisma.StringFieldUpdateOperationsInput | string
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1112,8 +1208,11 @@ export type StoreCountOutputTypeCountSeatsArgs<ExtArgs extends runtime.Types.Ext
 
 export type StoreSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  type?: boolean
   name?: boolean
   address?: boolean
+  province?: boolean
+  city?: boolean
   district?: boolean
   longitude?: boolean
   latitude?: boolean
@@ -1140,8 +1239,11 @@ export type StoreSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 
 export type StoreSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  type?: boolean
   name?: boolean
   address?: boolean
+  province?: boolean
+  city?: boolean
   district?: boolean
   longitude?: boolean
   latitude?: boolean
@@ -1165,8 +1267,11 @@ export type StoreSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 
 export type StoreSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  type?: boolean
   name?: boolean
   address?: boolean
+  province?: boolean
+  city?: boolean
   district?: boolean
   longitude?: boolean
   latitude?: boolean
@@ -1190,8 +1295,11 @@ export type StoreSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 
 export type StoreSelectScalar = {
   id?: boolean
+  type?: boolean
   name?: boolean
   address?: boolean
+  province?: boolean
+  city?: boolean
   district?: boolean
   longitude?: boolean
   latitude?: boolean
@@ -1213,7 +1321,7 @@ export type StoreSelectScalar = {
   deletedAt?: boolean
 }
 
-export type StoreOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "address" | "district" | "longitude" | "latitude" | "seatCount" | "phone" | "is24Hours" | "openTime" | "closeTime" | "isActive" | "features" | "promotion" | "price" | "reviews" | "sales" | "coverImages" | "description" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["store"]>
+export type StoreOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "name" | "address" | "province" | "city" | "district" | "longitude" | "latitude" | "seatCount" | "phone" | "is24Hours" | "openTime" | "closeTime" | "isActive" | "features" | "promotion" | "price" | "reviews" | "sales" | "coverImages" | "description" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["store"]>
 export type StoreInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   areas?: boolean | Prisma.Store$areasArgs<ExtArgs>
   seats?: boolean | Prisma.Store$seatsArgs<ExtArgs>
@@ -1230,8 +1338,11 @@ export type $StorePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    type: number
     name: string
     address: string
+    province: string
+    city: string
     district: string
     longitude: number
     latitude: number
@@ -1677,8 +1788,11 @@ export interface Prisma__StoreClient<T, Null = never, ExtArgs extends runtime.Ty
  */
 export interface StoreFieldRefs {
   readonly id: Prisma.FieldRef<"Store", 'String'>
+  readonly type: Prisma.FieldRef<"Store", 'Int'>
   readonly name: Prisma.FieldRef<"Store", 'String'>
   readonly address: Prisma.FieldRef<"Store", 'String'>
+  readonly province: Prisma.FieldRef<"Store", 'String'>
+  readonly city: Prisma.FieldRef<"Store", 'String'>
   readonly district: Prisma.FieldRef<"Store", 'String'>
   readonly longitude: Prisma.FieldRef<"Store", 'Float'>
   readonly latitude: Prisma.FieldRef<"Store", 'Float'>

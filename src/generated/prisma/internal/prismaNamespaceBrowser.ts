@@ -94,8 +94,11 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 
 export const StoreScalarFieldEnum = {
   id: 'id',
+  type: 'type',
   name: 'name',
   address: 'address',
+  province: 'province',
+  city: 'city',
   district: 'district',
   longitude: 'longitude',
   latitude: 'latitude',

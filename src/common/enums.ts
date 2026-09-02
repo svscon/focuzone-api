@@ -9,6 +9,10 @@ enum OrderType {
     DURATION = 1,
     DAY = 2,
 }
+enum StoreType {
+    NORMAL = 0,
+    FLAG = 1,
+}
 enum SeatStatus {
     AVAILABLE = 0,
     RESERVED = 1,
