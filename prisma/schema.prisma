@@ -20,12 +20,12 @@ model User {
   nickname    String
   avatar      String
   phone       String @unique
-  balance     Int    @default(0)
+  balance     BigInt @default(0)
   points      Int    @default(0)
   description String
-  createdAt   Int    @default(0)
-  updatedAt   Int    @default(0)
-  deletedAt   Int    @default(0)
+  createdAt   BigInt @default(0)
+  updatedAt   BigInt @default(0)
+  deletedAt   BigInt @default(0)
 
   reservations Reservation[]
 
@@ -43,9 +43,9 @@ model Store {
   closingTime String
   isActive    Boolean @default(true)
   description String
-  createdAt   Int     @default(0)
-  updatedAt   Int     @default(0)
-  deletedAt   Int     @default(0)
+  createdAt   BigInt  @default(0)
+  updatedAt   BigInt  @default(0)
+  deletedAt   BigInt  @default(0)
 
   rooms Room[]
 
@@ -60,9 +60,9 @@ model Room {
   isActive    Boolean @default(true)
   bgImage     String
   description String
-  createdAt   Int     @default(0)
-  updatedAt   Int     @default(0)
-  deletedAt   Int     @default(0)
+  createdAt   BigInt  @default(0)
+  updatedAt   BigInt  @default(0)
+  deletedAt   BigInt  @default(0)
 
   store Store  @relation(fields: [storeId], references: [id], onDelete: Cascade)
   seats Seat[]
@@ -81,10 +81,10 @@ model Seat {
   height      Float
   hasPower    Boolean @default(true)
   status      Int     @default(0)
-  description String?
-  createdAt   Int     @default(0)
-  updatedAt   Int     @default(0)
-  deletedAt   Int     @default(0)
+  description String
+  createdAt   BigInt  @default(0)
+  updatedAt   BigInt  @default(0)
+  deletedAt   BigInt  @default(0)
 
   room         Room          @relation(fields: [roomId], references: [id], onDelete: Cascade)
   reservations Reservation[]
@@ -95,15 +95,15 @@ model Seat {
 }
 
 model Reservation {
-  id        String   @id @default(uuid())
+  id        String @id @default(uuid())
   userId    String
   seatId    String
-  startTime DateTime
-  endTime   DateTime
-  status    Int      @default(0)
-  createdAt Int      @default(0)
-  updatedAt Int      @default(0)
-  deletedAt Int      @default(0)
+  startTime BigInt @default(0)
+  endTime   BigInt @default(0)
+  status    Int    @default(0)
+  createdAt BigInt @default(0)
+  updatedAt BigInt @default(0)
+  deletedAt BigInt @default(0)
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   seat Seat @relation(fields: [seatId], references: [id], onDelete: Cascade)
