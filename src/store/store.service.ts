@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateStoreDto, StoreQueryDto, UpdateStoreDto } from './store.dto';
-import { StoreWhereInput } from '@/generated/prisma/models';
+import { Prisma } from '@/generated/prisma';
 
 @Injectable()
 export class StoreService {
@@ -23,7 +23,7 @@ export class StoreService {
     const { page, pageSize, name, isActive } = query;
     const skip = ((page || 1) - 1) * (pageSize || 10);
 
-    const where: StoreWhereInput = {
+    const where: Prisma.StoreWhereInput = {
       deletedAt: Number(0),
     };
     if (name) where.name = { contains: name };
