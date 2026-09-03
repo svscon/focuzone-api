@@ -25,7 +25,7 @@ services:
       db:
         condition: service_healthy
     environment:
-      DATABASE_URL: mysql://focuzone:focuzone_dev@db:3306/focuzone
+      DATABASE_URL: mysql://root:Svs@54128@10.14.105.30:3306/focuzone
     command: sh -c "npx prisma db push && npx prisma db seed"
     restart: 'no'
 
@@ -42,11 +42,11 @@ services:
         condition: service_completed_successfully
     environment:
       PORT: 80
-      DATABASE_URL: mysql://focuzone:focuzone_dev@db:3306/focuzone
-      DB_HOST: db
+      DATABASE_URL: mysql://root:Svs@54128@10.14.105.30:3306/focuzone
+      DB_HOST: 10.14.105.30
       DB_PORT: 3306
-      DB_USER: focuzone
-      DB_PASSWORD: focuzone_dev
+      DB_USER: root
+      DB_PASSWORD: Svs@54128
       DB_NAME: focuzone
     ports:
       - '18080:80'
