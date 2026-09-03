@@ -1,0 +1,35 @@
+services:
+  db:
+    image: mariadb:11.4
+    container_name: focuzone-mariadb
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: focuzone
+      MARIADB_USER: focuzone
+      MARIADB_PASSWORD: focuzone_dev
+      MARIADB_ROOT_PASSWORD: root_dev
+    volumes:
+      - focuzone-mariadb-data:/var/lib/mysql
+    healthcheck:
+      test: ['CMD-SHELL', 'mariadb-admin ping -h localhost -u root -proot_dev']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: focuzone-api
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PORT: 80
+      DATABASE_URL: mysql://focuzone:focuzone_dev@db:3306/focuzone
+    ports:
+      - '18080:80'
+
+volumes:
+  focuzone-mariadb-data:
