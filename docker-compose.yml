@@ -16,6 +16,19 @@ services:
       timeout: 5s
       retries: 20
 
+  db-init:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: focuzone-db-init
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: mysql://focuzone:focuzone_dev@db:3306/focuzone
+    command: sh -c "npx prisma db push && npx prisma db seed"
+    restart: 'no'
+
   api:
     build:
       context: .
@@ -25,6 +38,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      db-init:
+        condition: service_completed_successfully
     environment:
       PORT: 80
       DATABASE_URL: mysql://focuzone:focuzone_dev@db:3306/focuzone

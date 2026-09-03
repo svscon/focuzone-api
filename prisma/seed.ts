@@ -64,6 +64,13 @@ const storeData: Prisma.StoreCreateInput[] = [
 async function main() {
     console.log(`Start seeding ...`);
 
+    const existingStoreCount = await prisma.store.count();
+    if (existingStoreCount > 0)
+    {
+        console.log(`Found ${existingStoreCount} existing stores. Skipping seed.`);
+        return;
+    }
+
     // 按依赖顺序清理: Order → Seat → Area → Store
     await prisma.order.deleteMany();
     await prisma.seat.deleteMany();
