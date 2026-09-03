@@ -29,8 +29,9 @@ async function bootstrap() {
   SwaggerModule.setup('api-docs', app, document);
 
   app.enableCors();
-  await app.listen(3000, '0.0.0.0');
-  console.log('服务启动 http://127.0.0.1:3000');
-  console.log('Swagger：http://127.0.0.1:3000/api-docs');
+  const port = Number(process.env.PORT) || 80;
+  await app.listen(port, '0.0.0.0');
+  console.log(`服务启动 http://0.0.0.0:${port}`);
+  console.log(`Swagger：http://0.0.0.0:${port}/api-docs`);
 }
 bootstrap();
