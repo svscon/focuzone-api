@@ -43,6 +43,11 @@ services:
     environment:
       PORT: 80
       DATABASE_URL: mysql://focuzone:focuzone_dev@db:3306/focuzone
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: focuzone
+      DB_PASSWORD: focuzone_dev
+      DB_NAME: focuzone
     ports:
       - '18080:80'
 
