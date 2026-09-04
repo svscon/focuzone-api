@@ -49,4 +49,9 @@ export class UserController {
   remove(@Param('id') id: string) {
     return this.userService.remove(id);
   }
+
+  @Get(':code')
+  getOpenId(@Param('code') code: string) {
+    return this.userService.getOpenId(code);
+  }
 }
