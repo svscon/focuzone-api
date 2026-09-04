@@ -13,7 +13,7 @@ model User {
   type         Int     @default(0)
   nickname     String  @default("")
   avatar       String  @default("")
-  phone        String  @unique
+  phone        String? @unique
   balance      BigInt  @default(0)
   points       Int     @default(0)
   description  String  @default("")

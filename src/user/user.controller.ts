@@ -24,6 +24,11 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
+  @Get('getOpenId')
+  login(@Query('code') code: string) {
+    return this.userService.login(code);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.userService.findOneById(id);
@@ -48,10 +53,5 @@ export class UserController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.userService.remove(id);
-  }
-
-  @Get(':code')
-  getOpenId(@Param('code') code: string) {
-    return this.userService.getOpenId(code);
   }
 }

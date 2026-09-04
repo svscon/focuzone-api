@@ -1,11 +1,15 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { AuthService } from '../auth/auth.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
-    constructor(private readonly prisma: PrismaService) { }
+    constructor(
+        private readonly prisma: PrismaService,
+        private readonly authService: AuthService,
+    ) { }
 
     async create(dto: CreateUserDto) {
         const now = Date.now();
@@ -79,12 +83,33 @@ export class UserService {
         return true;
     }
 
-    async getOpenId(code: string) {
+    async login(code: string) {
         const axios = require('axios');
-        const appid = "wxac282c4031aab2dd";
-        const secret = "fc4360d4b9d3fbf4b2db782d11e1c868";
+        const appid = process.env.WECHAT_MINI_APPID;
+        const secret = process.env.WECHAT_MINI_SECRET;
         const url = `https://api.weixin.qq.com/sns/jscode2session?appid=${appid}&secret=${secret}&js_code=${code}&grant_type=authorization_code`;
         const res = await axios.get(url);
-        return res;
+        const data = res.data;
+        if (data.errcode || !data.openid)
+        {
+            throw new BadRequestException(data.errmsg ?? '微信登录失败');
+        }
+
+        const now = Date.now();
+        const user = await this.prisma.user.upsert({
+            where: { openId: data.openid },
+            update: { deletedAt: 0, updatedAt: now },
+            create: {
+                openId: data.openid,
+                createdAt: now,
+                updatedAt: now,
+                deletedAt: 0,
+            },
+        });
+
+        return {
+            user,
+            accessToken: await this.authService.createAccessToken(user.id, user.openId),
+        };
     }
 }
