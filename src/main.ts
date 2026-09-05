@@ -4,6 +4,8 @@ import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { BigIntToNumberInterceptor } from './common/interceptors/bigint.interceptor';
+import { ResponseInterceptor } from './common/interceptors/response.interceptor';
+import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -16,7 +18,11 @@ async function bootstrap() {
   );
 
   // 全局拦截器替代 express app.use，没有类型警告
-  app.useGlobalInterceptors(new BigIntToNumberInterceptor());
+  app.useGlobalInterceptors(
+    new BigIntToNumberInterceptor(),
+    new ResponseInterceptor(),
+  );
+  app.useGlobalFilters(new HttpExceptionFilter());
 
   // swagger
   const config = new DocumentBuilder()

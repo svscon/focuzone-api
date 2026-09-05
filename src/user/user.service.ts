@@ -107,9 +107,11 @@ export class UserService {
             },
         });
 
+        const token = await this.authService.createAccessToken(user.id, user.openId);
+
         return {
             user,
-            accessToken: await this.authService.createAccessToken(user.id, user.openId),
+            ...token,
         };
     }
 }

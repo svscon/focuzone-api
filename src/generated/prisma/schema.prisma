@@ -8,19 +8,19 @@ datasource db {
 }
 
 model User {
-  id           String  @id @default(uuid())
-  openId       String  @unique
-  type         Int     @default(0)
-  nickname     String  @default("")
-  avatar       String  @default("")
-  phone        String? @unique
-  balance      BigInt  @default(0)
-  points       Int     @default(0)
-  description  String  @default("")
-  createdAt    BigInt  @default(0)
-  updatedAt    BigInt  @default(0)
-  deletedAt    BigInt  @default(0)
-  reservations Order[]
+  id          String  @id @default(uuid())
+  openId      String  @unique
+  type        Int     @default(0)
+  nickname    String  @default("")
+  avatar      String  @default("")
+  phone       String  @default("")
+  balance     BigInt  @default(0)
+  points      Int     @default(0)
+  description String  @default("")
+  createdAt   BigInt  @default(0)
+  updatedAt   BigInt  @default(0)
+  deletedAt   BigInt  @default(0)
+  orders      Order[]
 
   @@map("users")
 }
@@ -91,9 +91,9 @@ model Seat {
   createdAt   BigInt  @default(0)
   updatedAt   BigInt  @default(0)
   deletedAt   BigInt  @default(0)
-  store       Store   @relation(fields: [storeId], references: [id], onDelete: Restrict)
   area        Area    @relation(fields: [areaId], references: [id], onDelete: Restrict)
   orders      Order[]
+  store       Store   @relation(fields: [storeId], references: [id], onDelete: Restrict)
 
   @@unique([areaId, seatNo])
   @@index([areaId])

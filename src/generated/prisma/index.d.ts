@@ -1218,11 +1218,11 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    reservations: number
+    orders: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    reservations?: boolean | UserCountOutputTypeCountReservationsArgs
+    orders?: boolean | UserCountOutputTypeCountOrdersArgs
   }
 
   // Custom InputTypes
@@ -1239,7 +1239,7 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountReservationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountOrdersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: OrderWhereInput
   }
 
@@ -1583,7 +1583,7 @@ export namespace Prisma {
     type: number
     nickname: string
     avatar: string
-    phone: string | null
+    phone: string
     balance: bigint
     points: number
     description: string
@@ -1624,7 +1624,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    reservations?: boolean | User$reservationsArgs<ExtArgs>
+    orders?: boolean | User$ordersArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1647,14 +1647,14 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "openId" | "type" | "nickname" | "avatar" | "phone" | "balance" | "points" | "description" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    reservations?: boolean | User$reservationsArgs<ExtArgs>
+    orders?: boolean | User$ordersArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      reservations: Prisma.$OrderPayload<ExtArgs>[]
+      orders: Prisma.$OrderPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1662,7 +1662,7 @@ export namespace Prisma {
       type: number
       nickname: string
       avatar: string
-      phone: string | null
+      phone: string
       balance: bigint
       points: number
       description: string
@@ -2009,7 +2009,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    reservations<T extends User$reservationsArgs<ExtArgs> = {}>(args?: Subset<T, User$reservationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    orders<T extends User$ordersArgs<ExtArgs> = {}>(args?: Subset<T, User$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2399,9 +2399,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.reservations
+   * User.orders
    */
-  export type User$reservationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$ordersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Order
      */
@@ -5098,9 +5098,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    store?: boolean | StoreDefaultArgs<ExtArgs>
     area?: boolean | AreaDefaultArgs<ExtArgs>
     orders?: boolean | Seat$ordersArgs<ExtArgs>
+    store?: boolean | StoreDefaultArgs<ExtArgs>
     _count?: boolean | SeatCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["seat"]>
 
@@ -5126,18 +5126,18 @@ export namespace Prisma {
 
   export type SeatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "areaId" | "type" | "seatNo" | "x" | "y" | "width" | "height" | "hasPower" | "status" | "description" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["seat"]>
   export type SeatInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    store?: boolean | StoreDefaultArgs<ExtArgs>
     area?: boolean | AreaDefaultArgs<ExtArgs>
     orders?: boolean | Seat$ordersArgs<ExtArgs>
+    store?: boolean | StoreDefaultArgs<ExtArgs>
     _count?: boolean | SeatCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $SeatPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Seat"
     objects: {
-      store: Prisma.$StorePayload<ExtArgs>
       area: Prisma.$AreaPayload<ExtArgs>
       orders: Prisma.$OrderPayload<ExtArgs>[]
+      store: Prisma.$StorePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5495,9 +5495,9 @@ export namespace Prisma {
    */
   export interface Prisma__SeatClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    store<T extends StoreDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StoreDefaultArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     area<T extends AreaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AreaDefaultArgs<ExtArgs>>): Prisma__AreaClient<$Result.GetResult<Prisma.$AreaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     orders<T extends Seat$ordersArgs<ExtArgs> = {}>(args?: Subset<T, Seat$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    store<T extends StoreDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StoreDefaultArgs<ExtArgs>>): Prisma__StoreClient<$Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7135,14 +7135,6 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
   export const UserOrderByRelevanceFieldEnum: {
     id: 'id',
     openId: 'openId',
@@ -7257,14 +7249,14 @@ export namespace Prisma {
     type?: IntFilter<"User"> | number
     nickname?: StringFilter<"User"> | string
     avatar?: StringFilter<"User"> | string
-    phone?: StringNullableFilter<"User"> | string | null
+    phone?: StringFilter<"User"> | string
     balance?: BigIntFilter<"User"> | bigint | number
     points?: IntFilter<"User"> | number
     description?: StringFilter<"User"> | string
     createdAt?: BigIntFilter<"User"> | bigint | number
     updatedAt?: BigIntFilter<"User"> | bigint | number
     deletedAt?: BigIntFilter<"User"> | bigint | number
-    reservations?: OrderListRelationFilter
+    orders?: OrderListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -7273,35 +7265,35 @@ export namespace Prisma {
     type?: SortOrder
     nickname?: SortOrder
     avatar?: SortOrder
-    phone?: SortOrderInput | SortOrder
+    phone?: SortOrder
     balance?: SortOrder
     points?: SortOrder
     description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
-    reservations?: OrderOrderByRelationAggregateInput
+    orders?: OrderOrderByRelationAggregateInput
     _relevance?: UserOrderByRelevanceInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     openId?: string
-    phone?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     type?: IntFilter<"User"> | number
     nickname?: StringFilter<"User"> | string
     avatar?: StringFilter<"User"> | string
+    phone?: StringFilter<"User"> | string
     balance?: BigIntFilter<"User"> | bigint | number
     points?: IntFilter<"User"> | number
     description?: StringFilter<"User"> | string
     createdAt?: BigIntFilter<"User"> | bigint | number
     updatedAt?: BigIntFilter<"User"> | bigint | number
     deletedAt?: BigIntFilter<"User"> | bigint | number
-    reservations?: OrderListRelationFilter
-  }, "id" | "openId" | "phone">
+    orders?: OrderListRelationFilter
+  }, "id" | "openId">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
@@ -7309,7 +7301,7 @@ export namespace Prisma {
     type?: SortOrder
     nickname?: SortOrder
     avatar?: SortOrder
-    phone?: SortOrderInput | SortOrder
+    phone?: SortOrder
     balance?: SortOrder
     points?: SortOrder
     description?: SortOrder
@@ -7332,7 +7324,7 @@ export namespace Prisma {
     type?: IntWithAggregatesFilter<"User"> | number
     nickname?: StringWithAggregatesFilter<"User"> | string
     avatar?: StringWithAggregatesFilter<"User"> | string
-    phone?: StringNullableWithAggregatesFilter<"User"> | string | null
+    phone?: StringWithAggregatesFilter<"User"> | string
     balance?: BigIntWithAggregatesFilter<"User"> | bigint | number
     points?: IntWithAggregatesFilter<"User"> | number
     description?: StringWithAggregatesFilter<"User"> | string
@@ -7607,9 +7599,9 @@ export namespace Prisma {
     createdAt?: BigIntFilter<"Seat"> | bigint | number
     updatedAt?: BigIntFilter<"Seat"> | bigint | number
     deletedAt?: BigIntFilter<"Seat"> | bigint | number
-    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
     area?: XOR<AreaScalarRelationFilter, AreaWhereInput>
     orders?: OrderListRelationFilter
+    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
   }
 
   export type SeatOrderByWithRelationInput = {
@@ -7628,9 +7620,9 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
-    store?: StoreOrderByWithRelationInput
     area?: AreaOrderByWithRelationInput
     orders?: OrderOrderByRelationAggregateInput
+    store?: StoreOrderByWithRelationInput
     _relevance?: SeatOrderByRelevanceInput
   }
 
@@ -7654,9 +7646,9 @@ export namespace Prisma {
     createdAt?: BigIntFilter<"Seat"> | bigint | number
     updatedAt?: BigIntFilter<"Seat"> | bigint | number
     deletedAt?: BigIntFilter<"Seat"> | bigint | number
-    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
     area?: XOR<AreaScalarRelationFilter, AreaWhereInput>
     orders?: OrderListRelationFilter
+    store?: XOR<StoreScalarRelationFilter, StoreWhereInput>
   }, "id" | "areaId_seatNo">
 
   export type SeatOrderByWithAggregationInput = {
@@ -7805,14 +7797,14 @@ export namespace Prisma {
     type?: number
     nickname?: string
     avatar?: string
-    phone?: string | null
+    phone?: string
     balance?: bigint | number
     points?: number
     description?: string
     createdAt?: bigint | number
     updatedAt?: bigint | number
     deletedAt?: bigint | number
-    reservations?: OrderCreateNestedManyWithoutUserInput
+    orders?: OrderCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -7821,14 +7813,14 @@ export namespace Prisma {
     type?: number
     nickname?: string
     avatar?: string
-    phone?: string | null
+    phone?: string
     balance?: bigint | number
     points?: number
     description?: string
     createdAt?: bigint | number
     updatedAt?: bigint | number
     deletedAt?: bigint | number
-    reservations?: OrderUncheckedCreateNestedManyWithoutUserInput
+    orders?: OrderUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -7837,14 +7829,14 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     nickname?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
     balance?: BigIntFieldUpdateOperationsInput | bigint | number
     points?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedAt?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedAt?: BigIntFieldUpdateOperationsInput | bigint | number
-    reservations?: OrderUpdateManyWithoutUserNestedInput
+    orders?: OrderUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -7853,14 +7845,14 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     nickname?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
     balance?: BigIntFieldUpdateOperationsInput | bigint | number
     points?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedAt?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedAt?: BigIntFieldUpdateOperationsInput | bigint | number
-    reservations?: OrderUncheckedUpdateManyWithoutUserNestedInput
+    orders?: OrderUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -7869,7 +7861,7 @@ export namespace Prisma {
     type?: number
     nickname?: string
     avatar?: string
-    phone?: string | null
+    phone?: string
     balance?: bigint | number
     points?: number
     description?: string
@@ -7884,7 +7876,7 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     nickname?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
     balance?: BigIntFieldUpdateOperationsInput | bigint | number
     points?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
@@ -7899,7 +7891,7 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     nickname?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
     balance?: BigIntFieldUpdateOperationsInput | bigint | number
     points?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
@@ -8220,9 +8212,9 @@ export namespace Prisma {
     createdAt?: bigint | number
     updatedAt?: bigint | number
     deletedAt?: bigint | number
-    store: StoreCreateNestedOneWithoutSeatsInput
     area: AreaCreateNestedOneWithoutSeatsInput
     orders?: OrderCreateNestedManyWithoutSeatInput
+    store: StoreCreateNestedOneWithoutSeatsInput
   }
 
   export type SeatUncheckedCreateInput = {
@@ -8258,9 +8250,9 @@ export namespace Prisma {
     createdAt?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedAt?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedAt?: BigIntFieldUpdateOperationsInput | bigint | number
-    store?: StoreUpdateOneRequiredWithoutSeatsNestedInput
     area?: AreaUpdateOneRequiredWithoutSeatsNestedInput
     orders?: OrderUpdateManyWithoutSeatNestedInput
+    store?: StoreUpdateOneRequiredWithoutSeatsNestedInput
   }
 
   export type SeatUncheckedUpdateInput = {
@@ -8345,7 +8337,7 @@ export namespace Prisma {
     createdAt?: bigint | number
     updatedAt?: bigint | number
     deletedAt?: bigint | number
-    user: UserCreateNestedOneWithoutReservationsInput
+    user: UserCreateNestedOneWithoutOrdersInput
     seat: SeatCreateNestedOneWithoutOrdersInput
   }
 
@@ -8375,7 +8367,7 @@ export namespace Prisma {
     createdAt?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedAt?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedAt?: BigIntFieldUpdateOperationsInput | bigint | number
-    user?: UserUpdateOneRequiredWithoutReservationsNestedInput
+    user?: UserUpdateOneRequiredWithoutOrdersNestedInput
     seat?: SeatUpdateOneRequiredWithoutOrdersNestedInput
   }
 
@@ -8463,21 +8455,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type BigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[]
@@ -8493,11 +8470,6 @@ export namespace Prisma {
     every?: OrderWhereInput
     some?: OrderWhereInput
     none?: OrderWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type OrderOrderByRelationAggregateInput = {
@@ -8605,24 +8577,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -9086,10 +9040,6 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number
     increment?: bigint | number
@@ -9278,12 +9228,6 @@ export namespace Prisma {
     deleteMany?: SeatScalarWhereInput | SeatScalarWhereInput[]
   }
 
-  export type StoreCreateNestedOneWithoutSeatsInput = {
-    create?: XOR<StoreCreateWithoutSeatsInput, StoreUncheckedCreateWithoutSeatsInput>
-    connectOrCreate?: StoreCreateOrConnectWithoutSeatsInput
-    connect?: StoreWhereUniqueInput
-  }
-
   export type AreaCreateNestedOneWithoutSeatsInput = {
     create?: XOR<AreaCreateWithoutSeatsInput, AreaUncheckedCreateWithoutSeatsInput>
     connectOrCreate?: AreaCreateOrConnectWithoutSeatsInput
@@ -9297,19 +9241,17 @@ export namespace Prisma {
     connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
   }
 
+  export type StoreCreateNestedOneWithoutSeatsInput = {
+    create?: XOR<StoreCreateWithoutSeatsInput, StoreUncheckedCreateWithoutSeatsInput>
+    connectOrCreate?: StoreCreateOrConnectWithoutSeatsInput
+    connect?: StoreWhereUniqueInput
+  }
+
   export type OrderUncheckedCreateNestedManyWithoutSeatInput = {
     create?: XOR<OrderCreateWithoutSeatInput, OrderUncheckedCreateWithoutSeatInput> | OrderCreateWithoutSeatInput[] | OrderUncheckedCreateWithoutSeatInput[]
     connectOrCreate?: OrderCreateOrConnectWithoutSeatInput | OrderCreateOrConnectWithoutSeatInput[]
     createMany?: OrderCreateManySeatInputEnvelope
     connect?: OrderWhereUniqueInput | OrderWhereUniqueInput[]
-  }
-
-  export type StoreUpdateOneRequiredWithoutSeatsNestedInput = {
-    create?: XOR<StoreCreateWithoutSeatsInput, StoreUncheckedCreateWithoutSeatsInput>
-    connectOrCreate?: StoreCreateOrConnectWithoutSeatsInput
-    upsert?: StoreUpsertWithoutSeatsInput
-    connect?: StoreWhereUniqueInput
-    update?: XOR<XOR<StoreUpdateToOneWithWhereWithoutSeatsInput, StoreUpdateWithoutSeatsInput>, StoreUncheckedUpdateWithoutSeatsInput>
   }
 
   export type AreaUpdateOneRequiredWithoutSeatsNestedInput = {
@@ -9334,6 +9276,14 @@ export namespace Prisma {
     deleteMany?: OrderScalarWhereInput | OrderScalarWhereInput[]
   }
 
+  export type StoreUpdateOneRequiredWithoutSeatsNestedInput = {
+    create?: XOR<StoreCreateWithoutSeatsInput, StoreUncheckedCreateWithoutSeatsInput>
+    connectOrCreate?: StoreCreateOrConnectWithoutSeatsInput
+    upsert?: StoreUpsertWithoutSeatsInput
+    connect?: StoreWhereUniqueInput
+    update?: XOR<XOR<StoreUpdateToOneWithWhereWithoutSeatsInput, StoreUpdateWithoutSeatsInput>, StoreUncheckedUpdateWithoutSeatsInput>
+  }
+
   export type OrderUncheckedUpdateManyWithoutSeatNestedInput = {
     create?: XOR<OrderCreateWithoutSeatInput, OrderUncheckedCreateWithoutSeatInput> | OrderCreateWithoutSeatInput[] | OrderUncheckedCreateWithoutSeatInput[]
     connectOrCreate?: OrderCreateOrConnectWithoutSeatInput | OrderCreateOrConnectWithoutSeatInput[]
@@ -9348,9 +9298,9 @@ export namespace Prisma {
     deleteMany?: OrderScalarWhereInput | OrderScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutReservationsInput = {
-    create?: XOR<UserCreateWithoutReservationsInput, UserUncheckedCreateWithoutReservationsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutReservationsInput
+  export type UserCreateNestedOneWithoutOrdersInput = {
+    create?: XOR<UserCreateWithoutOrdersInput, UserUncheckedCreateWithoutOrdersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOrdersInput
     connect?: UserWhereUniqueInput
   }
 
@@ -9360,12 +9310,12 @@ export namespace Prisma {
     connect?: SeatWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutReservationsNestedInput = {
-    create?: XOR<UserCreateWithoutReservationsInput, UserUncheckedCreateWithoutReservationsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutReservationsInput
-    upsert?: UserUpsertWithoutReservationsInput
+  export type UserUpdateOneRequiredWithoutOrdersNestedInput = {
+    create?: XOR<UserCreateWithoutOrdersInput, UserUncheckedCreateWithoutOrdersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOrdersInput
+    upsert?: UserUpsertWithoutOrdersInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReservationsInput, UserUpdateWithoutReservationsInput>, UserUncheckedUpdateWithoutReservationsInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOrdersInput, UserUpdateWithoutOrdersInput>, UserUncheckedUpdateWithoutOrdersInput>
   }
 
   export type SeatUpdateOneRequiredWithoutOrdersNestedInput = {
@@ -9400,21 +9350,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedBigIntFilter<$PrismaModel = never> = {
@@ -9471,35 +9406,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -9847,8 +9753,8 @@ export namespace Prisma {
     createdAt?: bigint | number
     updatedAt?: bigint | number
     deletedAt?: bigint | number
-    store: StoreCreateNestedOneWithoutSeatsInput
     orders?: OrderCreateNestedManyWithoutSeatInput
+    store: StoreCreateNestedOneWithoutSeatsInput
   }
 
   export type SeatUncheckedCreateWithoutAreaInput = {
@@ -9964,6 +9870,75 @@ export namespace Prisma {
     data: XOR<SeatUpdateManyMutationInput, SeatUncheckedUpdateManyWithoutAreaInput>
   }
 
+  export type AreaCreateWithoutSeatsInput = {
+    id?: string
+    name?: string
+    seatCount?: number
+    sort?: number
+    isActive?: boolean
+    description?: string
+    createdAt?: bigint | number
+    updatedAt?: bigint | number
+    deletedAt?: bigint | number
+    store: StoreCreateNestedOneWithoutAreasInput
+  }
+
+  export type AreaUncheckedCreateWithoutSeatsInput = {
+    id?: string
+    storeId: string
+    name?: string
+    seatCount?: number
+    sort?: number
+    isActive?: boolean
+    description?: string
+    createdAt?: bigint | number
+    updatedAt?: bigint | number
+    deletedAt?: bigint | number
+  }
+
+  export type AreaCreateOrConnectWithoutSeatsInput = {
+    where: AreaWhereUniqueInput
+    create: XOR<AreaCreateWithoutSeatsInput, AreaUncheckedCreateWithoutSeatsInput>
+  }
+
+  export type OrderCreateWithoutSeatInput = {
+    id?: string
+    storeId: string
+    category?: number
+    type?: number
+    startTime?: bigint | number
+    endTime?: bigint | number
+    status?: number
+    createdAt?: bigint | number
+    updatedAt?: bigint | number
+    deletedAt?: bigint | number
+    user: UserCreateNestedOneWithoutOrdersInput
+  }
+
+  export type OrderUncheckedCreateWithoutSeatInput = {
+    id?: string
+    storeId: string
+    category?: number
+    userId: string
+    type?: number
+    startTime?: bigint | number
+    endTime?: bigint | number
+    status?: number
+    createdAt?: bigint | number
+    updatedAt?: bigint | number
+    deletedAt?: bigint | number
+  }
+
+  export type OrderCreateOrConnectWithoutSeatInput = {
+    where: OrderWhereUniqueInput
+    create: XOR<OrderCreateWithoutSeatInput, OrderUncheckedCreateWithoutSeatInput>
+  }
+
+  export type OrderCreateManySeatInputEnvelope = {
+    data: OrderCreateManySeatInput | OrderCreateManySeatInput[]
+    skipDuplicates?: boolean
+  }
+
   export type StoreCreateWithoutSeatsInput = {
     id?: string
     type?: number
@@ -10027,73 +10002,57 @@ export namespace Prisma {
     create: XOR<StoreCreateWithoutSeatsInput, StoreUncheckedCreateWithoutSeatsInput>
   }
 
-  export type AreaCreateWithoutSeatsInput = {
-    id?: string
-    name?: string
-    seatCount?: number
-    sort?: number
-    isActive?: boolean
-    description?: string
-    createdAt?: bigint | number
-    updatedAt?: bigint | number
-    deletedAt?: bigint | number
-    store: StoreCreateNestedOneWithoutAreasInput
-  }
-
-  export type AreaUncheckedCreateWithoutSeatsInput = {
-    id?: string
-    storeId: string
-    name?: string
-    seatCount?: number
-    sort?: number
-    isActive?: boolean
-    description?: string
-    createdAt?: bigint | number
-    updatedAt?: bigint | number
-    deletedAt?: bigint | number
-  }
-
-  export type AreaCreateOrConnectWithoutSeatsInput = {
-    where: AreaWhereUniqueInput
+  export type AreaUpsertWithoutSeatsInput = {
+    update: XOR<AreaUpdateWithoutSeatsInput, AreaUncheckedUpdateWithoutSeatsInput>
     create: XOR<AreaCreateWithoutSeatsInput, AreaUncheckedCreateWithoutSeatsInput>
+    where?: AreaWhereInput
   }
 
-  export type OrderCreateWithoutSeatInput = {
-    id?: string
-    storeId: string
-    category?: number
-    type?: number
-    startTime?: bigint | number
-    endTime?: bigint | number
-    status?: number
-    createdAt?: bigint | number
-    updatedAt?: bigint | number
-    deletedAt?: bigint | number
-    user: UserCreateNestedOneWithoutReservationsInput
+  export type AreaUpdateToOneWithWhereWithoutSeatsInput = {
+    where?: AreaWhereInput
+    data: XOR<AreaUpdateWithoutSeatsInput, AreaUncheckedUpdateWithoutSeatsInput>
   }
 
-  export type OrderUncheckedCreateWithoutSeatInput = {
-    id?: string
-    storeId: string
-    category?: number
-    userId: string
-    type?: number
-    startTime?: bigint | number
-    endTime?: bigint | number
-    status?: number
-    createdAt?: bigint | number
-    updatedAt?: bigint | number
-    deletedAt?: bigint | number
+  export type AreaUpdateWithoutSeatsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    seatCount?: IntFieldUpdateOperationsInput | number
+    sort?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: BigIntFieldUpdateOperationsInput | bigint | number
+    updatedAt?: BigIntFieldUpdateOperationsInput | bigint | number
+    deletedAt?: BigIntFieldUpdateOperationsInput | bigint | number
+    store?: StoreUpdateOneRequiredWithoutAreasNestedInput
   }
 
-  export type OrderCreateOrConnectWithoutSeatInput = {
+  export type AreaUncheckedUpdateWithoutSeatsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    storeId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    seatCount?: IntFieldUpdateOperationsInput | number
+    sort?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: BigIntFieldUpdateOperationsInput | bigint | number
+    updatedAt?: BigIntFieldUpdateOperationsInput | bigint | number
+    deletedAt?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type OrderUpsertWithWhereUniqueWithoutSeatInput = {
     where: OrderWhereUniqueInput
+    update: XOR<OrderUpdateWithoutSeatInput, OrderUncheckedUpdateWithoutSeatInput>
     create: XOR<OrderCreateWithoutSeatInput, OrderUncheckedCreateWithoutSeatInput>
   }
 
-  export type OrderCreateManySeatInputEnvelope = {
-    data: OrderCreateManySeatInput | OrderCreateManySeatInput[]
-    skipDuplicates?: boolean
+  export type OrderUpdateWithWhereUniqueWithoutSeatInput = {
+    where: OrderWhereUniqueInput
+    data: XOR<OrderUpdateWithoutSeatInput, OrderUncheckedUpdateWithoutSeatInput>
+  }
+
+  export type OrderUpdateManyWithWhereWithoutSeatInput = {
+    where: OrderScalarWhereInput
+    data: XOR<OrderUpdateManyMutationInput, OrderUncheckedUpdateManyWithoutSeatInput>
   }
 
   export type StoreUpsertWithoutSeatsInput = {
@@ -10165,66 +10124,13 @@ export namespace Prisma {
     areas?: AreaUncheckedUpdateManyWithoutStoreNestedInput
   }
 
-  export type AreaUpsertWithoutSeatsInput = {
-    update: XOR<AreaUpdateWithoutSeatsInput, AreaUncheckedUpdateWithoutSeatsInput>
-    create: XOR<AreaCreateWithoutSeatsInput, AreaUncheckedCreateWithoutSeatsInput>
-    where?: AreaWhereInput
-  }
-
-  export type AreaUpdateToOneWithWhereWithoutSeatsInput = {
-    where?: AreaWhereInput
-    data: XOR<AreaUpdateWithoutSeatsInput, AreaUncheckedUpdateWithoutSeatsInput>
-  }
-
-  export type AreaUpdateWithoutSeatsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    seatCount?: IntFieldUpdateOperationsInput | number
-    sort?: IntFieldUpdateOperationsInput | number
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    description?: StringFieldUpdateOperationsInput | string
-    createdAt?: BigIntFieldUpdateOperationsInput | bigint | number
-    updatedAt?: BigIntFieldUpdateOperationsInput | bigint | number
-    deletedAt?: BigIntFieldUpdateOperationsInput | bigint | number
-    store?: StoreUpdateOneRequiredWithoutAreasNestedInput
-  }
-
-  export type AreaUncheckedUpdateWithoutSeatsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    storeId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    seatCount?: IntFieldUpdateOperationsInput | number
-    sort?: IntFieldUpdateOperationsInput | number
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    description?: StringFieldUpdateOperationsInput | string
-    createdAt?: BigIntFieldUpdateOperationsInput | bigint | number
-    updatedAt?: BigIntFieldUpdateOperationsInput | bigint | number
-    deletedAt?: BigIntFieldUpdateOperationsInput | bigint | number
-  }
-
-  export type OrderUpsertWithWhereUniqueWithoutSeatInput = {
-    where: OrderWhereUniqueInput
-    update: XOR<OrderUpdateWithoutSeatInput, OrderUncheckedUpdateWithoutSeatInput>
-    create: XOR<OrderCreateWithoutSeatInput, OrderUncheckedCreateWithoutSeatInput>
-  }
-
-  export type OrderUpdateWithWhereUniqueWithoutSeatInput = {
-    where: OrderWhereUniqueInput
-    data: XOR<OrderUpdateWithoutSeatInput, OrderUncheckedUpdateWithoutSeatInput>
-  }
-
-  export type OrderUpdateManyWithWhereWithoutSeatInput = {
-    where: OrderScalarWhereInput
-    data: XOR<OrderUpdateManyMutationInput, OrderUncheckedUpdateManyWithoutSeatInput>
-  }
-
-  export type UserCreateWithoutReservationsInput = {
+  export type UserCreateWithoutOrdersInput = {
     id?: string
     openId: string
     type?: number
     nickname?: string
     avatar?: string
-    phone?: string | null
+    phone?: string
     balance?: bigint | number
     points?: number
     description?: string
@@ -10233,13 +10139,13 @@ export namespace Prisma {
     deletedAt?: bigint | number
   }
 
-  export type UserUncheckedCreateWithoutReservationsInput = {
+  export type UserUncheckedCreateWithoutOrdersInput = {
     id?: string
     openId: string
     type?: number
     nickname?: string
     avatar?: string
-    phone?: string | null
+    phone?: string
     balance?: bigint | number
     points?: number
     description?: string
@@ -10248,9 +10154,9 @@ export namespace Prisma {
     deletedAt?: bigint | number
   }
 
-  export type UserCreateOrConnectWithoutReservationsInput = {
+  export type UserCreateOrConnectWithoutOrdersInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutReservationsInput, UserUncheckedCreateWithoutReservationsInput>
+    create: XOR<UserCreateWithoutOrdersInput, UserUncheckedCreateWithoutOrdersInput>
   }
 
   export type SeatCreateWithoutOrdersInput = {
@@ -10267,8 +10173,8 @@ export namespace Prisma {
     createdAt?: bigint | number
     updatedAt?: bigint | number
     deletedAt?: bigint | number
-    store: StoreCreateNestedOneWithoutSeatsInput
     area: AreaCreateNestedOneWithoutSeatsInput
+    store: StoreCreateNestedOneWithoutSeatsInput
   }
 
   export type SeatUncheckedCreateWithoutOrdersInput = {
@@ -10294,24 +10200,24 @@ export namespace Prisma {
     create: XOR<SeatCreateWithoutOrdersInput, SeatUncheckedCreateWithoutOrdersInput>
   }
 
-  export type UserUpsertWithoutReservationsInput = {
-    update: XOR<UserUpdateWithoutReservationsInput, UserUncheckedUpdateWithoutReservationsInput>
-    create: XOR<UserCreateWithoutReservationsInput, UserUncheckedCreateWithoutReservationsInput>
+  export type UserUpsertWithoutOrdersInput = {
+    update: XOR<UserUpdateWithoutOrdersInput, UserUncheckedUpdateWithoutOrdersInput>
+    create: XOR<UserCreateWithoutOrdersInput, UserUncheckedCreateWithoutOrdersInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutReservationsInput = {
+  export type UserUpdateToOneWithWhereWithoutOrdersInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutReservationsInput, UserUncheckedUpdateWithoutReservationsInput>
+    data: XOR<UserUpdateWithoutOrdersInput, UserUncheckedUpdateWithoutOrdersInput>
   }
 
-  export type UserUpdateWithoutReservationsInput = {
+  export type UserUpdateWithoutOrdersInput = {
     id?: StringFieldUpdateOperationsInput | string
     openId?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     nickname?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
     balance?: BigIntFieldUpdateOperationsInput | bigint | number
     points?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
@@ -10320,13 +10226,13 @@ export namespace Prisma {
     deletedAt?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
-  export type UserUncheckedUpdateWithoutReservationsInput = {
+  export type UserUncheckedUpdateWithoutOrdersInput = {
     id?: StringFieldUpdateOperationsInput | string
     openId?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     nickname?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: StringFieldUpdateOperationsInput | string
     balance?: BigIntFieldUpdateOperationsInput | bigint | number
     points?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
@@ -10360,8 +10266,8 @@ export namespace Prisma {
     createdAt?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedAt?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedAt?: BigIntFieldUpdateOperationsInput | bigint | number
-    store?: StoreUpdateOneRequiredWithoutSeatsNestedInput
     area?: AreaUpdateOneRequiredWithoutSeatsNestedInput
+    store?: StoreUpdateOneRequiredWithoutSeatsNestedInput
   }
 
   export type SeatUncheckedUpdateWithoutOrdersInput = {
@@ -10589,8 +10495,8 @@ export namespace Prisma {
     createdAt?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedAt?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedAt?: BigIntFieldUpdateOperationsInput | bigint | number
-    store?: StoreUpdateOneRequiredWithoutSeatsNestedInput
     orders?: OrderUpdateManyWithoutSeatNestedInput
+    store?: StoreUpdateOneRequiredWithoutSeatsNestedInput
   }
 
   export type SeatUncheckedUpdateWithoutAreaInput = {
@@ -10653,7 +10559,7 @@ export namespace Prisma {
     createdAt?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedAt?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedAt?: BigIntFieldUpdateOperationsInput | bigint | number
-    user?: UserUpdateOneRequiredWithoutReservationsNestedInput
+    user?: UserUpdateOneRequiredWithoutOrdersNestedInput
   }
 
   export type OrderUncheckedUpdateWithoutSeatInput = {
