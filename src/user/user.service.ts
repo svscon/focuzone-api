@@ -70,6 +70,13 @@ export class UserService {
         });
     }
 
+    async delete(id: string) {
+        await this.prisma.user.delete({
+            where: { id },
+        });
+        return true;
+    }
+
     async remove(id: string) {
         await this.findOneById(id);
         const now = Date.now();
