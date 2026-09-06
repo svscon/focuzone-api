@@ -7,7 +7,7 @@ export class UpdateUserDto {
 
     @IsOptional()
     @IsString()
-    nickname?: string;
+    nickName?: string;
 
     @IsOptional()
     @IsString()

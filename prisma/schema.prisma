@@ -11,7 +11,7 @@ model User {
   id          String  @id @default(uuid())
   openId      String  @unique
   type        Int     @default(0)
-  nickname    String  @default("")
+  nickName    String  @default("")
   avatar      String  @default("")
   phone       String  @default("")
   balance     BigInt  @default(0)

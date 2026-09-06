@@ -17,7 +17,7 @@ export class UserService {
             data: {
                 openId: dto.openId,
                 type: dto.type ?? 0,
-                nickname: dto.nickname,
+                nickName: dto.nickName,
                 avatar: dto.avatar,
                 phone: dto.phone,
                 description: dto.description,

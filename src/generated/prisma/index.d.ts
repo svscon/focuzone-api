@@ -1384,7 +1384,7 @@ export namespace Prisma {
     id: string | null
     openId: string | null
     type: number | null
-    nickname: string | null
+    nickName: string | null
     avatar: string | null
     phone: string | null
     balance: bigint | null
@@ -1399,7 +1399,7 @@ export namespace Prisma {
     id: string | null
     openId: string | null
     type: number | null
-    nickname: string | null
+    nickName: string | null
     avatar: string | null
     phone: string | null
     balance: bigint | null
@@ -1414,7 +1414,7 @@ export namespace Prisma {
     id: number
     openId: number
     type: number
-    nickname: number
+    nickName: number
     avatar: number
     phone: number
     balance: number
@@ -1449,7 +1449,7 @@ export namespace Prisma {
     id?: true
     openId?: true
     type?: true
-    nickname?: true
+    nickName?: true
     avatar?: true
     phone?: true
     balance?: true
@@ -1464,7 +1464,7 @@ export namespace Prisma {
     id?: true
     openId?: true
     type?: true
-    nickname?: true
+    nickName?: true
     avatar?: true
     phone?: true
     balance?: true
@@ -1479,7 +1479,7 @@ export namespace Prisma {
     id?: true
     openId?: true
     type?: true
-    nickname?: true
+    nickName?: true
     avatar?: true
     phone?: true
     balance?: true
@@ -1581,7 +1581,7 @@ export namespace Prisma {
     id: string
     openId: string
     type: number
-    nickname: string
+    nickName: string
     avatar: string
     phone: string
     balance: bigint
@@ -1615,7 +1615,7 @@ export namespace Prisma {
     id?: boolean
     openId?: boolean
     type?: boolean
-    nickname?: boolean
+    nickName?: boolean
     avatar?: boolean
     phone?: boolean
     balance?: boolean
@@ -1634,7 +1634,7 @@ export namespace Prisma {
     id?: boolean
     openId?: boolean
     type?: boolean
-    nickname?: boolean
+    nickName?: boolean
     avatar?: boolean
     phone?: boolean
     balance?: boolean
@@ -1645,7 +1645,7 @@ export namespace Prisma {
     deletedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "openId" | "type" | "nickname" | "avatar" | "phone" | "balance" | "points" | "description" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "openId" | "type" | "nickName" | "avatar" | "phone" | "balance" | "points" | "description" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     orders?: boolean | User$ordersArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1660,7 +1660,7 @@ export namespace Prisma {
       id: string
       openId: string
       type: number
-      nickname: string
+      nickName: string
       avatar: string
       phone: string
       balance: bigint
@@ -2042,7 +2042,7 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'String'>
     readonly openId: FieldRef<"User", 'String'>
     readonly type: FieldRef<"User", 'Int'>
-    readonly nickname: FieldRef<"User", 'String'>
+    readonly nickName: FieldRef<"User", 'String'>
     readonly avatar: FieldRef<"User", 'String'>
     readonly phone: FieldRef<"User", 'String'>
     readonly balance: FieldRef<"User", 'BigInt'>
@@ -7027,7 +7027,7 @@ export namespace Prisma {
     id: 'id',
     openId: 'openId',
     type: 'type',
-    nickname: 'nickname',
+    nickName: 'nickName',
     avatar: 'avatar',
     phone: 'phone',
     balance: 'balance',
@@ -7138,7 +7138,7 @@ export namespace Prisma {
   export const UserOrderByRelevanceFieldEnum: {
     id: 'id',
     openId: 'openId',
-    nickname: 'nickname',
+    nickName: 'nickName',
     avatar: 'avatar',
     phone: 'phone',
     description: 'description'
@@ -7247,7 +7247,7 @@ export namespace Prisma {
     id?: StringFilter<"User"> | string
     openId?: StringFilter<"User"> | string
     type?: IntFilter<"User"> | number
-    nickname?: StringFilter<"User"> | string
+    nickName?: StringFilter<"User"> | string
     avatar?: StringFilter<"User"> | string
     phone?: StringFilter<"User"> | string
     balance?: BigIntFilter<"User"> | bigint | number
@@ -7263,7 +7263,7 @@ export namespace Prisma {
     id?: SortOrder
     openId?: SortOrder
     type?: SortOrder
-    nickname?: SortOrder
+    nickName?: SortOrder
     avatar?: SortOrder
     phone?: SortOrder
     balance?: SortOrder
@@ -7283,7 +7283,7 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     type?: IntFilter<"User"> | number
-    nickname?: StringFilter<"User"> | string
+    nickName?: StringFilter<"User"> | string
     avatar?: StringFilter<"User"> | string
     phone?: StringFilter<"User"> | string
     balance?: BigIntFilter<"User"> | bigint | number
@@ -7299,7 +7299,7 @@ export namespace Prisma {
     id?: SortOrder
     openId?: SortOrder
     type?: SortOrder
-    nickname?: SortOrder
+    nickName?: SortOrder
     avatar?: SortOrder
     phone?: SortOrder
     balance?: SortOrder
@@ -7322,7 +7322,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"User"> | string
     openId?: StringWithAggregatesFilter<"User"> | string
     type?: IntWithAggregatesFilter<"User"> | number
-    nickname?: StringWithAggregatesFilter<"User"> | string
+    nickName?: StringWithAggregatesFilter<"User"> | string
     avatar?: StringWithAggregatesFilter<"User"> | string
     phone?: StringWithAggregatesFilter<"User"> | string
     balance?: BigIntWithAggregatesFilter<"User"> | bigint | number
@@ -7795,7 +7795,7 @@ export namespace Prisma {
     id?: string
     openId: string
     type?: number
-    nickname?: string
+    nickName?: string
     avatar?: string
     phone?: string
     balance?: bigint | number
@@ -7811,7 +7811,7 @@ export namespace Prisma {
     id?: string
     openId: string
     type?: number
-    nickname?: string
+    nickName?: string
     avatar?: string
     phone?: string
     balance?: bigint | number
@@ -7827,7 +7827,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     openId?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    nickname?: StringFieldUpdateOperationsInput | string
+    nickName?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     balance?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -7843,7 +7843,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     openId?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    nickname?: StringFieldUpdateOperationsInput | string
+    nickName?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     balance?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -7859,7 +7859,7 @@ export namespace Prisma {
     id?: string
     openId: string
     type?: number
-    nickname?: string
+    nickName?: string
     avatar?: string
     phone?: string
     balance?: bigint | number
@@ -7874,7 +7874,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     openId?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    nickname?: StringFieldUpdateOperationsInput | string
+    nickName?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     balance?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -7889,7 +7889,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     openId?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    nickname?: StringFieldUpdateOperationsInput | string
+    nickName?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     balance?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -8486,7 +8486,7 @@ export namespace Prisma {
     id?: SortOrder
     openId?: SortOrder
     type?: SortOrder
-    nickname?: SortOrder
+    nickName?: SortOrder
     avatar?: SortOrder
     phone?: SortOrder
     balance?: SortOrder
@@ -8510,7 +8510,7 @@ export namespace Prisma {
     id?: SortOrder
     openId?: SortOrder
     type?: SortOrder
-    nickname?: SortOrder
+    nickName?: SortOrder
     avatar?: SortOrder
     phone?: SortOrder
     balance?: SortOrder
@@ -8525,7 +8525,7 @@ export namespace Prisma {
     id?: SortOrder
     openId?: SortOrder
     type?: SortOrder
-    nickname?: SortOrder
+    nickName?: SortOrder
     avatar?: SortOrder
     phone?: SortOrder
     balance?: SortOrder
@@ -10128,7 +10128,7 @@ export namespace Prisma {
     id?: string
     openId: string
     type?: number
-    nickname?: string
+    nickName?: string
     avatar?: string
     phone?: string
     balance?: bigint | number
@@ -10143,7 +10143,7 @@ export namespace Prisma {
     id?: string
     openId: string
     type?: number
-    nickname?: string
+    nickName?: string
     avatar?: string
     phone?: string
     balance?: bigint | number
@@ -10215,7 +10215,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     openId?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    nickname?: StringFieldUpdateOperationsInput | string
+    nickName?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     balance?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -10230,7 +10230,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     openId?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    nickname?: StringFieldUpdateOperationsInput | string
+    nickName?: StringFieldUpdateOperationsInput | string
     avatar?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     balance?: BigIntFieldUpdateOperationsInput | bigint | number

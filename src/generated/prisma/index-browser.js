@@ -124,7 +124,7 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   openId: 'openId',
   type: 'type',
-  nickname: 'nickname',
+  nickName: 'nickName',
   avatar: 'avatar',
   phone: 'phone',
   balance: 'balance',
@@ -217,7 +217,7 @@ exports.Prisma.SortOrder = {
 exports.Prisma.UserOrderByRelevanceFieldEnum = {
   id: 'id',
   openId: 'openId',
-  nickname: 'nickname',
+  nickName: 'nickName',
   avatar: 'avatar',
   phone: 'phone',
   description: 'description'
