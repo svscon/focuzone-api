@@ -59,7 +59,6 @@ export class UserService {
     }
 
     async update(id: string, dto: UpdateUserDto) {
-        await this.findOneById(id);
         const now = Date.now();
         return this.prisma.user.update({
             where: { id },
@@ -78,7 +77,6 @@ export class UserService {
     }
 
     async remove(id: string) {
-        await this.findOneById(id);
         const now = Date.now();
         await this.prisma.user.update({
             where: { id },
