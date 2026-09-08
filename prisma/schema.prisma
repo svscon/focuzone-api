@@ -8,115 +8,220 @@ datasource db {
 }
 
 model User {
-  id          String  @id @default(uuid())
-  openId      String  @unique
-  type        Int     @default(0)
-  nickName    String  @default("")
-  avatar      String  @default("")
-  phone       String  @default("")
-  balance     BigInt  @default(0)
-  points      Int     @default(0)
-  description String  @default("")
-  createdAt   BigInt  @default(0)
-  updatedAt   BigInt  @default(0)
-  deletedAt   BigInt  @default(0)
-  orders      Order[]
+  id            String      @id @default(uuid())
+  openId        String      @unique
+  type          Int         @default(0)
+  nickName      String      @default("")
+  avatar        String      @default("")
+  phone         String      @default("")
+  password      String      @default("")
+  balance       BigInt      @default(0)
+  points        Int         @default(0)
+  realName      String      @default("")
+  cardId        String      @default("")
+  nation        String      @default("")
+  sex           Int         @default(0)
+  birth         DateTime    @default(now())
+  qq            String      @default("")
+  email         String      @default("")
+  province      String      @default("")
+  city          String      @default("")
+  district      String      @default("")
+  code          String      @default("")
+  address       String      @default("")
+  description   String      @default("")
+  lastLoginTime BigInt      @default(0)
+  lastLoginIp   String      @default("")
+  loginCount    Int         @default(0)
+  createdBy     String      @default("")
+  createdTime   BigInt      @default(0)
+  updatedTime   BigInt      @default(0)
+  deletedTime   BigInt      @default(0)
+  stores        Store[]
+  orders        UserOrder[]
+  cards         UserCard[]
 
   @@map("users")
 }
 
 model Store {
-  id          String  @id @default(uuid())
-  type        Int     @default(0)
-  name        String  @default("")
-  address     String  @default("")
-  province    String  @default("")
-  city        String  @default("")
-  district    String  @default("")
-  longitude   Float   @default(0.0)
-  latitude    Float   @default(0.0)
-  seatCount   Int     @default(0)
-  phone       String  @default("")
-  is24Hours   Boolean @default(false)
-  openTime    String  @default("06:00")
-  closeTime   String  @default("23:59")
-  isActive    Boolean @default(true)
-  features    String  @default("")
-  promotion   String  @default("")
-  price       Int     @default(0)
-  reviews     Int     @default(0)
-  sales       Int     @default(0)
-  coverImages String  @default("")
-  description String  @default("")
-  createdAt   BigInt  @default(0)
-  updatedAt   BigInt  @default(0)
-  deletedAt   BigInt  @default(0)
+  id          String       @id @default(uuid())
+  type        Int          @default(0)
+  name        String       @default("")
+  address     String       @default("")
+  province    String       @default("")
+  city        String       @default("")
+  district    String       @default("")
+  longitude   Float        @default(0.0)
+  latitude    Float        @default(0.0)
+  seatCount   Int          @default(0)
+  phone       String       @default("")
+  is24Hours   Boolean      @default(false)
+  openTime    String       @default("06:00")
+  closeTime   String       @default("23:59")
+  isActive    Boolean      @default(true)
+  features    String       @default("")
+  promotion   String       @default("")
+  price       Int          @default(0)
+  reviews     Int          @default(0)
+  sales       Int          @default(0)
+  coverImages String       @default("")
+  description String       @default("")
+  userId      String       @default("")
+  createdBy   String       @default("")
+  createdTime BigInt       @default(0)
+  updatedTime BigInt       @default(0)
+  deletedTime BigInt       @default(0)
   areas       Area[]
   seats       Seat[]
+  attachments Attachment[]
+  notices     Notice[]
+  comments    Comment[]
+  user        User         @relation(fields: [userId], references: [id], onDelete: Restrict)
 
   @@map("stores")
 }
 
 model Area {
   id          String  @id @default(uuid())
-  storeId     String
+  storeId     String  @default("")
   name        String  @default("")
   seatCount   Int     @default(0)
   sort        Int     @default(0)
   isActive    Boolean @default(true)
   description String  @default("")
-  createdAt   BigInt  @default(0)
-  updatedAt   BigInt  @default(0)
-  deletedAt   BigInt  @default(0)
-  store       Store   @relation(fields: [storeId], references: [id], onDelete: Restrict)
+  createdBy   String  @default("")
+  createdTime BigInt  @default(0)
+  updatedTime BigInt  @default(0)
+  deletedTime BigInt  @default(0)
   seats       Seat[]
+  store       Store   @relation(fields: [storeId], references: [id])
 
   @@index([storeId])
   @@map("areas")
 }
 
 model Seat {
-  id          String  @id @default(uuid())
+  id          String      @id @default(uuid())
   storeId     String
   areaId      String
-  type        Int     @default(0)
-  seatNo      String  @default("")
-  x           Float   @default(0.0)
-  y           Float   @default(0.0)
-  width       Float   @default(0.0)
-  height      Float   @default(0.0)
-  hasPower    Boolean @default(true)
-  status      Int     @default(0)
-  description String  @default("")
-  createdAt   BigInt  @default(0)
-  updatedAt   BigInt  @default(0)
-  deletedAt   BigInt  @default(0)
-  area        Area    @relation(fields: [areaId], references: [id], onDelete: Restrict)
-  orders      Order[]
-  store       Store   @relation(fields: [storeId], references: [id], onDelete: Restrict)
+  type        Int         @default(0)
+  seatNo      String      @default("")
+  x           Float       @default(0.0)
+  y           Float       @default(0.0)
+  width       Float       @default(0.0)
+  height      Float       @default(0.0)
+  hasPower    Boolean     @default(true)
+  status      Int         @default(0)
+  description String      @default("")
+  createdBy   String      @default("")
+  createdTime BigInt      @default(0)
+  updatedTime BigInt      @default(0)
+  deletedTime BigInt      @default(0)
+  orders      UserOrder[]
+  area        Area        @relation(fields: [areaId], references: [id], onDelete: Restrict)
+  store       Store       @relation(fields: [storeId], references: [id])
 
   @@unique([areaId, seatNo])
   @@index([areaId])
   @@map("seats")
 }
 
-model Order {
-  id        String @id @default(uuid())
-  storeId   String
-  seatId    String
-  category  Int    @default(0)
-  userId    String
-  type      Int    @default(0)
-  startTime BigInt @default(0)
-  endTime   BigInt @default(0)
-  status    Int    @default(0)
-  createdAt BigInt @default(0)
-  updatedAt BigInt @default(0)
-  deletedAt BigInt @default(0)
-  user      User   @relation(fields: [userId], references: [id], onDelete: Restrict)
-  seat      Seat   @relation(fields: [seatId], references: [id], onDelete: Restrict)
+model Card {
+  id          String     @id @default(uuid())
+  name        String     @default("")
+  type        Int        @default(0)
+  description String     @default("")
+  createdBy   String     @default("")
+  createdTime BigInt     @default(0)
+  updatedTime BigInt     @default(0)
+  deletedTime BigInt     @default(0)
+  userCards   UserCard[]
+
+  @@map("cards")
+}
+
+model UserCard {
+  id          String @id @default(uuid())
+  userId      String
+  cardId      String
+  createdTime BigInt @default(0)
+  updatedTime BigInt @default(0)
+  deletedTime BigInt @default(0)
+  user        User   @relation(fields: [userId], references: [id])
+  card        Card   @relation(fields: [cardId], references: [id])
+
+  @@index([userId])
+  @@index([cardId])
+  @@map("user_cards")
+}
+
+model UserOrder {
+  id          String @id @default(uuid())
+  storeId     String
+  areaId      String
+  seatId      String
+  category    Int    @default(0)
+  userId      String
+  type        Int    @default(0)
+  startTime   BigInt @default(0)
+  endTime     BigInt @default(0)
+  payMethod   Int    @default(0)
+  price       Int    @default(0)
+  status      Int    @default(0)
+  createdTime BigInt @default(0)
+  updatedTime BigInt @default(0)
+  deletedTime BigInt @default(0)
+  user        User   @relation(fields: [userId], references: [id])
+  seat        Seat   @relation(fields: [seatId], references: [id])
 
   @@index([userId])
   @@index([seatId])
-  @@map("orders")
+  @@map("user_orders")
+}
+
+model Attachment {
+  id          String  @id @default(uuid())
+  storeId     String?
+  noticeId    String?
+  name        String  @default("")
+  type        Int     @default(0)
+  description String  @default("")
+  createdBy   String  @default("")
+  createdTime BigInt  @default(0)
+  updatedTime BigInt  @default(0)
+  deletedTime BigInt  @default(0)
+  store       Store?  @relation(fields: [storeId], references: [id])
+  notice      Notice? @relation(fields: [noticeId], references: [id])
+
+  @@map("attachments")
+}
+
+model Notice {
+  id          String       @id @default(uuid())
+  storeId     String
+  title       String       @default("")
+  content     String       @default("")
+  createdBy   String       @default("")
+  createdTime BigInt       @default(0)
+  updatedTime BigInt       @default(0)
+  deletedTime BigInt       @default(0)
+  store       Store        @relation(fields: [storeId], references: [id])
+  attachments Attachment[]
+
+  @@map("notices")
+}
+
+model Comment {
+  id          String @id @default(uuid())
+  storeId     String
+  type        Int    @default(0)
+  content     String @default("")
+  createdBy   String @default("")
+  createdTime BigInt @default(0)
+  updatedTime BigInt @default(0)
+  deletedTime BigInt @default(0)
+  store       Store  @relation(fields: [storeId], references: [id])
+
+  @@map("comments")
 }

@@ -127,12 +127,29 @@ exports.Prisma.UserScalarFieldEnum = {
   nickName: 'nickName',
   avatar: 'avatar',
   phone: 'phone',
+  password: 'password',
   balance: 'balance',
   points: 'points',
+  realName: 'realName',
+  cardId: 'cardId',
+  nation: 'nation',
+  sex: 'sex',
+  birth: 'birth',
+  qq: 'qq',
+  email: 'email',
+  province: 'province',
+  city: 'city',
+  district: 'district',
+  code: 'code',
+  address: 'address',
   description: 'description',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
+  lastLoginTime: 'lastLoginTime',
+  lastLoginIp: 'lastLoginIp',
+  loginCount: 'loginCount',
+  createdBy: 'createdBy',
+  createdTime: 'createdTime',
+  updatedTime: 'updatedTime',
+  deletedTime: 'deletedTime'
 };
 
 exports.Prisma.StoreScalarFieldEnum = {
@@ -158,9 +175,11 @@ exports.Prisma.StoreScalarFieldEnum = {
   sales: 'sales',
   coverImages: 'coverImages',
   description: 'description',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
+  userId: 'userId',
+  createdBy: 'createdBy',
+  createdTime: 'createdTime',
+  updatedTime: 'updatedTime',
+  deletedTime: 'deletedTime'
 };
 
 exports.Prisma.AreaScalarFieldEnum = {
@@ -171,9 +190,10 @@ exports.Prisma.AreaScalarFieldEnum = {
   sort: 'sort',
   isActive: 'isActive',
   description: 'description',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
+  createdBy: 'createdBy',
+  createdTime: 'createdTime',
+  updatedTime: 'updatedTime',
+  deletedTime: 'deletedTime'
 };
 
 exports.Prisma.SeatScalarFieldEnum = {
@@ -189,24 +209,83 @@ exports.Prisma.SeatScalarFieldEnum = {
   hasPower: 'hasPower',
   status: 'status',
   description: 'description',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
+  createdBy: 'createdBy',
+  createdTime: 'createdTime',
+  updatedTime: 'updatedTime',
+  deletedTime: 'deletedTime'
 };
 
-exports.Prisma.OrderScalarFieldEnum = {
+exports.Prisma.CardScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  type: 'type',
+  description: 'description',
+  createdBy: 'createdBy',
+  createdTime: 'createdTime',
+  updatedTime: 'updatedTime',
+  deletedTime: 'deletedTime'
+};
+
+exports.Prisma.UserCardScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  cardId: 'cardId',
+  createdTime: 'createdTime',
+  updatedTime: 'updatedTime',
+  deletedTime: 'deletedTime'
+};
+
+exports.Prisma.UserOrderScalarFieldEnum = {
   id: 'id',
   storeId: 'storeId',
+  areaId: 'areaId',
   seatId: 'seatId',
   category: 'category',
   userId: 'userId',
   type: 'type',
   startTime: 'startTime',
   endTime: 'endTime',
+  payMethod: 'payMethod',
+  price: 'price',
   status: 'status',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
+  createdTime: 'createdTime',
+  updatedTime: 'updatedTime',
+  deletedTime: 'deletedTime'
+};
+
+exports.Prisma.AttachmentScalarFieldEnum = {
+  id: 'id',
+  storeId: 'storeId',
+  noticeId: 'noticeId',
+  name: 'name',
+  type: 'type',
+  description: 'description',
+  createdBy: 'createdBy',
+  createdTime: 'createdTime',
+  updatedTime: 'updatedTime',
+  deletedTime: 'deletedTime'
+};
+
+exports.Prisma.NoticeScalarFieldEnum = {
+  id: 'id',
+  storeId: 'storeId',
+  title: 'title',
+  content: 'content',
+  createdBy: 'createdBy',
+  createdTime: 'createdTime',
+  updatedTime: 'updatedTime',
+  deletedTime: 'deletedTime'
+};
+
+exports.Prisma.CommentScalarFieldEnum = {
+  id: 'id',
+  storeId: 'storeId',
+  type: 'type',
+  content: 'content',
+  createdBy: 'createdBy',
+  createdTime: 'createdTime',
+  updatedTime: 'updatedTime',
+  deletedTime: 'deletedTime'
 };
 
 exports.Prisma.SortOrder = {
@@ -220,7 +299,20 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   nickName: 'nickName',
   avatar: 'avatar',
   phone: 'phone',
-  description: 'description'
+  password: 'password',
+  realName: 'realName',
+  cardId: 'cardId',
+  nation: 'nation',
+  qq: 'qq',
+  email: 'email',
+  province: 'province',
+  city: 'city',
+  district: 'district',
+  code: 'code',
+  address: 'address',
+  description: 'description',
+  lastLoginIp: 'lastLoginIp',
+  createdBy: 'createdBy'
 };
 
 exports.Prisma.StoreOrderByRelevanceFieldEnum = {
@@ -236,14 +328,17 @@ exports.Prisma.StoreOrderByRelevanceFieldEnum = {
   features: 'features',
   promotion: 'promotion',
   coverImages: 'coverImages',
-  description: 'description'
+  description: 'description',
+  userId: 'userId',
+  createdBy: 'createdBy'
 };
 
 exports.Prisma.AreaOrderByRelevanceFieldEnum = {
   id: 'id',
   storeId: 'storeId',
   name: 'name',
-  description: 'description'
+  description: 'description',
+  createdBy: 'createdBy'
 };
 
 exports.Prisma.SeatOrderByRelevanceFieldEnum = {
@@ -251,14 +346,58 @@ exports.Prisma.SeatOrderByRelevanceFieldEnum = {
   storeId: 'storeId',
   areaId: 'areaId',
   seatNo: 'seatNo',
-  description: 'description'
+  description: 'description',
+  createdBy: 'createdBy'
 };
 
-exports.Prisma.OrderOrderByRelevanceFieldEnum = {
+exports.Prisma.CardOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  createdBy: 'createdBy'
+};
+
+exports.Prisma.UserCardOrderByRelevanceFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  cardId: 'cardId'
+};
+
+exports.Prisma.UserOrderOrderByRelevanceFieldEnum = {
   id: 'id',
   storeId: 'storeId',
+  areaId: 'areaId',
   seatId: 'seatId',
   userId: 'userId'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.AttachmentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  storeId: 'storeId',
+  noticeId: 'noticeId',
+  name: 'name',
+  description: 'description',
+  createdBy: 'createdBy'
+};
+
+exports.Prisma.NoticeOrderByRelevanceFieldEnum = {
+  id: 'id',
+  storeId: 'storeId',
+  title: 'title',
+  content: 'content',
+  createdBy: 'createdBy'
+};
+
+exports.Prisma.CommentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  storeId: 'storeId',
+  content: 'content',
+  createdBy: 'createdBy'
 };
 
 
@@ -267,7 +406,12 @@ exports.Prisma.ModelName = {
   Store: 'Store',
   Area: 'Area',
   Seat: 'Seat',
-  Order: 'Order'
+  Card: 'Card',
+  UserCard: 'UserCard',
+  UserOrder: 'UserOrder',
+  Attachment: 'Attachment',
+  Notice: 'Notice',
+  Comment: 'Comment'
 };
 
 /**

@@ -29,9 +29,9 @@ const storeData: Prisma.StoreCreateInput[] = [
         sales: 0,
         coverImages: '',
         description: '安静舒适的学习环境',
-        createdAt: Date.now(),
-        updatedAt: 0,
-        deletedAt: 0,
+        createdTime: Date.now(),
+        updatedTime: 0,
+        deletedTime: 0,
     },
     {
         name: '即刻记忆自习室(海悦天地店)',
@@ -55,9 +55,9 @@ const storeData: Prisma.StoreCreateInput[] = [
         sales: 0,
         coverImages: '',
         description: '24小时营业,适合熬夜学习',
-        createdAt: Date.now(),
-        updatedAt: 0,
-        deletedAt: 0,
+        createdTime: Date.now(),
+        updatedTime: 0,
+        deletedTime: 0,
     },
 ];
 
@@ -72,10 +72,15 @@ async function main() {
     }
 
     // 按依赖顺序清理: Order → Seat → Area → Store
-    await prisma.order.deleteMany();
+    await prisma.userOrder.deleteMany();
     await prisma.seat.deleteMany();
     await prisma.area.deleteMany();
     await prisma.store.deleteMany();
+    await prisma.attachment.deleteMany();
+    await prisma.notice.deleteMany();
+    await prisma.comment.deleteMany();
+    await prisma.card.deleteMany();
+    await prisma.userCard.deleteMany();
 
     // 创建 Store
     const stores = await Promise.all(
@@ -135,9 +140,9 @@ async function main() {
                     hasPower: true,
                     status: 0,
                     description: '',
-                    createdAt: Date.now(),
-                    updatedAt: 0,
-                    deletedAt: 0,
+                    createdTime: Date.now(),
+                    updatedTime: 0,
+                    deletedTime: 0,
                 });
             }
             await prisma.seat.createMany({ data: seats });
