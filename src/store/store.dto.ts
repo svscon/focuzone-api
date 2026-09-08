@@ -147,11 +147,11 @@ export class StoreResponseDto {
     description: string;
 
     @ApiProperty({ type: 'number', description: '毫秒时间戳' })
-    createdAt: bigint;
+    createdTime: bigint;
 
     @ApiProperty({ type: 'number', description: '毫秒时间戳' })
-    updatedAt: bigint;
+    updatedTime: bigint;
 
     @ApiProperty({ type: 'number', description: '毫秒时间戳' })
-    deletedAt: bigint;
+    deletedTime: bigint;
 }

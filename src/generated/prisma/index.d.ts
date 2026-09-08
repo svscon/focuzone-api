@@ -3261,6 +3261,9 @@ export namespace Prisma {
     type: number | null
     name: string | null
     address: string | null
+    provinceCode: string | null
+    cityCode: string | null
+    districtCode: string | null
     province: string | null
     city: string | null
     district: string | null
@@ -3291,6 +3294,9 @@ export namespace Prisma {
     type: number | null
     name: string | null
     address: string | null
+    provinceCode: string | null
+    cityCode: string | null
+    districtCode: string | null
     province: string | null
     city: string | null
     district: string | null
@@ -3321,6 +3327,9 @@ export namespace Prisma {
     type: number
     name: number
     address: number
+    provinceCode: number
+    cityCode: number
+    districtCode: number
     province: number
     city: number
     district: number
@@ -3379,6 +3388,9 @@ export namespace Prisma {
     type?: true
     name?: true
     address?: true
+    provinceCode?: true
+    cityCode?: true
+    districtCode?: true
     province?: true
     city?: true
     district?: true
@@ -3409,6 +3421,9 @@ export namespace Prisma {
     type?: true
     name?: true
     address?: true
+    provinceCode?: true
+    cityCode?: true
+    districtCode?: true
     province?: true
     city?: true
     district?: true
@@ -3439,6 +3454,9 @@ export namespace Prisma {
     type?: true
     name?: true
     address?: true
+    provinceCode?: true
+    cityCode?: true
+    districtCode?: true
     province?: true
     city?: true
     district?: true
@@ -3556,6 +3574,9 @@ export namespace Prisma {
     type: number
     name: string
     address: string
+    provinceCode: string
+    cityCode: string
+    districtCode: string
     province: string
     city: string
     district: string
@@ -3605,6 +3626,9 @@ export namespace Prisma {
     type?: boolean
     name?: boolean
     address?: boolean
+    provinceCode?: boolean
+    cityCode?: boolean
+    districtCode?: boolean
     province?: boolean
     city?: boolean
     district?: boolean
@@ -3644,6 +3668,9 @@ export namespace Prisma {
     type?: boolean
     name?: boolean
     address?: boolean
+    provinceCode?: boolean
+    cityCode?: boolean
+    districtCode?: boolean
     province?: boolean
     city?: boolean
     district?: boolean
@@ -3669,7 +3696,7 @@ export namespace Prisma {
     deletedTime?: boolean
   }
 
-  export type StoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "name" | "address" | "province" | "city" | "district" | "longitude" | "latitude" | "seatCount" | "phone" | "is24Hours" | "openTime" | "closeTime" | "isActive" | "features" | "promotion" | "price" | "reviews" | "sales" | "coverImages" | "description" | "userId" | "createdBy" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["store"]>
+  export type StoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "name" | "address" | "provinceCode" | "cityCode" | "districtCode" | "province" | "city" | "district" | "longitude" | "latitude" | "seatCount" | "phone" | "is24Hours" | "openTime" | "closeTime" | "isActive" | "features" | "promotion" | "price" | "reviews" | "sales" | "coverImages" | "description" | "userId" | "createdBy" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["store"]>
   export type StoreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     areas?: boolean | Store$areasArgs<ExtArgs>
     seats?: boolean | Store$seatsArgs<ExtArgs>
@@ -3695,6 +3722,9 @@ export namespace Prisma {
       type: number
       name: string
       address: string
+      provinceCode: string
+      cityCode: string
+      districtCode: string
       province: string
       city: string
       district: string
@@ -4097,6 +4127,9 @@ export namespace Prisma {
     readonly type: FieldRef<"Store", 'Int'>
     readonly name: FieldRef<"Store", 'String'>
     readonly address: FieldRef<"Store", 'String'>
+    readonly provinceCode: FieldRef<"Store", 'String'>
+    readonly cityCode: FieldRef<"Store", 'String'>
+    readonly districtCode: FieldRef<"Store", 'String'>
     readonly province: FieldRef<"Store", 'String'>
     readonly city: FieldRef<"Store", 'String'>
     readonly district: FieldRef<"Store", 'String'>
@@ -13172,6 +13205,9 @@ export namespace Prisma {
     type: 'type',
     name: 'name',
     address: 'address',
+    provinceCode: 'provinceCode',
+    cityCode: 'cityCode',
+    districtCode: 'districtCode',
     province: 'province',
     city: 'city',
     district: 'district',
@@ -13367,6 +13403,9 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     address: 'address',
+    provinceCode: 'provinceCode',
+    cityCode: 'cityCode',
+    districtCode: 'districtCode',
     province: 'province',
     city: 'city',
     district: 'district',
@@ -13720,6 +13759,9 @@ export namespace Prisma {
     type?: IntFilter<"Store"> | number
     name?: StringFilter<"Store"> | string
     address?: StringFilter<"Store"> | string
+    provinceCode?: StringFilter<"Store"> | string
+    cityCode?: StringFilter<"Store"> | string
+    districtCode?: StringFilter<"Store"> | string
     province?: StringFilter<"Store"> | string
     city?: StringFilter<"Store"> | string
     district?: StringFilter<"Store"> | string
@@ -13756,6 +13798,9 @@ export namespace Prisma {
     type?: SortOrder
     name?: SortOrder
     address?: SortOrder
+    provinceCode?: SortOrder
+    cityCode?: SortOrder
+    districtCode?: SortOrder
     province?: SortOrder
     city?: SortOrder
     district?: SortOrder
@@ -13796,6 +13841,9 @@ export namespace Prisma {
     type?: IntFilter<"Store"> | number
     name?: StringFilter<"Store"> | string
     address?: StringFilter<"Store"> | string
+    provinceCode?: StringFilter<"Store"> | string
+    cityCode?: StringFilter<"Store"> | string
+    districtCode?: StringFilter<"Store"> | string
     province?: StringFilter<"Store"> | string
     city?: StringFilter<"Store"> | string
     district?: StringFilter<"Store"> | string
@@ -13832,6 +13880,9 @@ export namespace Prisma {
     type?: SortOrder
     name?: SortOrder
     address?: SortOrder
+    provinceCode?: SortOrder
+    cityCode?: SortOrder
+    districtCode?: SortOrder
     province?: SortOrder
     city?: SortOrder
     district?: SortOrder
@@ -13870,6 +13921,9 @@ export namespace Prisma {
     type?: IntWithAggregatesFilter<"Store"> | number
     name?: StringWithAggregatesFilter<"Store"> | string
     address?: StringWithAggregatesFilter<"Store"> | string
+    provinceCode?: StringWithAggregatesFilter<"Store"> | string
+    cityCode?: StringWithAggregatesFilter<"Store"> | string
+    districtCode?: StringWithAggregatesFilter<"Store"> | string
     province?: StringWithAggregatesFilter<"Store"> | string
     city?: StringWithAggregatesFilter<"Store"> | string
     district?: StringWithAggregatesFilter<"Store"> | string
@@ -14832,6 +14886,9 @@ export namespace Prisma {
     type?: number
     name?: string
     address?: string
+    provinceCode?: string
+    cityCode?: string
+    districtCode?: string
     province?: string
     city?: string
     district?: string
@@ -14867,6 +14924,9 @@ export namespace Prisma {
     type?: number
     name?: string
     address?: string
+    provinceCode?: string
+    cityCode?: string
+    districtCode?: string
     province?: string
     city?: string
     district?: string
@@ -14902,6 +14962,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
@@ -14937,6 +15000,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
@@ -14972,6 +15038,9 @@ export namespace Prisma {
     type?: number
     name?: string
     address?: string
+    provinceCode?: string
+    cityCode?: string
+    districtCode?: string
     province?: string
     city?: string
     district?: string
@@ -15002,6 +15071,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
@@ -15031,6 +15103,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
@@ -16153,6 +16228,9 @@ export namespace Prisma {
     type?: SortOrder
     name?: SortOrder
     address?: SortOrder
+    provinceCode?: SortOrder
+    cityCode?: SortOrder
+    districtCode?: SortOrder
     province?: SortOrder
     city?: SortOrder
     district?: SortOrder
@@ -16196,6 +16274,9 @@ export namespace Prisma {
     type?: SortOrder
     name?: SortOrder
     address?: SortOrder
+    provinceCode?: SortOrder
+    cityCode?: SortOrder
+    districtCode?: SortOrder
     province?: SortOrder
     city?: SortOrder
     district?: SortOrder
@@ -16226,6 +16307,9 @@ export namespace Prisma {
     type?: SortOrder
     name?: SortOrder
     address?: SortOrder
+    provinceCode?: SortOrder
+    cityCode?: SortOrder
+    districtCode?: SortOrder
     province?: SortOrder
     city?: SortOrder
     district?: SortOrder
@@ -17776,6 +17860,9 @@ export namespace Prisma {
     type?: number
     name?: string
     address?: string
+    provinceCode?: string
+    cityCode?: string
+    districtCode?: string
     province?: string
     city?: string
     district?: string
@@ -17810,6 +17897,9 @@ export namespace Prisma {
     type?: number
     name?: string
     address?: string
+    provinceCode?: string
+    cityCode?: string
+    districtCode?: string
     province?: string
     city?: string
     district?: string
@@ -17943,6 +18033,9 @@ export namespace Prisma {
     type?: IntFilter<"Store"> | number
     name?: StringFilter<"Store"> | string
     address?: StringFilter<"Store"> | string
+    provinceCode?: StringFilter<"Store"> | string
+    cityCode?: StringFilter<"Store"> | string
+    districtCode?: StringFilter<"Store"> | string
     province?: StringFilter<"Store"> | string
     city?: StringFilter<"Store"> | string
     district?: StringFilter<"Store"> | string
@@ -18583,6 +18676,9 @@ export namespace Prisma {
     type?: number
     name?: string
     address?: string
+    provinceCode?: string
+    cityCode?: string
+    districtCode?: string
     province?: string
     city?: string
     district?: string
@@ -18617,6 +18713,9 @@ export namespace Prisma {
     type?: number
     name?: string
     address?: string
+    provinceCode?: string
+    cityCode?: string
+    districtCode?: string
     province?: string
     city?: string
     district?: string
@@ -18683,6 +18782,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
@@ -18717,6 +18819,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
@@ -18828,6 +18933,9 @@ export namespace Prisma {
     type?: number
     name?: string
     address?: string
+    provinceCode?: string
+    cityCode?: string
+    districtCode?: string
     province?: string
     city?: string
     district?: string
@@ -18862,6 +18970,9 @@ export namespace Prisma {
     type?: number
     name?: string
     address?: string
+    provinceCode?: string
+    cityCode?: string
+    districtCode?: string
     province?: string
     city?: string
     district?: string
@@ -18967,6 +19078,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
@@ -19001,6 +19115,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
@@ -19533,6 +19650,9 @@ export namespace Prisma {
     type?: number
     name?: string
     address?: string
+    provinceCode?: string
+    cityCode?: string
+    districtCode?: string
     province?: string
     city?: string
     district?: string
@@ -19567,6 +19687,9 @@ export namespace Prisma {
     type?: number
     name?: string
     address?: string
+    provinceCode?: string
+    cityCode?: string
+    districtCode?: string
     province?: string
     city?: string
     district?: string
@@ -19644,6 +19767,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
@@ -19678,6 +19804,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
@@ -19745,6 +19874,9 @@ export namespace Prisma {
     type?: number
     name?: string
     address?: string
+    provinceCode?: string
+    cityCode?: string
+    districtCode?: string
     province?: string
     city?: string
     district?: string
@@ -19779,6 +19911,9 @@ export namespace Prisma {
     type?: number
     name?: string
     address?: string
+    provinceCode?: string
+    cityCode?: string
+    districtCode?: string
     province?: string
     city?: string
     district?: string
@@ -19863,6 +19998,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
@@ -19897,6 +20035,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
@@ -19947,6 +20088,9 @@ export namespace Prisma {
     type?: number
     name?: string
     address?: string
+    provinceCode?: string
+    cityCode?: string
+    districtCode?: string
     province?: string
     city?: string
     district?: string
@@ -19981,6 +20125,9 @@ export namespace Prisma {
     type?: number
     name?: string
     address?: string
+    provinceCode?: string
+    cityCode?: string
+    districtCode?: string
     province?: string
     city?: string
     district?: string
@@ -20031,6 +20178,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
@@ -20065,6 +20215,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
@@ -20099,6 +20252,9 @@ export namespace Prisma {
     type?: number
     name?: string
     address?: string
+    provinceCode?: string
+    cityCode?: string
+    districtCode?: string
     province?: string
     city?: string
     district?: string
@@ -20153,6 +20309,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
@@ -20187,6 +20346,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string
@@ -20221,6 +20383,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
+    provinceCode?: StringFieldUpdateOperationsInput | string
+    cityCode?: StringFieldUpdateOperationsInput | string
+    districtCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     district?: StringFieldUpdateOperationsInput | string

@@ -23,16 +23,16 @@ export class UserService {
                 description: dto.description,
                 balance: 0,
                 points: 0,
-                createdAt: now,
-                updatedAt: now,
-                deletedAt: 0,
+                createdTime: now,
+                updatedTime: now,
+                deletedTime: 0,
             },
         });
     }
 
     async findOneById(id: string) {
         const user = await this.prisma.user.findFirst({
-            where: { id, deletedAt: 0 },
+            where: { id, deletedTime: 0 },
         });
         if (!user) throw new NotFoundException('用户不存在');
         return user;
@@ -40,7 +40,7 @@ export class UserService {
 
     async findOneByOpenId(openId: string) {
         return this.prisma.user.findFirst({
-            where: { openId, deletedAt: 0 },
+            where: { openId, deletedTime: 0 },
         });
     }
 
@@ -48,12 +48,12 @@ export class UserService {
         const skip = (page - 1) * pageSize;
         const [list, total] = await Promise.all([
             this.prisma.user.findMany({
-                where: { deletedAt: 0 },
+                where: { deletedTime: 0 },
                 skip,
                 take: pageSize,
-                orderBy: { createdAt: 'desc' },
+                orderBy: { createdTime: 'desc' },
             }),
-            this.prisma.user.count({ where: { deletedAt: 0 } }),
+            this.prisma.user.count({ where: { deletedTime: 0 } }),
         ]);
         return { list, total, page, pageSize };
     }
@@ -64,7 +64,7 @@ export class UserService {
             where: { id },
             data: {
                 ...dto,
-                updatedAt: now,
+                updatedTime: now,
             },
         });
     }
@@ -81,8 +81,8 @@ export class UserService {
         await this.prisma.user.update({
             where: { id },
             data: {
-                deletedAt: now,
-                updatedAt: now,
+                deletedTime: now,
+                updatedTime: now,
             },
         });
         return true;
@@ -103,12 +103,12 @@ export class UserService {
         const now = Date.now();
         const user = await this.prisma.user.upsert({
             where: { openId: data.openid },
-            update: { deletedAt: 0, updatedAt: now },
+            update: { deletedTime: 0, updatedTime: now },
             create: {
                 openId: data.openid,
-                createdAt: now,
-                updatedAt: now,
-                deletedAt: 0,
+                createdTime: now,
+                updatedTime: now,
+                deletedTime: 0,
             },
         });
 

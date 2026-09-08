@@ -12,9 +12,9 @@ export class StoreService {
     return this.prisma.store.create({
       data: {
         ...dto,
-        createdAt: Number(now),
-        updatedAt: Number(now),
-        deletedAt: Number(0),
+        createdTime: Number(now),
+        updatedTime: Number(now),
+        deletedTime: Number(0),
       },
     });
   }
@@ -24,7 +24,7 @@ export class StoreService {
     const skip = ((page || 1) - 1) * (pageSize || 10);
 
     const where: Prisma.StoreWhereInput = {
-      deletedAt: Number(0),
+      deletedTime: Number(0),
     };
     if (name) where.name = { contains: name };
     if (isActive !== undefined) where.isActive = isActive;
@@ -34,7 +34,7 @@ export class StoreService {
         where,
         skip,
         take: pageSize,
-        orderBy: { createdAt: 'desc' },
+        orderBy: { createdTime: 'desc' },
       }),
       this.prisma.store.count({ where }),
     ]);
@@ -51,7 +51,7 @@ export class StoreService {
     return this.prisma.store.findFirst({
       where: {
         id,
-        deletedAt: Number(0),
+        deletedTime: Number(0),
       },
     });
   }
@@ -61,7 +61,7 @@ export class StoreService {
       where: { id },
       data: {
         ...dto,
-        updatedAt: Number(Date.now()),
+        updatedTime: Number(Date.now()),
       },
     });
   }
@@ -71,8 +71,8 @@ export class StoreService {
     return this.prisma.store.update({
       where: { id },
       data: {
-        deletedAt: Number(Date.now()),
-        updatedAt: Number(Date.now()),
+        deletedTime: Number(Date.now()),
+        updatedTime: Number(Date.now()),
       },
     });
   }

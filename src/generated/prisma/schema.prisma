@@ -45,39 +45,42 @@ model User {
 }
 
 model Store {
-  id          String       @id @default(uuid())
-  type        Int          @default(0)
-  name        String       @default("")
-  address     String       @default("")
-  province    String       @default("")
-  city        String       @default("")
-  district    String       @default("")
-  longitude   Float        @default(0.0)
-  latitude    Float        @default(0.0)
-  seatCount   Int          @default(0)
-  phone       String       @default("")
-  is24Hours   Boolean      @default(false)
-  openTime    String       @default("06:00")
-  closeTime   String       @default("23:59")
-  isActive    Boolean      @default(true)
-  features    String       @default("")
-  promotion   String       @default("")
-  price       Int          @default(0)
-  reviews     Int          @default(0)
-  sales       Int          @default(0)
-  coverImages String       @default("")
-  description String       @default("")
-  userId      String       @default("")
-  createdBy   String       @default("")
-  createdTime BigInt       @default(0)
-  updatedTime BigInt       @default(0)
-  deletedTime BigInt       @default(0)
-  areas       Area[]
-  seats       Seat[]
-  attachments Attachment[]
-  notices     Notice[]
-  comments    Comment[]
-  user        User         @relation(fields: [userId], references: [id], onDelete: Restrict)
+  id           String       @id @default(uuid())
+  type         Int          @default(0)
+  name         String       @default("")
+  address      String       @default("")
+  provinceCode String       @default("")
+  cityCode     String       @default("")
+  districtCode String       @default("")
+  province     String       @default("")
+  city         String       @default("")
+  district     String       @default("")
+  longitude    Float        @default(0.0)
+  latitude     Float        @default(0.0)
+  seatCount    Int          @default(0)
+  phone        String       @default("")
+  is24Hours    Boolean      @default(false)
+  openTime     String       @default("06:00")
+  closeTime    String       @default("23:59")
+  isActive     Boolean      @default(true)
+  features     String       @default("")
+  promotion    String       @default("")
+  price        Int          @default(0)
+  reviews      Int          @default(0)
+  sales        Int          @default(0)
+  coverImages  String       @default("")
+  description  String       @default("")
+  userId       String       @default("")
+  createdBy    String       @default("")
+  createdTime  BigInt       @default(0)
+  updatedTime  BigInt       @default(0)
+  deletedTime  BigInt       @default(0)
+  areas        Area[]
+  seats        Seat[]
+  attachments  Attachment[]
+  notices      Notice[]
+  comments     Comment[]
+  user         User         @relation(fields: [userId], references: [id], onDelete: Restrict)
 
   @@map("stores")
 }
