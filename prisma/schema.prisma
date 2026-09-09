@@ -9,31 +9,31 @@ datasource db {
 
 model User {
   id            String      @id @default(uuid())
-  openId        String      @unique
+  openId        String      @unique @db.VarChar(100)
   type          Int         @default(0)
-  nickName      String      @default("")
-  avatar        String      @default("")
-  phone         String      @default("")
-  password      String      @default("")
+  nickName      String      @default("") @db.VarChar(50)
+  avatar        String      @default("") @db.VarChar(255)
+  phone         String      @default("") @db.VarChar(20)
+  password      String      @default("") @db.VarChar(100)
   balance       BigInt      @default(0)
   points        Int         @default(0)
-  realName      String      @default("")
-  cardId        String      @default("")
-  nation        String      @default("")
+  realName      String      @default("") @db.VarChar(50)
+  cardId        String      @default("") @db.VarChar(50)
+  nation        String      @default("") @db.VarChar(50)
   sex           Int         @default(0)
   birth         DateTime    @default(now())
-  qq            String      @default("")
-  email         String      @default("")
-  province      String      @default("")
-  city          String      @default("")
-  district      String      @default("")
-  code          String      @default("")
-  address       String      @default("")
-  description   String      @default("")
+  qq            String      @default("") @db.VarChar(30)
+  email         String      @default("") @db.VarChar(100)
+  province      String      @default("") @db.VarChar(50)
+  city          String      @default("") @db.VarChar(50)
+  district      String      @default("") @db.VarChar(50)
+  code          String      @default("") @db.VarChar(100)
+  address       String      @default("") @db.VarChar(500)
+  description   String      @default("") @db.VarChar(500)
   lastLoginTime BigInt      @default(0)
-  lastLoginIp   String      @default("")
+  lastLoginIp   String      @default("") @db.VarChar(50)
   loginCount    Int         @default(0)
-  createdBy     String      @default("")
+  createdBy     String      @default("") @db.VarChar(100)
   createdTime   BigInt      @default(0)
   updatedTime   BigInt      @default(0)
   deletedTime   BigInt      @default(0)
@@ -47,31 +47,31 @@ model User {
 model Store {
   id           String       @id @default(uuid())
   type         Int          @default(0)
-  name         String       @default("")
-  address      String       @default("")
-  provinceCode String       @default("")
-  cityCode     String       @default("")
-  districtCode String       @default("")
-  province     String       @default("")
-  city         String       @default("")
-  district     String       @default("")
+  name         String       @default("") @db.VarChar(100)
+  provinceCode String       @default("") @db.VarChar(20)
+  cityCode     String       @default("") @db.VarChar(20)
+  regionCode   String       @default("") @db.VarChar(20)
+  province     String       @default("") @db.VarChar(50)
+  city         String       @default("") @db.VarChar(50)
+  region       String       @default("") @db.VarChar(50)
+  address      String       @default("") @db.VarChar(500)
   longitude    Float        @default(0.0)
   latitude     Float        @default(0.0)
   seatCount    Int          @default(0)
-  phone        String       @default("")
+  phone        String       @default("") @db.VarChar(20)
   is24Hours    Boolean      @default(false)
-  openTime     String       @default("06:00")
-  closeTime    String       @default("23:59")
+  openTime     String       @default("06:00") @db.VarChar(20)
+  closeTime    String       @default("23:59") @db.VarChar(20)
   isActive     Boolean      @default(true)
-  features     String       @default("")
-  promotion    String       @default("")
+  features     String       @default("") @db.VarChar(500)
+  promotion    String       @default("") @db.VarChar(500)
   price        Int          @default(0)
   reviews      Int          @default(0)
   sales        Int          @default(0)
-  coverImages  String       @default("")
-  description  String       @default("")
-  userId       String       @default("")
-  createdBy    String       @default("")
+  coverImages  Json         @default("[]")
+  description  String       @default("") @db.Text
+  userId       String       @default("") @db.VarChar(100)
+  createdBy    String       @default("") @db.VarChar(100)
   createdTime  BigInt       @default(0)
   updatedTime  BigInt       @default(0)
   deletedTime  BigInt       @default(0)
@@ -87,13 +87,13 @@ model Store {
 
 model Area {
   id          String  @id @default(uuid())
-  storeId     String  @default("")
-  name        String  @default("")
+  storeId     String  @default("") @db.VarChar(100)
+  name        String  @default("") @db.VarChar(100)
   seatCount   Int     @default(0)
   sort        Int     @default(0)
   isActive    Boolean @default(true)
-  description String  @default("")
-  createdBy   String  @default("")
+  description String  @default("") @db.VarChar(500)
+  createdBy   String  @default("") @db.VarChar(100)
   createdTime BigInt  @default(0)
   updatedTime BigInt  @default(0)
   deletedTime BigInt  @default(0)
@@ -106,18 +106,18 @@ model Area {
 
 model Seat {
   id          String      @id @default(uuid())
-  storeId     String
-  areaId      String
+  storeId     String      @db.VarChar(100)
+  areaId      String      @db.VarChar(100)
   type        Int         @default(0)
-  seatNo      String      @default("")
+  seatNo      String      @default("") @db.VarChar(50)
   x           Float       @default(0.0)
   y           Float       @default(0.0)
   width       Float       @default(0.0)
   height      Float       @default(0.0)
   hasPower    Boolean     @default(true)
   status      Int         @default(0)
-  description String      @default("")
-  createdBy   String      @default("")
+  description String      @default("") @db.VarChar(500)
+  createdBy   String      @default("") @db.VarChar(100)
   createdTime BigInt      @default(0)
   updatedTime BigInt      @default(0)
   deletedTime BigInt      @default(0)
@@ -132,10 +132,10 @@ model Seat {
 
 model Card {
   id          String     @id @default(uuid())
-  name        String     @default("")
+  name        String     @default("") @db.VarChar(100)
   type        Int        @default(0)
-  description String     @default("")
-  createdBy   String     @default("")
+  description String     @default("") @db.Text
+  createdBy   String     @default("") @db.VarChar(100)
   createdTime BigInt     @default(0)
   updatedTime BigInt     @default(0)
   deletedTime BigInt     @default(0)
@@ -146,8 +146,8 @@ model Card {
 
 model UserCard {
   id          String @id @default(uuid())
-  userId      String
-  cardId      String
+  userId      String @db.VarChar(100)
+  cardId      String @db.VarChar(100)
   createdTime BigInt @default(0)
   updatedTime BigInt @default(0)
   deletedTime BigInt @default(0)
@@ -161,11 +161,11 @@ model UserCard {
 
 model UserOrder {
   id          String @id @default(uuid())
-  storeId     String
-  areaId      String
-  seatId      String
+  storeId     String @db.VarChar(100)
+  areaId      String @db.VarChar(100)
+  seatId      String @db.VarChar(100)
   category    Int    @default(0)
-  userId      String
+  userId      String @db.VarChar(100)
   type        Int    @default(0)
   startTime   BigInt @default(0)
   endTime     BigInt @default(0)
@@ -185,12 +185,12 @@ model UserOrder {
 
 model Attachment {
   id          String  @id @default(uuid())
-  storeId     String?
-  noticeId    String?
-  name        String  @default("")
+  storeId     String? @db.VarChar(100)
+  noticeId    String? @db.VarChar(100)
+  name        String  @default("") @db.VarChar(255)
   type        Int     @default(0)
-  description String  @default("")
-  createdBy   String  @default("")
+  description String  @default("") @db.VarChar(500)
+  createdBy   String  @default("") @db.VarChar(100)
   createdTime BigInt  @default(0)
   updatedTime BigInt  @default(0)
   deletedTime BigInt  @default(0)
@@ -202,10 +202,10 @@ model Attachment {
 
 model Notice {
   id          String       @id @default(uuid())
-  storeId     String
-  title       String       @default("")
-  content     String       @default("")
-  createdBy   String       @default("")
+  storeId     String       @db.VarChar(100)
+  title       String       @default("") @db.VarChar(200)
+  content     String       @default("") @db.Text
+  createdBy   String       @default("") @db.VarChar(100)
   createdTime BigInt       @default(0)
   updatedTime BigInt       @default(0)
   deletedTime BigInt       @default(0)
@@ -217,10 +217,10 @@ model Notice {
 
 model Comment {
   id          String @id @default(uuid())
-  storeId     String
+  storeId     String @db.VarChar(100)
   type        Int    @default(0)
-  content     String @default("")
-  createdBy   String @default("")
+  content     String @default("") @db.Text
+  createdBy   String @default("") @db.VarChar(100)
   createdTime BigInt @default(0)
   updatedTime BigInt @default(0)
   deletedTime BigInt @default(0)

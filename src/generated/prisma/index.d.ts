@@ -3260,13 +3260,13 @@ export namespace Prisma {
     id: string | null
     type: number | null
     name: string | null
-    address: string | null
     provinceCode: string | null
     cityCode: string | null
-    districtCode: string | null
+    regionCode: string | null
     province: string | null
     city: string | null
-    district: string | null
+    region: string | null
+    address: string | null
     longitude: number | null
     latitude: number | null
     seatCount: number | null
@@ -3280,7 +3280,6 @@ export namespace Prisma {
     price: number | null
     reviews: number | null
     sales: number | null
-    coverImages: string | null
     description: string | null
     userId: string | null
     createdBy: string | null
@@ -3293,13 +3292,13 @@ export namespace Prisma {
     id: string | null
     type: number | null
     name: string | null
-    address: string | null
     provinceCode: string | null
     cityCode: string | null
-    districtCode: string | null
+    regionCode: string | null
     province: string | null
     city: string | null
-    district: string | null
+    region: string | null
+    address: string | null
     longitude: number | null
     latitude: number | null
     seatCount: number | null
@@ -3313,7 +3312,6 @@ export namespace Prisma {
     price: number | null
     reviews: number | null
     sales: number | null
-    coverImages: string | null
     description: string | null
     userId: string | null
     createdBy: string | null
@@ -3326,13 +3324,13 @@ export namespace Prisma {
     id: number
     type: number
     name: number
-    address: number
     provinceCode: number
     cityCode: number
-    districtCode: number
+    regionCode: number
     province: number
     city: number
-    district: number
+    region: number
+    address: number
     longitude: number
     latitude: number
     seatCount: number
@@ -3387,13 +3385,13 @@ export namespace Prisma {
     id?: true
     type?: true
     name?: true
-    address?: true
     provinceCode?: true
     cityCode?: true
-    districtCode?: true
+    regionCode?: true
     province?: true
     city?: true
-    district?: true
+    region?: true
+    address?: true
     longitude?: true
     latitude?: true
     seatCount?: true
@@ -3407,7 +3405,6 @@ export namespace Prisma {
     price?: true
     reviews?: true
     sales?: true
-    coverImages?: true
     description?: true
     userId?: true
     createdBy?: true
@@ -3420,13 +3417,13 @@ export namespace Prisma {
     id?: true
     type?: true
     name?: true
-    address?: true
     provinceCode?: true
     cityCode?: true
-    districtCode?: true
+    regionCode?: true
     province?: true
     city?: true
-    district?: true
+    region?: true
+    address?: true
     longitude?: true
     latitude?: true
     seatCount?: true
@@ -3440,7 +3437,6 @@ export namespace Prisma {
     price?: true
     reviews?: true
     sales?: true
-    coverImages?: true
     description?: true
     userId?: true
     createdBy?: true
@@ -3453,13 +3449,13 @@ export namespace Prisma {
     id?: true
     type?: true
     name?: true
-    address?: true
     provinceCode?: true
     cityCode?: true
-    districtCode?: true
+    regionCode?: true
     province?: true
     city?: true
-    district?: true
+    region?: true
+    address?: true
     longitude?: true
     latitude?: true
     seatCount?: true
@@ -3573,13 +3569,13 @@ export namespace Prisma {
     id: string
     type: number
     name: string
-    address: string
     provinceCode: string
     cityCode: string
-    districtCode: string
+    regionCode: string
     province: string
     city: string
-    district: string
+    region: string
+    address: string
     longitude: number
     latitude: number
     seatCount: number
@@ -3593,7 +3589,7 @@ export namespace Prisma {
     price: number
     reviews: number
     sales: number
-    coverImages: string
+    coverImages: JsonValue
     description: string
     userId: string
     createdBy: string
@@ -3625,13 +3621,13 @@ export namespace Prisma {
     id?: boolean
     type?: boolean
     name?: boolean
-    address?: boolean
     provinceCode?: boolean
     cityCode?: boolean
-    districtCode?: boolean
+    regionCode?: boolean
     province?: boolean
     city?: boolean
-    district?: boolean
+    region?: boolean
+    address?: boolean
     longitude?: boolean
     latitude?: boolean
     seatCount?: boolean
@@ -3667,13 +3663,13 @@ export namespace Prisma {
     id?: boolean
     type?: boolean
     name?: boolean
-    address?: boolean
     provinceCode?: boolean
     cityCode?: boolean
-    districtCode?: boolean
+    regionCode?: boolean
     province?: boolean
     city?: boolean
-    district?: boolean
+    region?: boolean
+    address?: boolean
     longitude?: boolean
     latitude?: boolean
     seatCount?: boolean
@@ -3696,7 +3692,7 @@ export namespace Prisma {
     deletedTime?: boolean
   }
 
-  export type StoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "name" | "address" | "provinceCode" | "cityCode" | "districtCode" | "province" | "city" | "district" | "longitude" | "latitude" | "seatCount" | "phone" | "is24Hours" | "openTime" | "closeTime" | "isActive" | "features" | "promotion" | "price" | "reviews" | "sales" | "coverImages" | "description" | "userId" | "createdBy" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["store"]>
+  export type StoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "name" | "provinceCode" | "cityCode" | "regionCode" | "province" | "city" | "region" | "address" | "longitude" | "latitude" | "seatCount" | "phone" | "is24Hours" | "openTime" | "closeTime" | "isActive" | "features" | "promotion" | "price" | "reviews" | "sales" | "coverImages" | "description" | "userId" | "createdBy" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["store"]>
   export type StoreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     areas?: boolean | Store$areasArgs<ExtArgs>
     seats?: boolean | Store$seatsArgs<ExtArgs>
@@ -3721,13 +3717,13 @@ export namespace Prisma {
       id: string
       type: number
       name: string
-      address: string
       provinceCode: string
       cityCode: string
-      districtCode: string
+      regionCode: string
       province: string
       city: string
-      district: string
+      region: string
+      address: string
       longitude: number
       latitude: number
       seatCount: number
@@ -3741,7 +3737,7 @@ export namespace Prisma {
       price: number
       reviews: number
       sales: number
-      coverImages: string
+      coverImages: Prisma.JsonValue
       description: string
       userId: string
       createdBy: string
@@ -4126,13 +4122,13 @@ export namespace Prisma {
     readonly id: FieldRef<"Store", 'String'>
     readonly type: FieldRef<"Store", 'Int'>
     readonly name: FieldRef<"Store", 'String'>
-    readonly address: FieldRef<"Store", 'String'>
     readonly provinceCode: FieldRef<"Store", 'String'>
     readonly cityCode: FieldRef<"Store", 'String'>
-    readonly districtCode: FieldRef<"Store", 'String'>
+    readonly regionCode: FieldRef<"Store", 'String'>
     readonly province: FieldRef<"Store", 'String'>
     readonly city: FieldRef<"Store", 'String'>
-    readonly district: FieldRef<"Store", 'String'>
+    readonly region: FieldRef<"Store", 'String'>
+    readonly address: FieldRef<"Store", 'String'>
     readonly longitude: FieldRef<"Store", 'Float'>
     readonly latitude: FieldRef<"Store", 'Float'>
     readonly seatCount: FieldRef<"Store", 'Int'>
@@ -4146,7 +4142,7 @@ export namespace Prisma {
     readonly price: FieldRef<"Store", 'Int'>
     readonly reviews: FieldRef<"Store", 'Int'>
     readonly sales: FieldRef<"Store", 'Int'>
-    readonly coverImages: FieldRef<"Store", 'String'>
+    readonly coverImages: FieldRef<"Store", 'Json'>
     readonly description: FieldRef<"Store", 'String'>
     readonly userId: FieldRef<"Store", 'String'>
     readonly createdBy: FieldRef<"Store", 'String'>
@@ -13204,13 +13200,13 @@ export namespace Prisma {
     id: 'id',
     type: 'type',
     name: 'name',
-    address: 'address',
     provinceCode: 'provinceCode',
     cityCode: 'cityCode',
-    districtCode: 'districtCode',
+    regionCode: 'regionCode',
     province: 'province',
     city: 'city',
-    district: 'district',
+    region: 'region',
+    address: 'address',
     longitude: 'longitude',
     latitude: 'latitude',
     seatCount: 'seatCount',
@@ -13374,6 +13370,13 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
   export const UserOrderByRelevanceFieldEnum: {
     id: 'id',
     openId: 'openId',
@@ -13399,22 +13402,38 @@ export namespace Prisma {
   export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
 
 
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+  export const QueryMode: {
+    default: 'default',
+    insensitive: 'insensitive'
+  };
+
+  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
   export const StoreOrderByRelevanceFieldEnum: {
     id: 'id',
     name: 'name',
-    address: 'address',
     provinceCode: 'provinceCode',
     cityCode: 'cityCode',
-    districtCode: 'districtCode',
+    regionCode: 'regionCode',
     province: 'province',
     city: 'city',
-    district: 'district',
+    region: 'region',
+    address: 'address',
     phone: 'phone',
     openTime: 'openTime',
     closeTime: 'closeTime',
     features: 'features',
     promotion: 'promotion',
-    coverImages: 'coverImages',
     description: 'description',
     userId: 'userId',
     createdBy: 'createdBy'
@@ -13561,6 +13580,20 @@ export namespace Prisma {
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
   /**
    * Deep Input Types
@@ -13758,13 +13791,13 @@ export namespace Prisma {
     id?: StringFilter<"Store"> | string
     type?: IntFilter<"Store"> | number
     name?: StringFilter<"Store"> | string
-    address?: StringFilter<"Store"> | string
     provinceCode?: StringFilter<"Store"> | string
     cityCode?: StringFilter<"Store"> | string
-    districtCode?: StringFilter<"Store"> | string
+    regionCode?: StringFilter<"Store"> | string
     province?: StringFilter<"Store"> | string
     city?: StringFilter<"Store"> | string
-    district?: StringFilter<"Store"> | string
+    region?: StringFilter<"Store"> | string
+    address?: StringFilter<"Store"> | string
     longitude?: FloatFilter<"Store"> | number
     latitude?: FloatFilter<"Store"> | number
     seatCount?: IntFilter<"Store"> | number
@@ -13778,7 +13811,7 @@ export namespace Prisma {
     price?: IntFilter<"Store"> | number
     reviews?: IntFilter<"Store"> | number
     sales?: IntFilter<"Store"> | number
-    coverImages?: StringFilter<"Store"> | string
+    coverImages?: JsonFilter<"Store">
     description?: StringFilter<"Store"> | string
     userId?: StringFilter<"Store"> | string
     createdBy?: StringFilter<"Store"> | string
@@ -13797,13 +13830,13 @@ export namespace Prisma {
     id?: SortOrder
     type?: SortOrder
     name?: SortOrder
-    address?: SortOrder
     provinceCode?: SortOrder
     cityCode?: SortOrder
-    districtCode?: SortOrder
+    regionCode?: SortOrder
     province?: SortOrder
     city?: SortOrder
-    district?: SortOrder
+    region?: SortOrder
+    address?: SortOrder
     longitude?: SortOrder
     latitude?: SortOrder
     seatCount?: SortOrder
@@ -13840,13 +13873,13 @@ export namespace Prisma {
     NOT?: StoreWhereInput | StoreWhereInput[]
     type?: IntFilter<"Store"> | number
     name?: StringFilter<"Store"> | string
-    address?: StringFilter<"Store"> | string
     provinceCode?: StringFilter<"Store"> | string
     cityCode?: StringFilter<"Store"> | string
-    districtCode?: StringFilter<"Store"> | string
+    regionCode?: StringFilter<"Store"> | string
     province?: StringFilter<"Store"> | string
     city?: StringFilter<"Store"> | string
-    district?: StringFilter<"Store"> | string
+    region?: StringFilter<"Store"> | string
+    address?: StringFilter<"Store"> | string
     longitude?: FloatFilter<"Store"> | number
     latitude?: FloatFilter<"Store"> | number
     seatCount?: IntFilter<"Store"> | number
@@ -13860,7 +13893,7 @@ export namespace Prisma {
     price?: IntFilter<"Store"> | number
     reviews?: IntFilter<"Store"> | number
     sales?: IntFilter<"Store"> | number
-    coverImages?: StringFilter<"Store"> | string
+    coverImages?: JsonFilter<"Store">
     description?: StringFilter<"Store"> | string
     userId?: StringFilter<"Store"> | string
     createdBy?: StringFilter<"Store"> | string
@@ -13879,13 +13912,13 @@ export namespace Prisma {
     id?: SortOrder
     type?: SortOrder
     name?: SortOrder
-    address?: SortOrder
     provinceCode?: SortOrder
     cityCode?: SortOrder
-    districtCode?: SortOrder
+    regionCode?: SortOrder
     province?: SortOrder
     city?: SortOrder
-    district?: SortOrder
+    region?: SortOrder
+    address?: SortOrder
     longitude?: SortOrder
     latitude?: SortOrder
     seatCount?: SortOrder
@@ -13920,13 +13953,13 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Store"> | string
     type?: IntWithAggregatesFilter<"Store"> | number
     name?: StringWithAggregatesFilter<"Store"> | string
-    address?: StringWithAggregatesFilter<"Store"> | string
     provinceCode?: StringWithAggregatesFilter<"Store"> | string
     cityCode?: StringWithAggregatesFilter<"Store"> | string
-    districtCode?: StringWithAggregatesFilter<"Store"> | string
+    regionCode?: StringWithAggregatesFilter<"Store"> | string
     province?: StringWithAggregatesFilter<"Store"> | string
     city?: StringWithAggregatesFilter<"Store"> | string
-    district?: StringWithAggregatesFilter<"Store"> | string
+    region?: StringWithAggregatesFilter<"Store"> | string
+    address?: StringWithAggregatesFilter<"Store"> | string
     longitude?: FloatWithAggregatesFilter<"Store"> | number
     latitude?: FloatWithAggregatesFilter<"Store"> | number
     seatCount?: IntWithAggregatesFilter<"Store"> | number
@@ -13940,7 +13973,7 @@ export namespace Prisma {
     price?: IntWithAggregatesFilter<"Store"> | number
     reviews?: IntWithAggregatesFilter<"Store"> | number
     sales?: IntWithAggregatesFilter<"Store"> | number
-    coverImages?: StringWithAggregatesFilter<"Store"> | string
+    coverImages?: JsonWithAggregatesFilter<"Store">
     description?: StringWithAggregatesFilter<"Store"> | string
     userId?: StringWithAggregatesFilter<"Store"> | string
     createdBy?: StringWithAggregatesFilter<"Store"> | string
@@ -14885,13 +14918,13 @@ export namespace Prisma {
     id?: string
     type?: number
     name?: string
-    address?: string
     provinceCode?: string
     cityCode?: string
-    districtCode?: string
+    regionCode?: string
     province?: string
     city?: string
-    district?: string
+    region?: string
+    address?: string
     longitude?: number
     latitude?: number
     seatCount?: number
@@ -14905,7 +14938,7 @@ export namespace Prisma {
     price?: number
     reviews?: number
     sales?: number
-    coverImages?: string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: string
     createdBy?: string
     createdTime?: bigint | number
@@ -14923,13 +14956,13 @@ export namespace Prisma {
     id?: string
     type?: number
     name?: string
-    address?: string
     provinceCode?: string
     cityCode?: string
-    districtCode?: string
+    regionCode?: string
     province?: string
     city?: string
-    district?: string
+    region?: string
+    address?: string
     longitude?: number
     latitude?: number
     seatCount?: number
@@ -14943,7 +14976,7 @@ export namespace Prisma {
     price?: number
     reviews?: number
     sales?: number
-    coverImages?: string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: string
     userId?: string
     createdBy?: string
@@ -14961,13 +14994,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -14981,7 +15014,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -14999,13 +15032,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -15019,7 +15052,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
@@ -15037,13 +15070,13 @@ export namespace Prisma {
     id?: string
     type?: number
     name?: string
-    address?: string
     provinceCode?: string
     cityCode?: string
-    districtCode?: string
+    regionCode?: string
     province?: string
     city?: string
-    district?: string
+    region?: string
+    address?: string
     longitude?: number
     latitude?: number
     seatCount?: number
@@ -15057,7 +15090,7 @@ export namespace Prisma {
     price?: number
     reviews?: number
     sales?: number
-    coverImages?: string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: string
     userId?: string
     createdBy?: string
@@ -15070,13 +15103,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -15090,7 +15123,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15102,13 +15135,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -15122,7 +15155,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
@@ -16161,6 +16194,29 @@ export namespace Prisma {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
+  export type JsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type AreaListRelationFilter = {
     every?: AreaWhereInput
@@ -16227,13 +16283,13 @@ export namespace Prisma {
     id?: SortOrder
     type?: SortOrder
     name?: SortOrder
-    address?: SortOrder
     provinceCode?: SortOrder
     cityCode?: SortOrder
-    districtCode?: SortOrder
+    regionCode?: SortOrder
     province?: SortOrder
     city?: SortOrder
-    district?: SortOrder
+    region?: SortOrder
+    address?: SortOrder
     longitude?: SortOrder
     latitude?: SortOrder
     seatCount?: SortOrder
@@ -16273,13 +16329,13 @@ export namespace Prisma {
     id?: SortOrder
     type?: SortOrder
     name?: SortOrder
-    address?: SortOrder
     provinceCode?: SortOrder
     cityCode?: SortOrder
-    districtCode?: SortOrder
+    regionCode?: SortOrder
     province?: SortOrder
     city?: SortOrder
-    district?: SortOrder
+    region?: SortOrder
+    address?: SortOrder
     longitude?: SortOrder
     latitude?: SortOrder
     seatCount?: SortOrder
@@ -16293,7 +16349,6 @@ export namespace Prisma {
     price?: SortOrder
     reviews?: SortOrder
     sales?: SortOrder
-    coverImages?: SortOrder
     description?: SortOrder
     userId?: SortOrder
     createdBy?: SortOrder
@@ -16306,13 +16361,13 @@ export namespace Prisma {
     id?: SortOrder
     type?: SortOrder
     name?: SortOrder
-    address?: SortOrder
     provinceCode?: SortOrder
     cityCode?: SortOrder
-    districtCode?: SortOrder
+    regionCode?: SortOrder
     province?: SortOrder
     city?: SortOrder
-    district?: SortOrder
+    region?: SortOrder
+    address?: SortOrder
     longitude?: SortOrder
     latitude?: SortOrder
     seatCount?: SortOrder
@@ -16326,7 +16381,6 @@ export namespace Prisma {
     price?: SortOrder
     reviews?: SortOrder
     sales?: SortOrder
-    coverImages?: SortOrder
     description?: SortOrder
     userId?: SortOrder
     createdBy?: SortOrder
@@ -16370,6 +16424,32 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
   }
 
   export type StoreScalarRelationFilter = {
@@ -17810,6 +17890,29 @@ export namespace Prisma {
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
   }
+  export type NestedJsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
@@ -17859,13 +17962,13 @@ export namespace Prisma {
     id?: string
     type?: number
     name?: string
-    address?: string
     provinceCode?: string
     cityCode?: string
-    districtCode?: string
+    regionCode?: string
     province?: string
     city?: string
-    district?: string
+    region?: string
+    address?: string
     longitude?: number
     latitude?: number
     seatCount?: number
@@ -17879,7 +17982,7 @@ export namespace Prisma {
     price?: number
     reviews?: number
     sales?: number
-    coverImages?: string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: string
     createdBy?: string
     createdTime?: bigint | number
@@ -17896,13 +17999,13 @@ export namespace Prisma {
     id?: string
     type?: number
     name?: string
-    address?: string
     provinceCode?: string
     cityCode?: string
-    districtCode?: string
+    regionCode?: string
     province?: string
     city?: string
-    district?: string
+    region?: string
+    address?: string
     longitude?: number
     latitude?: number
     seatCount?: number
@@ -17916,7 +18019,7 @@ export namespace Prisma {
     price?: number
     reviews?: number
     sales?: number
-    coverImages?: string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: string
     createdBy?: string
     createdTime?: bigint | number
@@ -18032,13 +18135,13 @@ export namespace Prisma {
     id?: StringFilter<"Store"> | string
     type?: IntFilter<"Store"> | number
     name?: StringFilter<"Store"> | string
-    address?: StringFilter<"Store"> | string
     provinceCode?: StringFilter<"Store"> | string
     cityCode?: StringFilter<"Store"> | string
-    districtCode?: StringFilter<"Store"> | string
+    regionCode?: StringFilter<"Store"> | string
     province?: StringFilter<"Store"> | string
     city?: StringFilter<"Store"> | string
-    district?: StringFilter<"Store"> | string
+    region?: StringFilter<"Store"> | string
+    address?: StringFilter<"Store"> | string
     longitude?: FloatFilter<"Store"> | number
     latitude?: FloatFilter<"Store"> | number
     seatCount?: IntFilter<"Store"> | number
@@ -18052,7 +18155,7 @@ export namespace Prisma {
     price?: IntFilter<"Store"> | number
     reviews?: IntFilter<"Store"> | number
     sales?: IntFilter<"Store"> | number
-    coverImages?: StringFilter<"Store"> | string
+    coverImages?: JsonFilter<"Store">
     description?: StringFilter<"Store"> | string
     userId?: StringFilter<"Store"> | string
     createdBy?: StringFilter<"Store"> | string
@@ -18675,13 +18778,13 @@ export namespace Prisma {
     id?: string
     type?: number
     name?: string
-    address?: string
     provinceCode?: string
     cityCode?: string
-    districtCode?: string
+    regionCode?: string
     province?: string
     city?: string
-    district?: string
+    region?: string
+    address?: string
     longitude?: number
     latitude?: number
     seatCount?: number
@@ -18695,7 +18798,7 @@ export namespace Prisma {
     price?: number
     reviews?: number
     sales?: number
-    coverImages?: string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: string
     createdBy?: string
     createdTime?: bigint | number
@@ -18712,13 +18815,13 @@ export namespace Prisma {
     id?: string
     type?: number
     name?: string
-    address?: string
     provinceCode?: string
     cityCode?: string
-    districtCode?: string
+    regionCode?: string
     province?: string
     city?: string
-    district?: string
+    region?: string
+    address?: string
     longitude?: number
     latitude?: number
     seatCount?: number
@@ -18732,7 +18835,7 @@ export namespace Prisma {
     price?: number
     reviews?: number
     sales?: number
-    coverImages?: string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: string
     userId?: string
     createdBy?: string
@@ -18781,13 +18884,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -18801,7 +18904,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -18818,13 +18921,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -18838,7 +18941,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
@@ -18932,13 +19035,13 @@ export namespace Prisma {
     id?: string
     type?: number
     name?: string
-    address?: string
     provinceCode?: string
     cityCode?: string
-    districtCode?: string
+    regionCode?: string
     province?: string
     city?: string
-    district?: string
+    region?: string
+    address?: string
     longitude?: number
     latitude?: number
     seatCount?: number
@@ -18952,7 +19055,7 @@ export namespace Prisma {
     price?: number
     reviews?: number
     sales?: number
-    coverImages?: string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: string
     createdBy?: string
     createdTime?: bigint | number
@@ -18969,13 +19072,13 @@ export namespace Prisma {
     id?: string
     type?: number
     name?: string
-    address?: string
     provinceCode?: string
     cityCode?: string
-    districtCode?: string
+    regionCode?: string
     province?: string
     city?: string
-    district?: string
+    region?: string
+    address?: string
     longitude?: number
     latitude?: number
     seatCount?: number
@@ -18989,7 +19092,7 @@ export namespace Prisma {
     price?: number
     reviews?: number
     sales?: number
-    coverImages?: string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: string
     userId?: string
     createdBy?: string
@@ -19077,13 +19180,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -19097,7 +19200,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -19114,13 +19217,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -19134,7 +19237,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
@@ -19649,13 +19752,13 @@ export namespace Prisma {
     id?: string
     type?: number
     name?: string
-    address?: string
     provinceCode?: string
     cityCode?: string
-    districtCode?: string
+    regionCode?: string
     province?: string
     city?: string
-    district?: string
+    region?: string
+    address?: string
     longitude?: number
     latitude?: number
     seatCount?: number
@@ -19669,7 +19772,7 @@ export namespace Prisma {
     price?: number
     reviews?: number
     sales?: number
-    coverImages?: string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: string
     createdBy?: string
     createdTime?: bigint | number
@@ -19686,13 +19789,13 @@ export namespace Prisma {
     id?: string
     type?: number
     name?: string
-    address?: string
     provinceCode?: string
     cityCode?: string
-    districtCode?: string
+    regionCode?: string
     province?: string
     city?: string
-    district?: string
+    region?: string
+    address?: string
     longitude?: number
     latitude?: number
     seatCount?: number
@@ -19706,7 +19809,7 @@ export namespace Prisma {
     price?: number
     reviews?: number
     sales?: number
-    coverImages?: string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: string
     userId?: string
     createdBy?: string
@@ -19766,13 +19869,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -19786,7 +19889,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -19803,13 +19906,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -19823,7 +19926,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
@@ -19873,13 +19976,13 @@ export namespace Prisma {
     id?: string
     type?: number
     name?: string
-    address?: string
     provinceCode?: string
     cityCode?: string
-    districtCode?: string
+    regionCode?: string
     province?: string
     city?: string
-    district?: string
+    region?: string
+    address?: string
     longitude?: number
     latitude?: number
     seatCount?: number
@@ -19893,7 +19996,7 @@ export namespace Prisma {
     price?: number
     reviews?: number
     sales?: number
-    coverImages?: string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: string
     createdBy?: string
     createdTime?: bigint | number
@@ -19910,13 +20013,13 @@ export namespace Prisma {
     id?: string
     type?: number
     name?: string
-    address?: string
     provinceCode?: string
     cityCode?: string
-    districtCode?: string
+    regionCode?: string
     province?: string
     city?: string
-    district?: string
+    region?: string
+    address?: string
     longitude?: number
     latitude?: number
     seatCount?: number
@@ -19930,7 +20033,7 @@ export namespace Prisma {
     price?: number
     reviews?: number
     sales?: number
-    coverImages?: string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: string
     userId?: string
     createdBy?: string
@@ -19997,13 +20100,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -20017,7 +20120,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20034,13 +20137,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -20054,7 +20157,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
@@ -20087,13 +20190,13 @@ export namespace Prisma {
     id?: string
     type?: number
     name?: string
-    address?: string
     provinceCode?: string
     cityCode?: string
-    districtCode?: string
+    regionCode?: string
     province?: string
     city?: string
-    district?: string
+    region?: string
+    address?: string
     longitude?: number
     latitude?: number
     seatCount?: number
@@ -20107,7 +20210,7 @@ export namespace Prisma {
     price?: number
     reviews?: number
     sales?: number
-    coverImages?: string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: string
     createdBy?: string
     createdTime?: bigint | number
@@ -20124,13 +20227,13 @@ export namespace Prisma {
     id?: string
     type?: number
     name?: string
-    address?: string
     provinceCode?: string
     cityCode?: string
-    districtCode?: string
+    regionCode?: string
     province?: string
     city?: string
-    district?: string
+    region?: string
+    address?: string
     longitude?: number
     latitude?: number
     seatCount?: number
@@ -20144,7 +20247,7 @@ export namespace Prisma {
     price?: number
     reviews?: number
     sales?: number
-    coverImages?: string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: string
     userId?: string
     createdBy?: string
@@ -20177,13 +20280,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -20197,7 +20300,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20214,13 +20317,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -20234,7 +20337,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
@@ -20251,13 +20354,13 @@ export namespace Prisma {
     id?: string
     type?: number
     name?: string
-    address?: string
     provinceCode?: string
     cityCode?: string
-    districtCode?: string
+    regionCode?: string
     province?: string
     city?: string
-    district?: string
+    region?: string
+    address?: string
     longitude?: number
     latitude?: number
     seatCount?: number
@@ -20271,7 +20374,7 @@ export namespace Prisma {
     price?: number
     reviews?: number
     sales?: number
-    coverImages?: string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: string
     createdBy?: string
     createdTime?: bigint | number
@@ -20308,13 +20411,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -20328,7 +20431,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20345,13 +20448,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -20365,7 +20468,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20382,13 +20485,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
     provinceCode?: StringFieldUpdateOperationsInput | string
     cityCode?: StringFieldUpdateOperationsInput | string
-    districtCode?: StringFieldUpdateOperationsInput | string
+    regionCode?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
-    district?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     longitude?: FloatFieldUpdateOperationsInput | number
     latitude?: FloatFieldUpdateOperationsInput | number
     seatCount?: IntFieldUpdateOperationsInput | number
@@ -20402,7 +20505,7 @@ export namespace Prisma {
     price?: IntFieldUpdateOperationsInput | number
     reviews?: IntFieldUpdateOperationsInput | number
     sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: StringFieldUpdateOperationsInput | string
+    coverImages?: JsonNullValueInput | InputJsonValue
     description?: StringFieldUpdateOperationsInput | string
     createdBy?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number

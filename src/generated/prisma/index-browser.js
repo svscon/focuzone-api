@@ -156,13 +156,13 @@ exports.Prisma.StoreScalarFieldEnum = {
   id: 'id',
   type: 'type',
   name: 'name',
-  address: 'address',
   provinceCode: 'provinceCode',
   cityCode: 'cityCode',
-  districtCode: 'districtCode',
+  regionCode: 'regionCode',
   province: 'province',
   city: 'city',
-  district: 'district',
+  region: 'region',
+  address: 'address',
   longitude: 'longitude',
   latitude: 'latitude',
   seatCount: 'seatCount',
@@ -296,6 +296,10 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
 exports.Prisma.UserOrderByRelevanceFieldEnum = {
   id: 'id',
   openId: 'openId',
@@ -318,22 +322,32 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   createdBy: 'createdBy'
 };
 
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
 exports.Prisma.StoreOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name',
-  address: 'address',
   provinceCode: 'provinceCode',
   cityCode: 'cityCode',
-  districtCode: 'districtCode',
+  regionCode: 'regionCode',
   province: 'province',
   city: 'city',
-  district: 'district',
+  region: 'region',
+  address: 'address',
   phone: 'phone',
   openTime: 'openTime',
   closeTime: 'closeTime',
   features: 'features',
   promotion: 'promotion',
-  coverImages: 'coverImages',
   description: 'description',
   userId: 'userId',
   createdBy: 'createdBy'
