@@ -174,12 +174,19 @@ exports.Prisma.StoreScalarFieldEnum = {
   features: 'features',
   promotion: 'promotion',
   price: 'price',
-  reviews: 'reviews',
-  sales: 'sales',
+  commentCount: 'commentCount',
+  saleCount: 'saleCount',
   coverImages: 'coverImages',
+  layoutImage: 'layoutImage',
   description: 'description',
   userId: 'userId',
-  createdBy: 'createdBy',
+  reviewUserId: 'reviewUserId',
+  reviewUserName: 'reviewUserName',
+  reviewStatus: 'reviewStatus',
+  reviewTime: 'reviewTime',
+  reviewRemark: 'reviewRemark',
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName',
   createdTime: 'createdTime',
   updatedTime: 'updatedTime',
   deletedTime: 'deletedTime'
@@ -193,7 +200,8 @@ exports.Prisma.AreaScalarFieldEnum = {
   sort: 'sort',
   isActive: 'isActive',
   description: 'description',
-  createdBy: 'createdBy',
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName',
   createdTime: 'createdTime',
   updatedTime: 'updatedTime',
   deletedTime: 'deletedTime'
@@ -212,7 +220,8 @@ exports.Prisma.SeatScalarFieldEnum = {
   hasPower: 'hasPower',
   status: 'status',
   description: 'description',
-  createdBy: 'createdBy',
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName',
   createdTime: 'createdTime',
   updatedTime: 'updatedTime',
   deletedTime: 'deletedTime'
@@ -223,7 +232,8 @@ exports.Prisma.CardScalarFieldEnum = {
   name: 'name',
   type: 'type',
   description: 'description',
-  createdBy: 'createdBy',
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName',
   createdTime: 'createdTime',
   updatedTime: 'updatedTime',
   deletedTime: 'deletedTime'
@@ -233,6 +243,8 @@ exports.Prisma.UserCardScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   cardId: 'cardId',
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName',
   createdTime: 'createdTime',
   updatedTime: 'updatedTime',
   deletedTime: 'deletedTime'
@@ -251,6 +263,8 @@ exports.Prisma.UserOrderScalarFieldEnum = {
   payMethod: 'payMethod',
   price: 'price',
   status: 'status',
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName',
   createdTime: 'createdTime',
   updatedTime: 'updatedTime',
   deletedTime: 'deletedTime'
@@ -263,7 +277,8 @@ exports.Prisma.AttachmentScalarFieldEnum = {
   name: 'name',
   type: 'type',
   description: 'description',
-  createdBy: 'createdBy',
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName',
   createdTime: 'createdTime',
   updatedTime: 'updatedTime',
   deletedTime: 'deletedTime'
@@ -274,7 +289,8 @@ exports.Prisma.NoticeScalarFieldEnum = {
   storeId: 'storeId',
   title: 'title',
   content: 'content',
-  createdBy: 'createdBy',
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName',
   createdTime: 'createdTime',
   updatedTime: 'updatedTime',
   deletedTime: 'deletedTime'
@@ -285,7 +301,8 @@ exports.Prisma.CommentScalarFieldEnum = {
   storeId: 'storeId',
   type: 'type',
   content: 'content',
-  createdBy: 'createdBy',
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName',
   createdTime: 'createdTime',
   updatedTime: 'updatedTime',
   deletedTime: 'deletedTime'
@@ -296,7 +313,8 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.JsonNullValueInput = {
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
   JsonNull: Prisma.JsonNull
 };
 
@@ -333,6 +351,11 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 exports.Prisma.StoreOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name',
@@ -350,7 +373,11 @@ exports.Prisma.StoreOrderByRelevanceFieldEnum = {
   promotion: 'promotion',
   description: 'description',
   userId: 'userId',
-  createdBy: 'createdBy'
+  reviewUserId: 'reviewUserId',
+  reviewUserName: 'reviewUserName',
+  reviewRemark: 'reviewRemark',
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName'
 };
 
 exports.Prisma.AreaOrderByRelevanceFieldEnum = {
@@ -358,7 +385,8 @@ exports.Prisma.AreaOrderByRelevanceFieldEnum = {
   storeId: 'storeId',
   name: 'name',
   description: 'description',
-  createdBy: 'createdBy'
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName'
 };
 
 exports.Prisma.SeatOrderByRelevanceFieldEnum = {
@@ -367,20 +395,24 @@ exports.Prisma.SeatOrderByRelevanceFieldEnum = {
   areaId: 'areaId',
   seatNo: 'seatNo',
   description: 'description',
-  createdBy: 'createdBy'
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName'
 };
 
 exports.Prisma.CardOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name',
   description: 'description',
-  createdBy: 'createdBy'
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName'
 };
 
 exports.Prisma.UserCardOrderByRelevanceFieldEnum = {
   id: 'id',
   userId: 'userId',
-  cardId: 'cardId'
+  cardId: 'cardId',
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName'
 };
 
 exports.Prisma.UserOrderOrderByRelevanceFieldEnum = {
@@ -388,12 +420,9 @@ exports.Prisma.UserOrderOrderByRelevanceFieldEnum = {
   storeId: 'storeId',
   areaId: 'areaId',
   seatId: 'seatId',
-  userId: 'userId'
-};
-
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
+  userId: 'userId',
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName'
 };
 
 exports.Prisma.AttachmentOrderByRelevanceFieldEnum = {
@@ -402,7 +431,8 @@ exports.Prisma.AttachmentOrderByRelevanceFieldEnum = {
   noticeId: 'noticeId',
   name: 'name',
   description: 'description',
-  createdBy: 'createdBy'
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName'
 };
 
 exports.Prisma.NoticeOrderByRelevanceFieldEnum = {
@@ -410,14 +440,16 @@ exports.Prisma.NoticeOrderByRelevanceFieldEnum = {
   storeId: 'storeId',
   title: 'title',
   content: 'content',
-  createdBy: 'createdBy'
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName'
 };
 
 exports.Prisma.CommentOrderByRelevanceFieldEnum = {
   id: 'id',
   storeId: 'storeId',
   content: 'content',
-  createdBy: 'createdBy'
+  createdUserId: 'createdUserId',
+  createdUserName: 'createdUserName'
 };
 
 

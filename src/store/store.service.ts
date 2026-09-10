@@ -7,11 +7,12 @@ import { Prisma } from '@/generated/prisma';
 export class StoreService {
   constructor(private readonly prisma: PrismaService) { }
 
-  async create(dto: CreateStoreDto) {
+  async create(dto: CreateStoreDto, userId: string) {
     const now = BigInt(Date.now());
     return this.prisma.store.create({
       data: {
         ...dto,
+        userId: userId,
         createdTime: Number(now),
         updatedTime: Number(now),
         deletedTime: Number(0),
@@ -56,21 +57,23 @@ export class StoreService {
     });
   }
 
-  async update(id: string, dto: UpdateStoreDto) {
+  async update(id: string, dto: UpdateStoreDto, userId: string) {
     return this.prisma.store.update({
       where: { id },
       data: {
         ...dto,
+        userId: userId,
         updatedTime: Number(Date.now()),
       },
     });
   }
 
   /** 软删除 */
-  async remove(id: string) {
+  async remove(id: string, userId: string) {
     return this.prisma.store.update({
       where: { id },
       data: {
+        userId: userId,
         deletedTime: Number(Date.now()),
         updatedTime: Number(Date.now()),
       },

@@ -1889,6 +1889,7 @@ export namespace Prisma {
     balance: number | null
     points: number | null
     sex: number | null
+    birth: number | null
     lastLoginTime: number | null
     loginCount: number | null
     createdTime: number | null
@@ -1901,6 +1902,7 @@ export namespace Prisma {
     balance: bigint | null
     points: number | null
     sex: number | null
+    birth: bigint | null
     lastLoginTime: bigint | null
     loginCount: number | null
     createdTime: bigint | null
@@ -1922,7 +1924,7 @@ export namespace Prisma {
     cardId: string | null
     nation: string | null
     sex: number | null
-    birth: Date | null
+    birth: bigint | null
     qq: string | null
     email: string | null
     province: string | null
@@ -1954,7 +1956,7 @@ export namespace Prisma {
     cardId: string | null
     nation: string | null
     sex: number | null
-    birth: Date | null
+    birth: bigint | null
     qq: string | null
     email: string | null
     province: string | null
@@ -2011,6 +2013,7 @@ export namespace Prisma {
     balance?: true
     points?: true
     sex?: true
+    birth?: true
     lastLoginTime?: true
     loginCount?: true
     createdTime?: true
@@ -2023,6 +2026,7 @@ export namespace Prisma {
     balance?: true
     points?: true
     sex?: true
+    birth?: true
     lastLoginTime?: true
     loginCount?: true
     createdTime?: true
@@ -2227,7 +2231,7 @@ export namespace Prisma {
     cardId: string
     nation: string
     sex: number
-    birth: Date
+    birth: bigint
     qq: string
     email: string
     province: string
@@ -2363,7 +2367,7 @@ export namespace Prisma {
       cardId: string
       nation: string
       sex: number
-      birth: Date
+      birth: bigint
       qq: string
       email: string
       province: string
@@ -2764,7 +2768,7 @@ export namespace Prisma {
     readonly cardId: FieldRef<"User", 'String'>
     readonly nation: FieldRef<"User", 'String'>
     readonly sex: FieldRef<"User", 'Int'>
-    readonly birth: FieldRef<"User", 'DateTime'>
+    readonly birth: FieldRef<"User", 'BigInt'>
     readonly qq: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly province: FieldRef<"User", 'String'>
@@ -3236,8 +3240,10 @@ export namespace Prisma {
     latitude: number | null
     seatCount: number | null
     price: number | null
-    reviews: number | null
-    sales: number | null
+    commentCount: number | null
+    saleCount: number | null
+    reviewStatus: number | null
+    reviewTime: number | null
     createdTime: number | null
     updatedTime: number | null
     deletedTime: number | null
@@ -3249,8 +3255,10 @@ export namespace Prisma {
     latitude: number | null
     seatCount: number | null
     price: number | null
-    reviews: number | null
-    sales: number | null
+    commentCount: number | null
+    saleCount: number | null
+    reviewStatus: number | null
+    reviewTime: bigint | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -3278,11 +3286,17 @@ export namespace Prisma {
     features: string | null
     promotion: string | null
     price: number | null
-    reviews: number | null
-    sales: number | null
+    commentCount: number | null
+    saleCount: number | null
     description: string | null
     userId: string | null
-    createdBy: string | null
+    reviewUserId: string | null
+    reviewUserName: string | null
+    reviewStatus: number | null
+    reviewTime: bigint | null
+    reviewRemark: string | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -3310,11 +3324,17 @@ export namespace Prisma {
     features: string | null
     promotion: string | null
     price: number | null
-    reviews: number | null
-    sales: number | null
+    commentCount: number | null
+    saleCount: number | null
     description: string | null
     userId: string | null
-    createdBy: string | null
+    reviewUserId: string | null
+    reviewUserName: string | null
+    reviewStatus: number | null
+    reviewTime: bigint | null
+    reviewRemark: string | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -3342,12 +3362,19 @@ export namespace Prisma {
     features: number
     promotion: number
     price: number
-    reviews: number
-    sales: number
+    commentCount: number
+    saleCount: number
     coverImages: number
+    layoutImage: number
     description: number
     userId: number
-    createdBy: number
+    reviewUserId: number
+    reviewUserName: number
+    reviewStatus: number
+    reviewTime: number
+    reviewRemark: number
+    createdUserId: number
+    createdUserName: number
     createdTime: number
     updatedTime: number
     deletedTime: number
@@ -3361,8 +3388,10 @@ export namespace Prisma {
     latitude?: true
     seatCount?: true
     price?: true
-    reviews?: true
-    sales?: true
+    commentCount?: true
+    saleCount?: true
+    reviewStatus?: true
+    reviewTime?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -3374,8 +3403,10 @@ export namespace Prisma {
     latitude?: true
     seatCount?: true
     price?: true
-    reviews?: true
-    sales?: true
+    commentCount?: true
+    saleCount?: true
+    reviewStatus?: true
+    reviewTime?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -3403,11 +3434,17 @@ export namespace Prisma {
     features?: true
     promotion?: true
     price?: true
-    reviews?: true
-    sales?: true
+    commentCount?: true
+    saleCount?: true
     description?: true
     userId?: true
-    createdBy?: true
+    reviewUserId?: true
+    reviewUserName?: true
+    reviewStatus?: true
+    reviewTime?: true
+    reviewRemark?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -3435,11 +3472,17 @@ export namespace Prisma {
     features?: true
     promotion?: true
     price?: true
-    reviews?: true
-    sales?: true
+    commentCount?: true
+    saleCount?: true
     description?: true
     userId?: true
-    createdBy?: true
+    reviewUserId?: true
+    reviewUserName?: true
+    reviewStatus?: true
+    reviewTime?: true
+    reviewRemark?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -3467,12 +3510,19 @@ export namespace Prisma {
     features?: true
     promotion?: true
     price?: true
-    reviews?: true
-    sales?: true
+    commentCount?: true
+    saleCount?: true
     coverImages?: true
+    layoutImage?: true
     description?: true
     userId?: true
-    createdBy?: true
+    reviewUserId?: true
+    reviewUserName?: true
+    reviewStatus?: true
+    reviewTime?: true
+    reviewRemark?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -3587,12 +3637,19 @@ export namespace Prisma {
     features: string
     promotion: string
     price: number
-    reviews: number
-    sales: number
-    coverImages: JsonValue
-    description: string
+    commentCount: number
+    saleCount: number
+    coverImages: JsonValue | null
+    layoutImage: JsonValue | null
+    description: string | null
     userId: string
-    createdBy: string
+    reviewUserId: string
+    reviewUserName: string
+    reviewStatus: number
+    reviewTime: bigint
+    reviewRemark: string
+    createdUserId: string
+    createdUserName: string
     createdTime: bigint
     updatedTime: bigint
     deletedTime: bigint
@@ -3639,12 +3696,19 @@ export namespace Prisma {
     features?: boolean
     promotion?: boolean
     price?: boolean
-    reviews?: boolean
-    sales?: boolean
+    commentCount?: boolean
+    saleCount?: boolean
     coverImages?: boolean
+    layoutImage?: boolean
     description?: boolean
     userId?: boolean
-    createdBy?: boolean
+    reviewUserId?: boolean
+    reviewUserName?: boolean
+    reviewStatus?: boolean
+    reviewTime?: boolean
+    reviewRemark?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
@@ -3681,18 +3745,25 @@ export namespace Prisma {
     features?: boolean
     promotion?: boolean
     price?: boolean
-    reviews?: boolean
-    sales?: boolean
+    commentCount?: boolean
+    saleCount?: boolean
     coverImages?: boolean
+    layoutImage?: boolean
     description?: boolean
     userId?: boolean
-    createdBy?: boolean
+    reviewUserId?: boolean
+    reviewUserName?: boolean
+    reviewStatus?: boolean
+    reviewTime?: boolean
+    reviewRemark?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
   }
 
-  export type StoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "name" | "provinceCode" | "cityCode" | "regionCode" | "province" | "city" | "region" | "address" | "longitude" | "latitude" | "seatCount" | "phone" | "is24Hours" | "openTime" | "closeTime" | "isActive" | "features" | "promotion" | "price" | "reviews" | "sales" | "coverImages" | "description" | "userId" | "createdBy" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["store"]>
+  export type StoreOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "name" | "provinceCode" | "cityCode" | "regionCode" | "province" | "city" | "region" | "address" | "longitude" | "latitude" | "seatCount" | "phone" | "is24Hours" | "openTime" | "closeTime" | "isActive" | "features" | "promotion" | "price" | "commentCount" | "saleCount" | "coverImages" | "layoutImage" | "description" | "userId" | "reviewUserId" | "reviewUserName" | "reviewStatus" | "reviewTime" | "reviewRemark" | "createdUserId" | "createdUserName" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["store"]>
   export type StoreInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     areas?: boolean | Store$areasArgs<ExtArgs>
     seats?: boolean | Store$seatsArgs<ExtArgs>
@@ -3735,12 +3806,19 @@ export namespace Prisma {
       features: string
       promotion: string
       price: number
-      reviews: number
-      sales: number
-      coverImages: Prisma.JsonValue
-      description: string
+      commentCount: number
+      saleCount: number
+      coverImages: Prisma.JsonValue | null
+      layoutImage: Prisma.JsonValue | null
+      description: string | null
       userId: string
-      createdBy: string
+      reviewUserId: string
+      reviewUserName: string
+      reviewStatus: number
+      reviewTime: bigint
+      reviewRemark: string
+      createdUserId: string
+      createdUserName: string
       createdTime: bigint
       updatedTime: bigint
       deletedTime: bigint
@@ -4140,12 +4218,19 @@ export namespace Prisma {
     readonly features: FieldRef<"Store", 'String'>
     readonly promotion: FieldRef<"Store", 'String'>
     readonly price: FieldRef<"Store", 'Int'>
-    readonly reviews: FieldRef<"Store", 'Int'>
-    readonly sales: FieldRef<"Store", 'Int'>
+    readonly commentCount: FieldRef<"Store", 'Int'>
+    readonly saleCount: FieldRef<"Store", 'Int'>
     readonly coverImages: FieldRef<"Store", 'Json'>
+    readonly layoutImage: FieldRef<"Store", 'Json'>
     readonly description: FieldRef<"Store", 'String'>
     readonly userId: FieldRef<"Store", 'String'>
-    readonly createdBy: FieldRef<"Store", 'String'>
+    readonly reviewUserId: FieldRef<"Store", 'String'>
+    readonly reviewUserName: FieldRef<"Store", 'String'>
+    readonly reviewStatus: FieldRef<"Store", 'Int'>
+    readonly reviewTime: FieldRef<"Store", 'BigInt'>
+    readonly reviewRemark: FieldRef<"Store", 'String'>
+    readonly createdUserId: FieldRef<"Store", 'String'>
+    readonly createdUserName: FieldRef<"Store", 'String'>
     readonly createdTime: FieldRef<"Store", 'BigInt'>
     readonly updatedTime: FieldRef<"Store", 'BigInt'>
     readonly deletedTime: FieldRef<"Store", 'BigInt'>
@@ -4671,7 +4756,8 @@ export namespace Prisma {
     sort: number | null
     isActive: boolean | null
     description: string | null
-    createdBy: string | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -4685,7 +4771,8 @@ export namespace Prisma {
     sort: number | null
     isActive: boolean | null
     description: string | null
-    createdBy: string | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -4699,7 +4786,8 @@ export namespace Prisma {
     sort: number
     isActive: number
     description: number
-    createdBy: number
+    createdUserId: number
+    createdUserName: number
     createdTime: number
     updatedTime: number
     deletedTime: number
@@ -4731,7 +4819,8 @@ export namespace Prisma {
     sort?: true
     isActive?: true
     description?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -4745,7 +4834,8 @@ export namespace Prisma {
     sort?: true
     isActive?: true
     description?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -4759,7 +4849,8 @@ export namespace Prisma {
     sort?: true
     isActive?: true
     description?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -4860,7 +4951,8 @@ export namespace Prisma {
     sort: number
     isActive: boolean
     description: string
-    createdBy: string
+    createdUserId: string
+    createdUserName: string
     createdTime: bigint
     updatedTime: bigint
     deletedTime: bigint
@@ -4893,7 +4985,8 @@ export namespace Prisma {
     sort?: boolean
     isActive?: boolean
     description?: boolean
-    createdBy?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
@@ -4912,13 +5005,14 @@ export namespace Prisma {
     sort?: boolean
     isActive?: boolean
     description?: boolean
-    createdBy?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
   }
 
-  export type AreaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "name" | "seatCount" | "sort" | "isActive" | "description" | "createdBy" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["area"]>
+  export type AreaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "name" | "seatCount" | "sort" | "isActive" | "description" | "createdUserId" | "createdUserName" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["area"]>
   export type AreaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     seats?: boolean | Area$seatsArgs<ExtArgs>
     store?: boolean | StoreDefaultArgs<ExtArgs>
@@ -4939,7 +5033,8 @@ export namespace Prisma {
       sort: number
       isActive: boolean
       description: string
-      createdBy: string
+      createdUserId: string
+      createdUserName: string
       createdTime: bigint
       updatedTime: bigint
       deletedTime: bigint
@@ -5321,7 +5416,8 @@ export namespace Prisma {
     readonly sort: FieldRef<"Area", 'Int'>
     readonly isActive: FieldRef<"Area", 'Boolean'>
     readonly description: FieldRef<"Area", 'String'>
-    readonly createdBy: FieldRef<"Area", 'String'>
+    readonly createdUserId: FieldRef<"Area", 'String'>
+    readonly createdUserName: FieldRef<"Area", 'String'>
     readonly createdTime: FieldRef<"Area", 'BigInt'>
     readonly updatedTime: FieldRef<"Area", 'BigInt'>
     readonly deletedTime: FieldRef<"Area", 'BigInt'>
@@ -5764,7 +5860,8 @@ export namespace Prisma {
     hasPower: boolean | null
     status: number | null
     description: string | null
-    createdBy: string | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -5783,7 +5880,8 @@ export namespace Prisma {
     hasPower: boolean | null
     status: number | null
     description: string | null
-    createdBy: string | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -5802,7 +5900,8 @@ export namespace Prisma {
     hasPower: number
     status: number
     description: number
-    createdBy: number
+    createdUserId: number
+    createdUserName: number
     createdTime: number
     updatedTime: number
     deletedTime: number
@@ -5847,7 +5946,8 @@ export namespace Prisma {
     hasPower?: true
     status?: true
     description?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -5866,7 +5966,8 @@ export namespace Prisma {
     hasPower?: true
     status?: true
     description?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -5885,7 +5986,8 @@ export namespace Prisma {
     hasPower?: true
     status?: true
     description?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -5991,7 +6093,8 @@ export namespace Prisma {
     hasPower: boolean
     status: number
     description: string
-    createdBy: string
+    createdUserId: string
+    createdUserName: string
     createdTime: bigint
     updatedTime: bigint
     deletedTime: bigint
@@ -6029,7 +6132,8 @@ export namespace Prisma {
     hasPower?: boolean
     status?: boolean
     description?: boolean
-    createdBy?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
@@ -6054,13 +6158,14 @@ export namespace Prisma {
     hasPower?: boolean
     status?: boolean
     description?: boolean
-    createdBy?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
   }
 
-  export type SeatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "areaId" | "type" | "seatNo" | "x" | "y" | "width" | "height" | "hasPower" | "status" | "description" | "createdBy" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["seat"]>
+  export type SeatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "areaId" | "type" | "seatNo" | "x" | "y" | "width" | "height" | "hasPower" | "status" | "description" | "createdUserId" | "createdUserName" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["seat"]>
   export type SeatInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     orders?: boolean | Seat$ordersArgs<ExtArgs>
     area?: boolean | AreaDefaultArgs<ExtArgs>
@@ -6088,7 +6193,8 @@ export namespace Prisma {
       hasPower: boolean
       status: number
       description: string
-      createdBy: string
+      createdUserId: string
+      createdUserName: string
       createdTime: bigint
       updatedTime: bigint
       deletedTime: bigint
@@ -6476,7 +6582,8 @@ export namespace Prisma {
     readonly hasPower: FieldRef<"Seat", 'Boolean'>
     readonly status: FieldRef<"Seat", 'Int'>
     readonly description: FieldRef<"Seat", 'String'>
-    readonly createdBy: FieldRef<"Seat", 'String'>
+    readonly createdUserId: FieldRef<"Seat", 'String'>
+    readonly createdUserName: FieldRef<"Seat", 'String'>
     readonly createdTime: FieldRef<"Seat", 'BigInt'>
     readonly updatedTime: FieldRef<"Seat", 'BigInt'>
     readonly deletedTime: FieldRef<"Seat", 'BigInt'>
@@ -6901,7 +7008,8 @@ export namespace Prisma {
     name: string | null
     type: number | null
     description: string | null
-    createdBy: string | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -6912,7 +7020,8 @@ export namespace Prisma {
     name: string | null
     type: number | null
     description: string | null
-    createdBy: string | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -6923,7 +7032,8 @@ export namespace Prisma {
     name: number
     type: number
     description: number
-    createdBy: number
+    createdUserId: number
+    createdUserName: number
     createdTime: number
     updatedTime: number
     deletedTime: number
@@ -6950,7 +7060,8 @@ export namespace Prisma {
     name?: true
     type?: true
     description?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -6961,7 +7072,8 @@ export namespace Prisma {
     name?: true
     type?: true
     description?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -6972,7 +7084,8 @@ export namespace Prisma {
     name?: true
     type?: true
     description?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -7069,8 +7182,9 @@ export namespace Prisma {
     id: string
     name: string
     type: number
-    description: string
-    createdBy: string
+    description: string | null
+    createdUserId: string
+    createdUserName: string
     createdTime: bigint
     updatedTime: bigint
     deletedTime: bigint
@@ -7100,7 +7214,8 @@ export namespace Prisma {
     name?: boolean
     type?: boolean
     description?: boolean
-    createdBy?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
@@ -7115,13 +7230,14 @@ export namespace Prisma {
     name?: boolean
     type?: boolean
     description?: boolean
-    createdBy?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
   }
 
-  export type CardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "type" | "description" | "createdBy" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["card"]>
+  export type CardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "type" | "description" | "createdUserId" | "createdUserName" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["card"]>
   export type CardInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     userCards?: boolean | Card$userCardsArgs<ExtArgs>
     _count?: boolean | CardCountOutputTypeDefaultArgs<ExtArgs>
@@ -7136,8 +7252,9 @@ export namespace Prisma {
       id: string
       name: string
       type: number
-      description: string
-      createdBy: string
+      description: string | null
+      createdUserId: string
+      createdUserName: string
       createdTime: bigint
       updatedTime: bigint
       deletedTime: bigint
@@ -7515,7 +7632,8 @@ export namespace Prisma {
     readonly name: FieldRef<"Card", 'String'>
     readonly type: FieldRef<"Card", 'Int'>
     readonly description: FieldRef<"Card", 'String'>
-    readonly createdBy: FieldRef<"Card", 'String'>
+    readonly createdUserId: FieldRef<"Card", 'String'>
+    readonly createdUserName: FieldRef<"Card", 'String'>
     readonly createdTime: FieldRef<"Card", 'BigInt'>
     readonly updatedTime: FieldRef<"Card", 'BigInt'>
     readonly deletedTime: FieldRef<"Card", 'BigInt'>
@@ -7937,6 +8055,8 @@ export namespace Prisma {
     id: string | null
     userId: string | null
     cardId: string | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -7946,6 +8066,8 @@ export namespace Prisma {
     id: string | null
     userId: string | null
     cardId: string | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -7955,6 +8077,8 @@ export namespace Prisma {
     id: number
     userId: number
     cardId: number
+    createdUserId: number
+    createdUserName: number
     createdTime: number
     updatedTime: number
     deletedTime: number
@@ -7978,6 +8102,8 @@ export namespace Prisma {
     id?: true
     userId?: true
     cardId?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -7987,6 +8113,8 @@ export namespace Prisma {
     id?: true
     userId?: true
     cardId?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -7996,6 +8124,8 @@ export namespace Prisma {
     id?: true
     userId?: true
     cardId?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -8092,6 +8222,8 @@ export namespace Prisma {
     id: string
     userId: string
     cardId: string
+    createdUserId: string
+    createdUserName: string
     createdTime: bigint
     updatedTime: bigint
     deletedTime: bigint
@@ -8120,6 +8252,8 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     cardId?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
@@ -8133,12 +8267,14 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     cardId?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
   }
 
-  export type UserCardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "cardId" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["userCard"]>
+  export type UserCardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "cardId" | "createdUserId" | "createdUserName" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["userCard"]>
   export type UserCardInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     card?: boolean | CardDefaultArgs<ExtArgs>
@@ -8154,6 +8290,8 @@ export namespace Prisma {
       id: string
       userId: string
       cardId: string
+      createdUserId: string
+      createdUserName: string
       createdTime: bigint
       updatedTime: bigint
       deletedTime: bigint
@@ -8531,6 +8669,8 @@ export namespace Prisma {
     readonly id: FieldRef<"UserCard", 'String'>
     readonly userId: FieldRef<"UserCard", 'String'>
     readonly cardId: FieldRef<"UserCard", 'String'>
+    readonly createdUserId: FieldRef<"UserCard", 'String'>
+    readonly createdUserName: FieldRef<"UserCard", 'String'>
     readonly createdTime: FieldRef<"UserCard", 'BigInt'>
     readonly updatedTime: FieldRef<"UserCard", 'BigInt'>
     readonly deletedTime: FieldRef<"UserCard", 'BigInt'>
@@ -8951,6 +9091,8 @@ export namespace Prisma {
     payMethod: number | null
     price: number | null
     status: number | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -8969,6 +9111,8 @@ export namespace Prisma {
     payMethod: number | null
     price: number | null
     status: number | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -8987,6 +9131,8 @@ export namespace Prisma {
     payMethod: number
     price: number
     status: number
+    createdUserId: number
+    createdUserName: number
     createdTime: number
     updatedTime: number
     deletedTime: number
@@ -9033,6 +9179,8 @@ export namespace Prisma {
     payMethod?: true
     price?: true
     status?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -9051,6 +9199,8 @@ export namespace Prisma {
     payMethod?: true
     price?: true
     status?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -9069,6 +9219,8 @@ export namespace Prisma {
     payMethod?: true
     price?: true
     status?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -9174,6 +9326,8 @@ export namespace Prisma {
     payMethod: number
     price: number
     status: number
+    createdUserId: string
+    createdUserName: string
     createdTime: bigint
     updatedTime: bigint
     deletedTime: bigint
@@ -9211,6 +9365,8 @@ export namespace Prisma {
     payMethod?: boolean
     price?: boolean
     status?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
@@ -9233,12 +9389,14 @@ export namespace Prisma {
     payMethod?: boolean
     price?: boolean
     status?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
   }
 
-  export type UserOrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "areaId" | "seatId" | "category" | "userId" | "type" | "startTime" | "endTime" | "payMethod" | "price" | "status" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["userOrder"]>
+  export type UserOrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "areaId" | "seatId" | "category" | "userId" | "type" | "startTime" | "endTime" | "payMethod" | "price" | "status" | "createdUserId" | "createdUserName" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["userOrder"]>
   export type UserOrderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     seat?: boolean | SeatDefaultArgs<ExtArgs>
@@ -9263,6 +9421,8 @@ export namespace Prisma {
       payMethod: number
       price: number
       status: number
+      createdUserId: string
+      createdUserName: string
       createdTime: bigint
       updatedTime: bigint
       deletedTime: bigint
@@ -9649,6 +9809,8 @@ export namespace Prisma {
     readonly payMethod: FieldRef<"UserOrder", 'Int'>
     readonly price: FieldRef<"UserOrder", 'Int'>
     readonly status: FieldRef<"UserOrder", 'Int'>
+    readonly createdUserId: FieldRef<"UserOrder", 'String'>
+    readonly createdUserName: FieldRef<"UserOrder", 'String'>
     readonly createdTime: FieldRef<"UserOrder", 'BigInt'>
     readonly updatedTime: FieldRef<"UserOrder", 'BigInt'>
     readonly deletedTime: FieldRef<"UserOrder", 'BigInt'>
@@ -10051,7 +10213,8 @@ export namespace Prisma {
     name: string | null
     type: number | null
     description: string | null
-    createdBy: string | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -10064,7 +10227,8 @@ export namespace Prisma {
     name: string | null
     type: number | null
     description: string | null
-    createdBy: string | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -10077,7 +10241,8 @@ export namespace Prisma {
     name: number
     type: number
     description: number
-    createdBy: number
+    createdUserId: number
+    createdUserName: number
     createdTime: number
     updatedTime: number
     deletedTime: number
@@ -10106,7 +10271,8 @@ export namespace Prisma {
     name?: true
     type?: true
     description?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -10119,7 +10285,8 @@ export namespace Prisma {
     name?: true
     type?: true
     description?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -10132,7 +10299,8 @@ export namespace Prisma {
     name?: true
     type?: true
     description?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -10232,7 +10400,8 @@ export namespace Prisma {
     name: string
     type: number
     description: string
-    createdBy: string
+    createdUserId: string
+    createdUserName: string
     createdTime: bigint
     updatedTime: bigint
     deletedTime: bigint
@@ -10264,7 +10433,8 @@ export namespace Prisma {
     name?: boolean
     type?: boolean
     description?: boolean
-    createdBy?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
@@ -10281,13 +10451,14 @@ export namespace Prisma {
     name?: boolean
     type?: boolean
     description?: boolean
-    createdBy?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
   }
 
-  export type AttachmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "noticeId" | "name" | "type" | "description" | "createdBy" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["attachment"]>
+  export type AttachmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "noticeId" | "name" | "type" | "description" | "createdUserId" | "createdUserName" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["attachment"]>
   export type AttachmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     store?: boolean | Attachment$storeArgs<ExtArgs>
     notice?: boolean | Attachment$noticeArgs<ExtArgs>
@@ -10306,7 +10477,8 @@ export namespace Prisma {
       name: string
       type: number
       description: string
-      createdBy: string
+      createdUserId: string
+      createdUserName: string
       createdTime: bigint
       updatedTime: bigint
       deletedTime: bigint
@@ -10687,7 +10859,8 @@ export namespace Prisma {
     readonly name: FieldRef<"Attachment", 'String'>
     readonly type: FieldRef<"Attachment", 'Int'>
     readonly description: FieldRef<"Attachment", 'String'>
-    readonly createdBy: FieldRef<"Attachment", 'String'>
+    readonly createdUserId: FieldRef<"Attachment", 'String'>
+    readonly createdUserName: FieldRef<"Attachment", 'String'>
     readonly createdTime: FieldRef<"Attachment", 'BigInt'>
     readonly updatedTime: FieldRef<"Attachment", 'BigInt'>
     readonly deletedTime: FieldRef<"Attachment", 'BigInt'>
@@ -11124,7 +11297,8 @@ export namespace Prisma {
     storeId: string | null
     title: string | null
     content: string | null
-    createdBy: string | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -11135,7 +11309,8 @@ export namespace Prisma {
     storeId: string | null
     title: string | null
     content: string | null
-    createdBy: string | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -11146,7 +11321,8 @@ export namespace Prisma {
     storeId: number
     title: number
     content: number
-    createdBy: number
+    createdUserId: number
+    createdUserName: number
     createdTime: number
     updatedTime: number
     deletedTime: number
@@ -11171,7 +11347,8 @@ export namespace Prisma {
     storeId?: true
     title?: true
     content?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -11182,7 +11359,8 @@ export namespace Prisma {
     storeId?: true
     title?: true
     content?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -11193,7 +11371,8 @@ export namespace Prisma {
     storeId?: true
     title?: true
     content?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -11290,8 +11469,9 @@ export namespace Prisma {
     id: string
     storeId: string
     title: string
-    content: string
-    createdBy: string
+    content: string | null
+    createdUserId: string
+    createdUserName: string
     createdTime: bigint
     updatedTime: bigint
     deletedTime: bigint
@@ -11321,7 +11501,8 @@ export namespace Prisma {
     storeId?: boolean
     title?: boolean
     content?: boolean
-    createdBy?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
@@ -11337,13 +11518,14 @@ export namespace Prisma {
     storeId?: boolean
     title?: boolean
     content?: boolean
-    createdBy?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
   }
 
-  export type NoticeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "title" | "content" | "createdBy" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["notice"]>
+  export type NoticeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "title" | "content" | "createdUserId" | "createdUserName" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["notice"]>
   export type NoticeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     store?: boolean | StoreDefaultArgs<ExtArgs>
     attachments?: boolean | Notice$attachmentsArgs<ExtArgs>
@@ -11360,8 +11542,9 @@ export namespace Prisma {
       id: string
       storeId: string
       title: string
-      content: string
-      createdBy: string
+      content: string | null
+      createdUserId: string
+      createdUserName: string
       createdTime: bigint
       updatedTime: bigint
       deletedTime: bigint
@@ -11740,7 +11923,8 @@ export namespace Prisma {
     readonly storeId: FieldRef<"Notice", 'String'>
     readonly title: FieldRef<"Notice", 'String'>
     readonly content: FieldRef<"Notice", 'String'>
-    readonly createdBy: FieldRef<"Notice", 'String'>
+    readonly createdUserId: FieldRef<"Notice", 'String'>
+    readonly createdUserName: FieldRef<"Notice", 'String'>
     readonly createdTime: FieldRef<"Notice", 'BigInt'>
     readonly updatedTime: FieldRef<"Notice", 'BigInt'>
     readonly deletedTime: FieldRef<"Notice", 'BigInt'>
@@ -12165,7 +12349,8 @@ export namespace Prisma {
     storeId: string | null
     type: number | null
     content: string | null
-    createdBy: string | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -12176,7 +12361,8 @@ export namespace Prisma {
     storeId: string | null
     type: number | null
     content: string | null
-    createdBy: string | null
+    createdUserId: string | null
+    createdUserName: string | null
     createdTime: bigint | null
     updatedTime: bigint | null
     deletedTime: bigint | null
@@ -12187,7 +12373,8 @@ export namespace Prisma {
     storeId: number
     type: number
     content: number
-    createdBy: number
+    createdUserId: number
+    createdUserName: number
     createdTime: number
     updatedTime: number
     deletedTime: number
@@ -12214,7 +12401,8 @@ export namespace Prisma {
     storeId?: true
     type?: true
     content?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -12225,7 +12413,8 @@ export namespace Prisma {
     storeId?: true
     type?: true
     content?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -12236,7 +12425,8 @@ export namespace Prisma {
     storeId?: true
     type?: true
     content?: true
-    createdBy?: true
+    createdUserId?: true
+    createdUserName?: true
     createdTime?: true
     updatedTime?: true
     deletedTime?: true
@@ -12333,8 +12523,9 @@ export namespace Prisma {
     id: string
     storeId: string
     type: number
-    content: string
-    createdBy: string
+    content: string | null
+    createdUserId: string
+    createdUserName: string
     createdTime: bigint
     updatedTime: bigint
     deletedTime: bigint
@@ -12364,7 +12555,8 @@ export namespace Prisma {
     storeId?: boolean
     type?: boolean
     content?: boolean
-    createdBy?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
@@ -12378,13 +12570,14 @@ export namespace Prisma {
     storeId?: boolean
     type?: boolean
     content?: boolean
-    createdBy?: boolean
+    createdUserId?: boolean
+    createdUserName?: boolean
     createdTime?: boolean
     updatedTime?: boolean
     deletedTime?: boolean
   }
 
-  export type CommentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "type" | "content" | "createdBy" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["comment"]>
+  export type CommentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "storeId" | "type" | "content" | "createdUserId" | "createdUserName" | "createdTime" | "updatedTime" | "deletedTime", ExtArgs["result"]["comment"]>
   export type CommentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     store?: boolean | StoreDefaultArgs<ExtArgs>
   }
@@ -12398,8 +12591,9 @@ export namespace Prisma {
       id: string
       storeId: string
       type: number
-      content: string
-      createdBy: string
+      content: string | null
+      createdUserId: string
+      createdUserName: string
       createdTime: bigint
       updatedTime: bigint
       deletedTime: bigint
@@ -12777,7 +12971,8 @@ export namespace Prisma {
     readonly storeId: FieldRef<"Comment", 'String'>
     readonly type: FieldRef<"Comment", 'Int'>
     readonly content: FieldRef<"Comment", 'String'>
-    readonly createdBy: FieldRef<"Comment", 'String'>
+    readonly createdUserId: FieldRef<"Comment", 'String'>
+    readonly createdUserName: FieldRef<"Comment", 'String'>
     readonly createdTime: FieldRef<"Comment", 'BigInt'>
     readonly updatedTime: FieldRef<"Comment", 'BigInt'>
     readonly deletedTime: FieldRef<"Comment", 'BigInt'>
@@ -13218,12 +13413,19 @@ export namespace Prisma {
     features: 'features',
     promotion: 'promotion',
     price: 'price',
-    reviews: 'reviews',
-    sales: 'sales',
+    commentCount: 'commentCount',
+    saleCount: 'saleCount',
     coverImages: 'coverImages',
+    layoutImage: 'layoutImage',
     description: 'description',
     userId: 'userId',
-    createdBy: 'createdBy',
+    reviewUserId: 'reviewUserId',
+    reviewUserName: 'reviewUserName',
+    reviewStatus: 'reviewStatus',
+    reviewTime: 'reviewTime',
+    reviewRemark: 'reviewRemark',
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName',
     createdTime: 'createdTime',
     updatedTime: 'updatedTime',
     deletedTime: 'deletedTime'
@@ -13240,7 +13442,8 @@ export namespace Prisma {
     sort: 'sort',
     isActive: 'isActive',
     description: 'description',
-    createdBy: 'createdBy',
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName',
     createdTime: 'createdTime',
     updatedTime: 'updatedTime',
     deletedTime: 'deletedTime'
@@ -13262,7 +13465,8 @@ export namespace Prisma {
     hasPower: 'hasPower',
     status: 'status',
     description: 'description',
-    createdBy: 'createdBy',
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName',
     createdTime: 'createdTime',
     updatedTime: 'updatedTime',
     deletedTime: 'deletedTime'
@@ -13276,7 +13480,8 @@ export namespace Prisma {
     name: 'name',
     type: 'type',
     description: 'description',
-    createdBy: 'createdBy',
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName',
     createdTime: 'createdTime',
     updatedTime: 'updatedTime',
     deletedTime: 'deletedTime'
@@ -13289,6 +13494,8 @@ export namespace Prisma {
     id: 'id',
     userId: 'userId',
     cardId: 'cardId',
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName',
     createdTime: 'createdTime',
     updatedTime: 'updatedTime',
     deletedTime: 'deletedTime'
@@ -13310,6 +13517,8 @@ export namespace Prisma {
     payMethod: 'payMethod',
     price: 'price',
     status: 'status',
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName',
     createdTime: 'createdTime',
     updatedTime: 'updatedTime',
     deletedTime: 'deletedTime'
@@ -13325,7 +13534,8 @@ export namespace Prisma {
     name: 'name',
     type: 'type',
     description: 'description',
-    createdBy: 'createdBy',
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName',
     createdTime: 'createdTime',
     updatedTime: 'updatedTime',
     deletedTime: 'deletedTime'
@@ -13339,7 +13549,8 @@ export namespace Prisma {
     storeId: 'storeId',
     title: 'title',
     content: 'content',
-    createdBy: 'createdBy',
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName',
     createdTime: 'createdTime',
     updatedTime: 'updatedTime',
     deletedTime: 'deletedTime'
@@ -13353,7 +13564,8 @@ export namespace Prisma {
     storeId: 'storeId',
     type: 'type',
     content: 'content',
-    createdBy: 'createdBy',
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName',
     createdTime: 'createdTime',
     updatedTime: 'updatedTime',
     deletedTime: 'deletedTime'
@@ -13370,11 +13582,12 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const JsonNullValueInput: {
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
     JsonNull: typeof JsonNull
   };
 
-  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const UserOrderByRelevanceFieldEnum: {
@@ -13419,6 +13632,14 @@ export namespace Prisma {
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
   export const StoreOrderByRelevanceFieldEnum: {
     id: 'id',
     name: 'name',
@@ -13436,7 +13657,11 @@ export namespace Prisma {
     promotion: 'promotion',
     description: 'description',
     userId: 'userId',
-    createdBy: 'createdBy'
+    reviewUserId: 'reviewUserId',
+    reviewUserName: 'reviewUserName',
+    reviewRemark: 'reviewRemark',
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName'
   };
 
   export type StoreOrderByRelevanceFieldEnum = (typeof StoreOrderByRelevanceFieldEnum)[keyof typeof StoreOrderByRelevanceFieldEnum]
@@ -13447,7 +13672,8 @@ export namespace Prisma {
     storeId: 'storeId',
     name: 'name',
     description: 'description',
-    createdBy: 'createdBy'
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName'
   };
 
   export type AreaOrderByRelevanceFieldEnum = (typeof AreaOrderByRelevanceFieldEnum)[keyof typeof AreaOrderByRelevanceFieldEnum]
@@ -13459,7 +13685,8 @@ export namespace Prisma {
     areaId: 'areaId',
     seatNo: 'seatNo',
     description: 'description',
-    createdBy: 'createdBy'
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName'
   };
 
   export type SeatOrderByRelevanceFieldEnum = (typeof SeatOrderByRelevanceFieldEnum)[keyof typeof SeatOrderByRelevanceFieldEnum]
@@ -13469,7 +13696,8 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     description: 'description',
-    createdBy: 'createdBy'
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName'
   };
 
   export type CardOrderByRelevanceFieldEnum = (typeof CardOrderByRelevanceFieldEnum)[keyof typeof CardOrderByRelevanceFieldEnum]
@@ -13478,7 +13706,9 @@ export namespace Prisma {
   export const UserCardOrderByRelevanceFieldEnum: {
     id: 'id',
     userId: 'userId',
-    cardId: 'cardId'
+    cardId: 'cardId',
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName'
   };
 
   export type UserCardOrderByRelevanceFieldEnum = (typeof UserCardOrderByRelevanceFieldEnum)[keyof typeof UserCardOrderByRelevanceFieldEnum]
@@ -13489,18 +13719,12 @@ export namespace Prisma {
     storeId: 'storeId',
     areaId: 'areaId',
     seatId: 'seatId',
-    userId: 'userId'
+    userId: 'userId',
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName'
   };
 
   export type UserOrderOrderByRelevanceFieldEnum = (typeof UserOrderOrderByRelevanceFieldEnum)[keyof typeof UserOrderOrderByRelevanceFieldEnum]
-
-
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   export const AttachmentOrderByRelevanceFieldEnum: {
@@ -13509,7 +13733,8 @@ export namespace Prisma {
     noticeId: 'noticeId',
     name: 'name',
     description: 'description',
-    createdBy: 'createdBy'
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName'
   };
 
   export type AttachmentOrderByRelevanceFieldEnum = (typeof AttachmentOrderByRelevanceFieldEnum)[keyof typeof AttachmentOrderByRelevanceFieldEnum]
@@ -13520,7 +13745,8 @@ export namespace Prisma {
     storeId: 'storeId',
     title: 'title',
     content: 'content',
-    createdBy: 'createdBy'
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName'
   };
 
   export type NoticeOrderByRelevanceFieldEnum = (typeof NoticeOrderByRelevanceFieldEnum)[keyof typeof NoticeOrderByRelevanceFieldEnum]
@@ -13530,7 +13756,8 @@ export namespace Prisma {
     id: 'id',
     storeId: 'storeId',
     content: 'content',
-    createdBy: 'createdBy'
+    createdUserId: 'createdUserId',
+    createdUserName: 'createdUserName'
   };
 
   export type CommentOrderByRelevanceFieldEnum = (typeof CommentOrderByRelevanceFieldEnum)[keyof typeof CommentOrderByRelevanceFieldEnum]
@@ -13559,13 +13786,6 @@ export namespace Prisma {
    * Reference to a field of type 'BigInt'
    */
   export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
     
 
 
@@ -13617,7 +13837,7 @@ export namespace Prisma {
     cardId?: StringFilter<"User"> | string
     nation?: StringFilter<"User"> | string
     sex?: IntFilter<"User"> | number
-    birth?: DateTimeFilter<"User"> | Date | string
+    birth?: BigIntFilter<"User"> | bigint | number
     qq?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     province?: StringFilter<"User"> | string
@@ -13691,7 +13911,7 @@ export namespace Prisma {
     cardId?: StringFilter<"User"> | string
     nation?: StringFilter<"User"> | string
     sex?: IntFilter<"User"> | number
-    birth?: DateTimeFilter<"User"> | Date | string
+    birth?: BigIntFilter<"User"> | bigint | number
     qq?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     province?: StringFilter<"User"> | string
@@ -13766,7 +13986,7 @@ export namespace Prisma {
     cardId?: StringWithAggregatesFilter<"User"> | string
     nation?: StringWithAggregatesFilter<"User"> | string
     sex?: IntWithAggregatesFilter<"User"> | number
-    birth?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    birth?: BigIntWithAggregatesFilter<"User"> | bigint | number
     qq?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     province?: StringWithAggregatesFilter<"User"> | string
@@ -13809,12 +14029,19 @@ export namespace Prisma {
     features?: StringFilter<"Store"> | string
     promotion?: StringFilter<"Store"> | string
     price?: IntFilter<"Store"> | number
-    reviews?: IntFilter<"Store"> | number
-    sales?: IntFilter<"Store"> | number
-    coverImages?: JsonFilter<"Store">
-    description?: StringFilter<"Store"> | string
+    commentCount?: IntFilter<"Store"> | number
+    saleCount?: IntFilter<"Store"> | number
+    coverImages?: JsonNullableFilter<"Store">
+    layoutImage?: JsonNullableFilter<"Store">
+    description?: StringNullableFilter<"Store"> | string | null
     userId?: StringFilter<"Store"> | string
-    createdBy?: StringFilter<"Store"> | string
+    reviewUserId?: StringFilter<"Store"> | string
+    reviewUserName?: StringFilter<"Store"> | string
+    reviewStatus?: IntFilter<"Store"> | number
+    reviewTime?: BigIntFilter<"Store"> | bigint | number
+    reviewRemark?: StringFilter<"Store"> | string
+    createdUserId?: StringFilter<"Store"> | string
+    createdUserName?: StringFilter<"Store"> | string
     createdTime?: BigIntFilter<"Store"> | bigint | number
     updatedTime?: BigIntFilter<"Store"> | bigint | number
     deletedTime?: BigIntFilter<"Store"> | bigint | number
@@ -13848,12 +14075,19 @@ export namespace Prisma {
     features?: SortOrder
     promotion?: SortOrder
     price?: SortOrder
-    reviews?: SortOrder
-    sales?: SortOrder
-    coverImages?: SortOrder
-    description?: SortOrder
+    commentCount?: SortOrder
+    saleCount?: SortOrder
+    coverImages?: SortOrderInput | SortOrder
+    layoutImage?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     userId?: SortOrder
-    createdBy?: SortOrder
+    reviewUserId?: SortOrder
+    reviewUserName?: SortOrder
+    reviewStatus?: SortOrder
+    reviewTime?: SortOrder
+    reviewRemark?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -13891,12 +14125,19 @@ export namespace Prisma {
     features?: StringFilter<"Store"> | string
     promotion?: StringFilter<"Store"> | string
     price?: IntFilter<"Store"> | number
-    reviews?: IntFilter<"Store"> | number
-    sales?: IntFilter<"Store"> | number
-    coverImages?: JsonFilter<"Store">
-    description?: StringFilter<"Store"> | string
+    commentCount?: IntFilter<"Store"> | number
+    saleCount?: IntFilter<"Store"> | number
+    coverImages?: JsonNullableFilter<"Store">
+    layoutImage?: JsonNullableFilter<"Store">
+    description?: StringNullableFilter<"Store"> | string | null
     userId?: StringFilter<"Store"> | string
-    createdBy?: StringFilter<"Store"> | string
+    reviewUserId?: StringFilter<"Store"> | string
+    reviewUserName?: StringFilter<"Store"> | string
+    reviewStatus?: IntFilter<"Store"> | number
+    reviewTime?: BigIntFilter<"Store"> | bigint | number
+    reviewRemark?: StringFilter<"Store"> | string
+    createdUserId?: StringFilter<"Store"> | string
+    createdUserName?: StringFilter<"Store"> | string
     createdTime?: BigIntFilter<"Store"> | bigint | number
     updatedTime?: BigIntFilter<"Store"> | bigint | number
     deletedTime?: BigIntFilter<"Store"> | bigint | number
@@ -13930,12 +14171,19 @@ export namespace Prisma {
     features?: SortOrder
     promotion?: SortOrder
     price?: SortOrder
-    reviews?: SortOrder
-    sales?: SortOrder
-    coverImages?: SortOrder
-    description?: SortOrder
+    commentCount?: SortOrder
+    saleCount?: SortOrder
+    coverImages?: SortOrderInput | SortOrder
+    layoutImage?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     userId?: SortOrder
-    createdBy?: SortOrder
+    reviewUserId?: SortOrder
+    reviewUserName?: SortOrder
+    reviewStatus?: SortOrder
+    reviewTime?: SortOrder
+    reviewRemark?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -13971,12 +14219,19 @@ export namespace Prisma {
     features?: StringWithAggregatesFilter<"Store"> | string
     promotion?: StringWithAggregatesFilter<"Store"> | string
     price?: IntWithAggregatesFilter<"Store"> | number
-    reviews?: IntWithAggregatesFilter<"Store"> | number
-    sales?: IntWithAggregatesFilter<"Store"> | number
-    coverImages?: JsonWithAggregatesFilter<"Store">
-    description?: StringWithAggregatesFilter<"Store"> | string
+    commentCount?: IntWithAggregatesFilter<"Store"> | number
+    saleCount?: IntWithAggregatesFilter<"Store"> | number
+    coverImages?: JsonNullableWithAggregatesFilter<"Store">
+    layoutImage?: JsonNullableWithAggregatesFilter<"Store">
+    description?: StringNullableWithAggregatesFilter<"Store"> | string | null
     userId?: StringWithAggregatesFilter<"Store"> | string
-    createdBy?: StringWithAggregatesFilter<"Store"> | string
+    reviewUserId?: StringWithAggregatesFilter<"Store"> | string
+    reviewUserName?: StringWithAggregatesFilter<"Store"> | string
+    reviewStatus?: IntWithAggregatesFilter<"Store"> | number
+    reviewTime?: BigIntWithAggregatesFilter<"Store"> | bigint | number
+    reviewRemark?: StringWithAggregatesFilter<"Store"> | string
+    createdUserId?: StringWithAggregatesFilter<"Store"> | string
+    createdUserName?: StringWithAggregatesFilter<"Store"> | string
     createdTime?: BigIntWithAggregatesFilter<"Store"> | bigint | number
     updatedTime?: BigIntWithAggregatesFilter<"Store"> | bigint | number
     deletedTime?: BigIntWithAggregatesFilter<"Store"> | bigint | number
@@ -13993,7 +14248,8 @@ export namespace Prisma {
     sort?: IntFilter<"Area"> | number
     isActive?: BoolFilter<"Area"> | boolean
     description?: StringFilter<"Area"> | string
-    createdBy?: StringFilter<"Area"> | string
+    createdUserId?: StringFilter<"Area"> | string
+    createdUserName?: StringFilter<"Area"> | string
     createdTime?: BigIntFilter<"Area"> | bigint | number
     updatedTime?: BigIntFilter<"Area"> | bigint | number
     deletedTime?: BigIntFilter<"Area"> | bigint | number
@@ -14009,7 +14265,8 @@ export namespace Prisma {
     sort?: SortOrder
     isActive?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -14029,7 +14286,8 @@ export namespace Prisma {
     sort?: IntFilter<"Area"> | number
     isActive?: BoolFilter<"Area"> | boolean
     description?: StringFilter<"Area"> | string
-    createdBy?: StringFilter<"Area"> | string
+    createdUserId?: StringFilter<"Area"> | string
+    createdUserName?: StringFilter<"Area"> | string
     createdTime?: BigIntFilter<"Area"> | bigint | number
     updatedTime?: BigIntFilter<"Area"> | bigint | number
     deletedTime?: BigIntFilter<"Area"> | bigint | number
@@ -14045,7 +14303,8 @@ export namespace Prisma {
     sort?: SortOrder
     isActive?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -14067,7 +14326,8 @@ export namespace Prisma {
     sort?: IntWithAggregatesFilter<"Area"> | number
     isActive?: BoolWithAggregatesFilter<"Area"> | boolean
     description?: StringWithAggregatesFilter<"Area"> | string
-    createdBy?: StringWithAggregatesFilter<"Area"> | string
+    createdUserId?: StringWithAggregatesFilter<"Area"> | string
+    createdUserName?: StringWithAggregatesFilter<"Area"> | string
     createdTime?: BigIntWithAggregatesFilter<"Area"> | bigint | number
     updatedTime?: BigIntWithAggregatesFilter<"Area"> | bigint | number
     deletedTime?: BigIntWithAggregatesFilter<"Area"> | bigint | number
@@ -14089,7 +14349,8 @@ export namespace Prisma {
     hasPower?: BoolFilter<"Seat"> | boolean
     status?: IntFilter<"Seat"> | number
     description?: StringFilter<"Seat"> | string
-    createdBy?: StringFilter<"Seat"> | string
+    createdUserId?: StringFilter<"Seat"> | string
+    createdUserName?: StringFilter<"Seat"> | string
     createdTime?: BigIntFilter<"Seat"> | bigint | number
     updatedTime?: BigIntFilter<"Seat"> | bigint | number
     deletedTime?: BigIntFilter<"Seat"> | bigint | number
@@ -14111,7 +14372,8 @@ export namespace Prisma {
     hasPower?: SortOrder
     status?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -14138,7 +14400,8 @@ export namespace Prisma {
     hasPower?: BoolFilter<"Seat"> | boolean
     status?: IntFilter<"Seat"> | number
     description?: StringFilter<"Seat"> | string
-    createdBy?: StringFilter<"Seat"> | string
+    createdUserId?: StringFilter<"Seat"> | string
+    createdUserName?: StringFilter<"Seat"> | string
     createdTime?: BigIntFilter<"Seat"> | bigint | number
     updatedTime?: BigIntFilter<"Seat"> | bigint | number
     deletedTime?: BigIntFilter<"Seat"> | bigint | number
@@ -14160,7 +14423,8 @@ export namespace Prisma {
     hasPower?: SortOrder
     status?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -14187,7 +14451,8 @@ export namespace Prisma {
     hasPower?: BoolWithAggregatesFilter<"Seat"> | boolean
     status?: IntWithAggregatesFilter<"Seat"> | number
     description?: StringWithAggregatesFilter<"Seat"> | string
-    createdBy?: StringWithAggregatesFilter<"Seat"> | string
+    createdUserId?: StringWithAggregatesFilter<"Seat"> | string
+    createdUserName?: StringWithAggregatesFilter<"Seat"> | string
     createdTime?: BigIntWithAggregatesFilter<"Seat"> | bigint | number
     updatedTime?: BigIntWithAggregatesFilter<"Seat"> | bigint | number
     deletedTime?: BigIntWithAggregatesFilter<"Seat"> | bigint | number
@@ -14200,8 +14465,9 @@ export namespace Prisma {
     id?: StringFilter<"Card"> | string
     name?: StringFilter<"Card"> | string
     type?: IntFilter<"Card"> | number
-    description?: StringFilter<"Card"> | string
-    createdBy?: StringFilter<"Card"> | string
+    description?: StringNullableFilter<"Card"> | string | null
+    createdUserId?: StringFilter<"Card"> | string
+    createdUserName?: StringFilter<"Card"> | string
     createdTime?: BigIntFilter<"Card"> | bigint | number
     updatedTime?: BigIntFilter<"Card"> | bigint | number
     deletedTime?: BigIntFilter<"Card"> | bigint | number
@@ -14212,8 +14478,9 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     type?: SortOrder
-    description?: SortOrder
-    createdBy?: SortOrder
+    description?: SortOrderInput | SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -14228,8 +14495,9 @@ export namespace Prisma {
     NOT?: CardWhereInput | CardWhereInput[]
     name?: StringFilter<"Card"> | string
     type?: IntFilter<"Card"> | number
-    description?: StringFilter<"Card"> | string
-    createdBy?: StringFilter<"Card"> | string
+    description?: StringNullableFilter<"Card"> | string | null
+    createdUserId?: StringFilter<"Card"> | string
+    createdUserName?: StringFilter<"Card"> | string
     createdTime?: BigIntFilter<"Card"> | bigint | number
     updatedTime?: BigIntFilter<"Card"> | bigint | number
     deletedTime?: BigIntFilter<"Card"> | bigint | number
@@ -14240,8 +14508,9 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     type?: SortOrder
-    description?: SortOrder
-    createdBy?: SortOrder
+    description?: SortOrderInput | SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -14259,8 +14528,9 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Card"> | string
     name?: StringWithAggregatesFilter<"Card"> | string
     type?: IntWithAggregatesFilter<"Card"> | number
-    description?: StringWithAggregatesFilter<"Card"> | string
-    createdBy?: StringWithAggregatesFilter<"Card"> | string
+    description?: StringNullableWithAggregatesFilter<"Card"> | string | null
+    createdUserId?: StringWithAggregatesFilter<"Card"> | string
+    createdUserName?: StringWithAggregatesFilter<"Card"> | string
     createdTime?: BigIntWithAggregatesFilter<"Card"> | bigint | number
     updatedTime?: BigIntWithAggregatesFilter<"Card"> | bigint | number
     deletedTime?: BigIntWithAggregatesFilter<"Card"> | bigint | number
@@ -14273,6 +14543,8 @@ export namespace Prisma {
     id?: StringFilter<"UserCard"> | string
     userId?: StringFilter<"UserCard"> | string
     cardId?: StringFilter<"UserCard"> | string
+    createdUserId?: StringFilter<"UserCard"> | string
+    createdUserName?: StringFilter<"UserCard"> | string
     createdTime?: BigIntFilter<"UserCard"> | bigint | number
     updatedTime?: BigIntFilter<"UserCard"> | bigint | number
     deletedTime?: BigIntFilter<"UserCard"> | bigint | number
@@ -14284,6 +14556,8 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     cardId?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -14299,6 +14573,8 @@ export namespace Prisma {
     NOT?: UserCardWhereInput | UserCardWhereInput[]
     userId?: StringFilter<"UserCard"> | string
     cardId?: StringFilter<"UserCard"> | string
+    createdUserId?: StringFilter<"UserCard"> | string
+    createdUserName?: StringFilter<"UserCard"> | string
     createdTime?: BigIntFilter<"UserCard"> | bigint | number
     updatedTime?: BigIntFilter<"UserCard"> | bigint | number
     deletedTime?: BigIntFilter<"UserCard"> | bigint | number
@@ -14310,6 +14586,8 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     cardId?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -14327,6 +14605,8 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"UserCard"> | string
     userId?: StringWithAggregatesFilter<"UserCard"> | string
     cardId?: StringWithAggregatesFilter<"UserCard"> | string
+    createdUserId?: StringWithAggregatesFilter<"UserCard"> | string
+    createdUserName?: StringWithAggregatesFilter<"UserCard"> | string
     createdTime?: BigIntWithAggregatesFilter<"UserCard"> | bigint | number
     updatedTime?: BigIntWithAggregatesFilter<"UserCard"> | bigint | number
     deletedTime?: BigIntWithAggregatesFilter<"UserCard"> | bigint | number
@@ -14348,6 +14628,8 @@ export namespace Prisma {
     payMethod?: IntFilter<"UserOrder"> | number
     price?: IntFilter<"UserOrder"> | number
     status?: IntFilter<"UserOrder"> | number
+    createdUserId?: StringFilter<"UserOrder"> | string
+    createdUserName?: StringFilter<"UserOrder"> | string
     createdTime?: BigIntFilter<"UserOrder"> | bigint | number
     updatedTime?: BigIntFilter<"UserOrder"> | bigint | number
     deletedTime?: BigIntFilter<"UserOrder"> | bigint | number
@@ -14368,6 +14650,8 @@ export namespace Prisma {
     payMethod?: SortOrder
     price?: SortOrder
     status?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -14392,6 +14676,8 @@ export namespace Prisma {
     payMethod?: IntFilter<"UserOrder"> | number
     price?: IntFilter<"UserOrder"> | number
     status?: IntFilter<"UserOrder"> | number
+    createdUserId?: StringFilter<"UserOrder"> | string
+    createdUserName?: StringFilter<"UserOrder"> | string
     createdTime?: BigIntFilter<"UserOrder"> | bigint | number
     updatedTime?: BigIntFilter<"UserOrder"> | bigint | number
     deletedTime?: BigIntFilter<"UserOrder"> | bigint | number
@@ -14412,6 +14698,8 @@ export namespace Prisma {
     payMethod?: SortOrder
     price?: SortOrder
     status?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -14438,6 +14726,8 @@ export namespace Prisma {
     payMethod?: IntWithAggregatesFilter<"UserOrder"> | number
     price?: IntWithAggregatesFilter<"UserOrder"> | number
     status?: IntWithAggregatesFilter<"UserOrder"> | number
+    createdUserId?: StringWithAggregatesFilter<"UserOrder"> | string
+    createdUserName?: StringWithAggregatesFilter<"UserOrder"> | string
     createdTime?: BigIntWithAggregatesFilter<"UserOrder"> | bigint | number
     updatedTime?: BigIntWithAggregatesFilter<"UserOrder"> | bigint | number
     deletedTime?: BigIntWithAggregatesFilter<"UserOrder"> | bigint | number
@@ -14453,7 +14743,8 @@ export namespace Prisma {
     name?: StringFilter<"Attachment"> | string
     type?: IntFilter<"Attachment"> | number
     description?: StringFilter<"Attachment"> | string
-    createdBy?: StringFilter<"Attachment"> | string
+    createdUserId?: StringFilter<"Attachment"> | string
+    createdUserName?: StringFilter<"Attachment"> | string
     createdTime?: BigIntFilter<"Attachment"> | bigint | number
     updatedTime?: BigIntFilter<"Attachment"> | bigint | number
     deletedTime?: BigIntFilter<"Attachment"> | bigint | number
@@ -14468,7 +14759,8 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -14487,7 +14779,8 @@ export namespace Prisma {
     name?: StringFilter<"Attachment"> | string
     type?: IntFilter<"Attachment"> | number
     description?: StringFilter<"Attachment"> | string
-    createdBy?: StringFilter<"Attachment"> | string
+    createdUserId?: StringFilter<"Attachment"> | string
+    createdUserName?: StringFilter<"Attachment"> | string
     createdTime?: BigIntFilter<"Attachment"> | bigint | number
     updatedTime?: BigIntFilter<"Attachment"> | bigint | number
     deletedTime?: BigIntFilter<"Attachment"> | bigint | number
@@ -14502,7 +14795,8 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -14523,7 +14817,8 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Attachment"> | string
     type?: IntWithAggregatesFilter<"Attachment"> | number
     description?: StringWithAggregatesFilter<"Attachment"> | string
-    createdBy?: StringWithAggregatesFilter<"Attachment"> | string
+    createdUserId?: StringWithAggregatesFilter<"Attachment"> | string
+    createdUserName?: StringWithAggregatesFilter<"Attachment"> | string
     createdTime?: BigIntWithAggregatesFilter<"Attachment"> | bigint | number
     updatedTime?: BigIntWithAggregatesFilter<"Attachment"> | bigint | number
     deletedTime?: BigIntWithAggregatesFilter<"Attachment"> | bigint | number
@@ -14536,8 +14831,9 @@ export namespace Prisma {
     id?: StringFilter<"Notice"> | string
     storeId?: StringFilter<"Notice"> | string
     title?: StringFilter<"Notice"> | string
-    content?: StringFilter<"Notice"> | string
-    createdBy?: StringFilter<"Notice"> | string
+    content?: StringNullableFilter<"Notice"> | string | null
+    createdUserId?: StringFilter<"Notice"> | string
+    createdUserName?: StringFilter<"Notice"> | string
     createdTime?: BigIntFilter<"Notice"> | bigint | number
     updatedTime?: BigIntFilter<"Notice"> | bigint | number
     deletedTime?: BigIntFilter<"Notice"> | bigint | number
@@ -14549,8 +14845,9 @@ export namespace Prisma {
     id?: SortOrder
     storeId?: SortOrder
     title?: SortOrder
-    content?: SortOrder
-    createdBy?: SortOrder
+    content?: SortOrderInput | SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -14566,8 +14863,9 @@ export namespace Prisma {
     NOT?: NoticeWhereInput | NoticeWhereInput[]
     storeId?: StringFilter<"Notice"> | string
     title?: StringFilter<"Notice"> | string
-    content?: StringFilter<"Notice"> | string
-    createdBy?: StringFilter<"Notice"> | string
+    content?: StringNullableFilter<"Notice"> | string | null
+    createdUserId?: StringFilter<"Notice"> | string
+    createdUserName?: StringFilter<"Notice"> | string
     createdTime?: BigIntFilter<"Notice"> | bigint | number
     updatedTime?: BigIntFilter<"Notice"> | bigint | number
     deletedTime?: BigIntFilter<"Notice"> | bigint | number
@@ -14579,8 +14877,9 @@ export namespace Prisma {
     id?: SortOrder
     storeId?: SortOrder
     title?: SortOrder
-    content?: SortOrder
-    createdBy?: SortOrder
+    content?: SortOrderInput | SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -14598,8 +14897,9 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Notice"> | string
     storeId?: StringWithAggregatesFilter<"Notice"> | string
     title?: StringWithAggregatesFilter<"Notice"> | string
-    content?: StringWithAggregatesFilter<"Notice"> | string
-    createdBy?: StringWithAggregatesFilter<"Notice"> | string
+    content?: StringNullableWithAggregatesFilter<"Notice"> | string | null
+    createdUserId?: StringWithAggregatesFilter<"Notice"> | string
+    createdUserName?: StringWithAggregatesFilter<"Notice"> | string
     createdTime?: BigIntWithAggregatesFilter<"Notice"> | bigint | number
     updatedTime?: BigIntWithAggregatesFilter<"Notice"> | bigint | number
     deletedTime?: BigIntWithAggregatesFilter<"Notice"> | bigint | number
@@ -14612,8 +14912,9 @@ export namespace Prisma {
     id?: StringFilter<"Comment"> | string
     storeId?: StringFilter<"Comment"> | string
     type?: IntFilter<"Comment"> | number
-    content?: StringFilter<"Comment"> | string
-    createdBy?: StringFilter<"Comment"> | string
+    content?: StringNullableFilter<"Comment"> | string | null
+    createdUserId?: StringFilter<"Comment"> | string
+    createdUserName?: StringFilter<"Comment"> | string
     createdTime?: BigIntFilter<"Comment"> | bigint | number
     updatedTime?: BigIntFilter<"Comment"> | bigint | number
     deletedTime?: BigIntFilter<"Comment"> | bigint | number
@@ -14624,8 +14925,9 @@ export namespace Prisma {
     id?: SortOrder
     storeId?: SortOrder
     type?: SortOrder
-    content?: SortOrder
-    createdBy?: SortOrder
+    content?: SortOrderInput | SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -14640,8 +14942,9 @@ export namespace Prisma {
     NOT?: CommentWhereInput | CommentWhereInput[]
     storeId?: StringFilter<"Comment"> | string
     type?: IntFilter<"Comment"> | number
-    content?: StringFilter<"Comment"> | string
-    createdBy?: StringFilter<"Comment"> | string
+    content?: StringNullableFilter<"Comment"> | string | null
+    createdUserId?: StringFilter<"Comment"> | string
+    createdUserName?: StringFilter<"Comment"> | string
     createdTime?: BigIntFilter<"Comment"> | bigint | number
     updatedTime?: BigIntFilter<"Comment"> | bigint | number
     deletedTime?: BigIntFilter<"Comment"> | bigint | number
@@ -14652,8 +14955,9 @@ export namespace Prisma {
     id?: SortOrder
     storeId?: SortOrder
     type?: SortOrder
-    content?: SortOrder
-    createdBy?: SortOrder
+    content?: SortOrderInput | SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -14671,8 +14975,9 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Comment"> | string
     storeId?: StringWithAggregatesFilter<"Comment"> | string
     type?: IntWithAggregatesFilter<"Comment"> | number
-    content?: StringWithAggregatesFilter<"Comment"> | string
-    createdBy?: StringWithAggregatesFilter<"Comment"> | string
+    content?: StringNullableWithAggregatesFilter<"Comment"> | string | null
+    createdUserId?: StringWithAggregatesFilter<"Comment"> | string
+    createdUserName?: StringWithAggregatesFilter<"Comment"> | string
     createdTime?: BigIntWithAggregatesFilter<"Comment"> | bigint | number
     updatedTime?: BigIntWithAggregatesFilter<"Comment"> | bigint | number
     deletedTime?: BigIntWithAggregatesFilter<"Comment"> | bigint | number
@@ -14692,7 +14997,7 @@ export namespace Prisma {
     cardId?: string
     nation?: string
     sex?: number
-    birth?: Date | string
+    birth?: bigint | number
     qq?: string
     email?: string
     province?: string
@@ -14727,7 +15032,7 @@ export namespace Prisma {
     cardId?: string
     nation?: string
     sex?: number
-    birth?: Date | string
+    birth?: bigint | number
     qq?: string
     email?: string
     province?: string
@@ -14762,7 +15067,7 @@ export namespace Prisma {
     cardId?: StringFieldUpdateOperationsInput | string
     nation?: StringFieldUpdateOperationsInput | string
     sex?: IntFieldUpdateOperationsInput | number
-    birth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birth?: BigIntFieldUpdateOperationsInput | bigint | number
     qq?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
@@ -14797,7 +15102,7 @@ export namespace Prisma {
     cardId?: StringFieldUpdateOperationsInput | string
     nation?: StringFieldUpdateOperationsInput | string
     sex?: IntFieldUpdateOperationsInput | number
-    birth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birth?: BigIntFieldUpdateOperationsInput | bigint | number
     qq?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
@@ -14832,7 +15137,7 @@ export namespace Prisma {
     cardId?: string
     nation?: string
     sex?: number
-    birth?: Date | string
+    birth?: bigint | number
     qq?: string
     email?: string
     province?: string
@@ -14864,7 +15169,7 @@ export namespace Prisma {
     cardId?: StringFieldUpdateOperationsInput | string
     nation?: StringFieldUpdateOperationsInput | string
     sex?: IntFieldUpdateOperationsInput | number
-    birth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birth?: BigIntFieldUpdateOperationsInput | bigint | number
     qq?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
@@ -14896,7 +15201,7 @@ export namespace Prisma {
     cardId?: StringFieldUpdateOperationsInput | string
     nation?: StringFieldUpdateOperationsInput | string
     sex?: IntFieldUpdateOperationsInput | number
-    birth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birth?: BigIntFieldUpdateOperationsInput | bigint | number
     qq?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
@@ -14936,11 +15241,18 @@ export namespace Prisma {
     features?: string
     promotion?: string
     price?: number
-    reviews?: number
-    sales?: number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: string
-    createdBy?: string
+    commentCount?: number
+    saleCount?: number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: string | null
+    reviewUserId?: string
+    reviewUserName?: string
+    reviewStatus?: number
+    reviewTime?: bigint | number
+    reviewRemark?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -14949,7 +15261,7 @@ export namespace Prisma {
     attachments?: AttachmentCreateNestedManyWithoutStoreInput
     notices?: NoticeCreateNestedManyWithoutStoreInput
     comments?: CommentCreateNestedManyWithoutStoreInput
-    user?: UserCreateNestedOneWithoutStoresInput
+    user: UserCreateNestedOneWithoutStoresInput
   }
 
   export type StoreUncheckedCreateInput = {
@@ -14974,12 +15286,19 @@ export namespace Prisma {
     features?: string
     promotion?: string
     price?: number
-    reviews?: number
-    sales?: number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: string
-    userId?: string
-    createdBy?: string
+    commentCount?: number
+    saleCount?: number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: string | null
+    userId: string
+    reviewUserId?: string
+    reviewUserName?: string
+    reviewStatus?: number
+    reviewTime?: bigint | number
+    reviewRemark?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15012,11 +15331,18 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15050,12 +15376,19 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15088,12 +15421,19 @@ export namespace Prisma {
     features?: string
     promotion?: string
     price?: number
-    reviews?: number
-    sales?: number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: string
-    userId?: string
-    createdBy?: string
+    commentCount?: number
+    saleCount?: number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: string | null
+    userId: string
+    reviewUserId?: string
+    reviewUserName?: string
+    reviewStatus?: number
+    reviewTime?: bigint | number
+    reviewRemark?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15121,11 +15461,18 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15153,12 +15500,19 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15171,23 +15525,25 @@ export namespace Prisma {
     sort?: number
     isActive?: boolean
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
     seats?: SeatCreateNestedManyWithoutAreaInput
-    store?: StoreCreateNestedOneWithoutAreasInput
+    store: StoreCreateNestedOneWithoutAreasInput
   }
 
   export type AreaUncheckedCreateInput = {
     id?: string
-    storeId?: string
+    storeId: string
     name?: string
     seatCount?: number
     sort?: number
     isActive?: boolean
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15201,7 +15557,8 @@ export namespace Prisma {
     sort?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15217,7 +15574,8 @@ export namespace Prisma {
     sort?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15226,13 +15584,14 @@ export namespace Prisma {
 
   export type AreaCreateManyInput = {
     id?: string
-    storeId?: string
+    storeId: string
     name?: string
     seatCount?: number
     sort?: number
     isActive?: boolean
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15245,7 +15604,8 @@ export namespace Prisma {
     sort?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15259,7 +15619,8 @@ export namespace Prisma {
     sort?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15276,7 +15637,8 @@ export namespace Prisma {
     hasPower?: boolean
     status?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15298,7 +15660,8 @@ export namespace Prisma {
     hasPower?: boolean
     status?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15316,7 +15679,8 @@ export namespace Prisma {
     hasPower?: BoolFieldUpdateOperationsInput | boolean
     status?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15338,7 +15702,8 @@ export namespace Prisma {
     hasPower?: BoolFieldUpdateOperationsInput | boolean
     status?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15358,7 +15723,8 @@ export namespace Prisma {
     hasPower?: boolean
     status?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15375,7 +15741,8 @@ export namespace Prisma {
     hasPower?: BoolFieldUpdateOperationsInput | boolean
     status?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15394,7 +15761,8 @@ export namespace Prisma {
     hasPower?: BoolFieldUpdateOperationsInput | boolean
     status?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15404,8 +15772,9 @@ export namespace Prisma {
     id?: string
     name?: string
     type?: number
-    description?: string
-    createdBy?: string
+    description?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15416,8 +15785,9 @@ export namespace Prisma {
     id?: string
     name?: string
     type?: number
-    description?: string
-    createdBy?: string
+    description?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15428,8 +15798,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15440,8 +15811,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15452,8 +15824,9 @@ export namespace Prisma {
     id?: string
     name?: string
     type?: number
-    description?: string
-    createdBy?: string
+    description?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15463,8 +15836,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15474,8 +15848,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15483,6 +15858,8 @@ export namespace Prisma {
 
   export type UserCardCreateInput = {
     id?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15494,6 +15871,8 @@ export namespace Prisma {
     id?: string
     userId: string
     cardId: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15501,6 +15880,8 @@ export namespace Prisma {
 
   export type UserCardUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15512,6 +15893,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     cardId?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15521,6 +15904,8 @@ export namespace Prisma {
     id?: string
     userId: string
     cardId: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15528,6 +15913,8 @@ export namespace Prisma {
 
   export type UserCardUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15537,6 +15924,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     cardId?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15553,6 +15942,8 @@ export namespace Prisma {
     payMethod?: number
     price?: number
     status?: number
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15573,6 +15964,8 @@ export namespace Prisma {
     payMethod?: number
     price?: number
     status?: number
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15589,6 +15982,8 @@ export namespace Prisma {
     payMethod?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     status?: IntFieldUpdateOperationsInput | number
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15609,6 +16004,8 @@ export namespace Prisma {
     payMethod?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     status?: IntFieldUpdateOperationsInput | number
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15627,6 +16024,8 @@ export namespace Prisma {
     payMethod?: number
     price?: number
     status?: number
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15643,6 +16042,8 @@ export namespace Prisma {
     payMethod?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     status?: IntFieldUpdateOperationsInput | number
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15661,6 +16062,8 @@ export namespace Prisma {
     payMethod?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     status?: IntFieldUpdateOperationsInput | number
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15671,7 +16074,8 @@ export namespace Prisma {
     name?: string
     type?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15686,7 +16090,8 @@ export namespace Prisma {
     name?: string
     type?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15697,7 +16102,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15712,7 +16118,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15725,7 +16132,8 @@ export namespace Prisma {
     name?: string
     type?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15736,7 +16144,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15749,7 +16158,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15758,8 +16168,9 @@ export namespace Prisma {
   export type NoticeCreateInput = {
     id?: string
     title?: string
-    content?: string
-    createdBy?: string
+    content?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15771,8 +16182,9 @@ export namespace Prisma {
     id?: string
     storeId: string
     title?: string
-    content?: string
-    createdBy?: string
+    content?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15782,8 +16194,9 @@ export namespace Prisma {
   export type NoticeUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15795,8 +16208,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     storeId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15807,8 +16221,9 @@ export namespace Prisma {
     id?: string
     storeId: string
     title?: string
-    content?: string
-    createdBy?: string
+    content?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15817,8 +16232,9 @@ export namespace Prisma {
   export type NoticeUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15828,8 +16244,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     storeId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15838,8 +16255,9 @@ export namespace Prisma {
   export type CommentCreateInput = {
     id?: string
     type?: number
-    content?: string
-    createdBy?: string
+    content?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15850,8 +16268,9 @@ export namespace Prisma {
     id?: string
     storeId: string
     type?: number
-    content?: string
-    createdBy?: string
+    content?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15860,8 +16279,9 @@ export namespace Prisma {
   export type CommentUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    content?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15872,8 +16292,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     storeId?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    content?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15883,8 +16304,9 @@ export namespace Prisma {
     id?: string
     storeId: string
     type?: number
-    content?: string
-    createdBy?: string
+    content?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -15893,8 +16315,9 @@ export namespace Prisma {
   export type CommentUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    content?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15904,8 +16327,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     storeId?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    content?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -15946,17 +16370,6 @@ export namespace Prisma {
     gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type StoreListRelationFilter = {
@@ -16032,6 +16445,7 @@ export namespace Prisma {
     balance?: SortOrder
     points?: SortOrder
     sex?: SortOrder
+    birth?: SortOrder
     lastLoginTime?: SortOrder
     loginCount?: SortOrder
     createdTime?: SortOrder
@@ -16108,6 +16522,7 @@ export namespace Prisma {
     balance?: SortOrder
     points?: SortOrder
     sex?: SortOrder
+    birth?: SortOrder
     lastLoginTime?: SortOrder
     loginCount?: SortOrder
     createdTime?: SortOrder
@@ -16165,20 +16580,6 @@ export namespace Prisma {
     _max?: NestedBigIntFilter<$PrismaModel>
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[]
@@ -16194,14 +16595,14 @@ export namespace Prisma {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
-  export type JsonFilter<$PrismaModel = never> =
+  export type JsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
-        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonFilterBase<$PrismaModel>>
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
       >
-    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
-  export type JsonFilterBase<$PrismaModel = never> = {
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string
     mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
@@ -16216,6 +16617,21 @@ export namespace Prisma {
     gt?: InputJsonValue
     gte?: InputJsonValue
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type AreaListRelationFilter = {
@@ -16251,6 +16667,11 @@ export namespace Prisma {
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type AreaOrderByRelationAggregateInput = {
@@ -16301,12 +16722,19 @@ export namespace Prisma {
     features?: SortOrder
     promotion?: SortOrder
     price?: SortOrder
-    reviews?: SortOrder
-    sales?: SortOrder
+    commentCount?: SortOrder
+    saleCount?: SortOrder
     coverImages?: SortOrder
+    layoutImage?: SortOrder
     description?: SortOrder
     userId?: SortOrder
-    createdBy?: SortOrder
+    reviewUserId?: SortOrder
+    reviewUserName?: SortOrder
+    reviewStatus?: SortOrder
+    reviewTime?: SortOrder
+    reviewRemark?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16318,8 +16746,10 @@ export namespace Prisma {
     latitude?: SortOrder
     seatCount?: SortOrder
     price?: SortOrder
-    reviews?: SortOrder
-    sales?: SortOrder
+    commentCount?: SortOrder
+    saleCount?: SortOrder
+    reviewStatus?: SortOrder
+    reviewTime?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16347,11 +16777,17 @@ export namespace Prisma {
     features?: SortOrder
     promotion?: SortOrder
     price?: SortOrder
-    reviews?: SortOrder
-    sales?: SortOrder
+    commentCount?: SortOrder
+    saleCount?: SortOrder
     description?: SortOrder
     userId?: SortOrder
-    createdBy?: SortOrder
+    reviewUserId?: SortOrder
+    reviewUserName?: SortOrder
+    reviewStatus?: SortOrder
+    reviewTime?: SortOrder
+    reviewRemark?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16379,11 +16815,17 @@ export namespace Prisma {
     features?: SortOrder
     promotion?: SortOrder
     price?: SortOrder
-    reviews?: SortOrder
-    sales?: SortOrder
+    commentCount?: SortOrder
+    saleCount?: SortOrder
     description?: SortOrder
     userId?: SortOrder
-    createdBy?: SortOrder
+    reviewUserId?: SortOrder
+    reviewUserName?: SortOrder
+    reviewStatus?: SortOrder
+    reviewTime?: SortOrder
+    reviewRemark?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16395,8 +16837,10 @@ export namespace Prisma {
     latitude?: SortOrder
     seatCount?: SortOrder
     price?: SortOrder
-    reviews?: SortOrder
-    sales?: SortOrder
+    commentCount?: SortOrder
+    saleCount?: SortOrder
+    reviewStatus?: SortOrder
+    reviewTime?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16425,14 +16869,14 @@ export namespace Prisma {
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
   }
-  export type JsonWithAggregatesFilter<$PrismaModel = never> =
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
-        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
       >
-    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
 
-  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string
     mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
@@ -16447,9 +16891,27 @@ export namespace Prisma {
     gt?: InputJsonValue
     gte?: InputJsonValue
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedJsonFilter<$PrismaModel>
-    _max?: NestedJsonFilter<$PrismaModel>
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type StoreScalarRelationFilter = {
@@ -16471,7 +16933,8 @@ export namespace Prisma {
     sort?: SortOrder
     isActive?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16493,7 +16956,8 @@ export namespace Prisma {
     sort?: SortOrder
     isActive?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16507,7 +16971,8 @@ export namespace Prisma {
     sort?: SortOrder
     isActive?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16550,7 +17015,8 @@ export namespace Prisma {
     hasPower?: SortOrder
     status?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16581,7 +17047,8 @@ export namespace Prisma {
     hasPower?: SortOrder
     status?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16600,7 +17067,8 @@ export namespace Prisma {
     hasPower?: SortOrder
     status?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16629,7 +17097,8 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16647,7 +17116,8 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16658,7 +17128,8 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16686,6 +17157,8 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     cardId?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16701,6 +17174,8 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     cardId?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16710,6 +17185,8 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     cardId?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16745,6 +17222,8 @@ export namespace Prisma {
     payMethod?: SortOrder
     price?: SortOrder
     status?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16776,6 +17255,8 @@ export namespace Prisma {
     payMethod?: SortOrder
     price?: SortOrder
     status?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16794,6 +17275,8 @@ export namespace Prisma {
     payMethod?: SortOrder
     price?: SortOrder
     status?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16812,21 +17295,6 @@ export namespace Prisma {
     deletedTime?: SortOrder
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type StoreNullableScalarRelationFilter = {
     is?: StoreWhereInput | null
     isNot?: StoreWhereInput | null
@@ -16835,11 +17303,6 @@ export namespace Prisma {
   export type NoticeNullableScalarRelationFilter = {
     is?: NoticeWhereInput | null
     isNot?: NoticeWhereInput | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type AttachmentOrderByRelevanceInput = {
@@ -16855,7 +17318,8 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16875,7 +17339,8 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16888,7 +17353,8 @@ export namespace Prisma {
     name?: SortOrder
     type?: SortOrder
     description?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16899,24 +17365,6 @@ export namespace Prisma {
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type NoticeOrderByRelevanceInput = {
@@ -16930,7 +17378,8 @@ export namespace Prisma {
     storeId?: SortOrder
     title?: SortOrder
     content?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16947,7 +17396,8 @@ export namespace Prisma {
     storeId?: SortOrder
     title?: SortOrder
     content?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16958,7 +17408,8 @@ export namespace Prisma {
     storeId?: SortOrder
     title?: SortOrder
     content?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16981,7 +17432,8 @@ export namespace Prisma {
     storeId?: SortOrder
     type?: SortOrder
     content?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -16999,7 +17451,8 @@ export namespace Prisma {
     storeId?: SortOrder
     type?: SortOrder
     content?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -17010,7 +17463,8 @@ export namespace Prisma {
     storeId?: SortOrder
     type?: SortOrder
     content?: SortOrder
-    createdBy?: SortOrder
+    createdUserId?: SortOrder
+    createdUserName?: SortOrder
     createdTime?: SortOrder
     updatedTime?: SortOrder
     deletedTime?: SortOrder
@@ -17083,10 +17537,6 @@ export namespace Prisma {
     decrement?: bigint | number
     multiply?: bigint | number
     divide?: bigint | number
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
   }
 
   export type StoreUpdateManyWithoutUserNestedInput = {
@@ -17259,6 +17709,10 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type AreaUpdateManyWithoutStoreNestedInput = {
@@ -17665,10 +18119,6 @@ export namespace Prisma {
     update?: XOR<XOR<NoticeUpdateToOneWithWhereWithoutAttachmentsInput, NoticeUpdateWithoutAttachmentsInput>, NoticeUncheckedUpdateWithoutAttachmentsInput>
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
   export type StoreCreateNestedOneWithoutNoticesInput = {
     create?: XOR<StoreCreateWithoutNoticesInput, StoreUncheckedCreateWithoutNoticesInput>
     connectOrCreate?: StoreCreateOrConnectWithoutNoticesInput
@@ -17776,17 +18226,6 @@ export namespace Prisma {
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -17848,23 +18287,24 @@ export namespace Prisma {
     _max?: NestedBigIntFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -17890,14 +18330,25 @@ export namespace Prisma {
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
   }
-  export type NestedJsonFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
 
-  export type NestedJsonFilterBase<$PrismaModel = never> = {
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string
     mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
@@ -17912,21 +18363,6 @@ export namespace Prisma {
     gt?: InputJsonValue
     gte?: InputJsonValue
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -17945,17 +18381,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type StoreCreateWithoutUserInput = {
@@ -17980,11 +18405,18 @@ export namespace Prisma {
     features?: string
     promotion?: string
     price?: number
-    reviews?: number
-    sales?: number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: string
-    createdBy?: string
+    commentCount?: number
+    saleCount?: number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: string | null
+    reviewUserId?: string
+    reviewUserName?: string
+    reviewStatus?: number
+    reviewTime?: bigint | number
+    reviewRemark?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18017,11 +18449,18 @@ export namespace Prisma {
     features?: string
     promotion?: string
     price?: number
-    reviews?: number
-    sales?: number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: string
-    createdBy?: string
+    commentCount?: number
+    saleCount?: number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: string | null
+    reviewUserId?: string
+    reviewUserName?: string
+    reviewStatus?: number
+    reviewTime?: bigint | number
+    reviewRemark?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18053,6 +18492,8 @@ export namespace Prisma {
     payMethod?: number
     price?: number
     status?: number
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18071,6 +18512,8 @@ export namespace Prisma {
     payMethod?: number
     price?: number
     status?: number
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18088,6 +18531,8 @@ export namespace Prisma {
 
   export type UserCardCreateWithoutUserInput = {
     id?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18097,6 +18542,8 @@ export namespace Prisma {
   export type UserCardUncheckedCreateWithoutUserInput = {
     id?: string
     cardId: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18153,12 +18600,19 @@ export namespace Prisma {
     features?: StringFilter<"Store"> | string
     promotion?: StringFilter<"Store"> | string
     price?: IntFilter<"Store"> | number
-    reviews?: IntFilter<"Store"> | number
-    sales?: IntFilter<"Store"> | number
-    coverImages?: JsonFilter<"Store">
-    description?: StringFilter<"Store"> | string
+    commentCount?: IntFilter<"Store"> | number
+    saleCount?: IntFilter<"Store"> | number
+    coverImages?: JsonNullableFilter<"Store">
+    layoutImage?: JsonNullableFilter<"Store">
+    description?: StringNullableFilter<"Store"> | string | null
     userId?: StringFilter<"Store"> | string
-    createdBy?: StringFilter<"Store"> | string
+    reviewUserId?: StringFilter<"Store"> | string
+    reviewUserName?: StringFilter<"Store"> | string
+    reviewStatus?: IntFilter<"Store"> | number
+    reviewTime?: BigIntFilter<"Store"> | bigint | number
+    reviewRemark?: StringFilter<"Store"> | string
+    createdUserId?: StringFilter<"Store"> | string
+    createdUserName?: StringFilter<"Store"> | string
     createdTime?: BigIntFilter<"Store"> | bigint | number
     updatedTime?: BigIntFilter<"Store"> | bigint | number
     deletedTime?: BigIntFilter<"Store"> | bigint | number
@@ -18196,6 +18650,8 @@ export namespace Prisma {
     payMethod?: IntFilter<"UserOrder"> | number
     price?: IntFilter<"UserOrder"> | number
     status?: IntFilter<"UserOrder"> | number
+    createdUserId?: StringFilter<"UserOrder"> | string
+    createdUserName?: StringFilter<"UserOrder"> | string
     createdTime?: BigIntFilter<"UserOrder"> | bigint | number
     updatedTime?: BigIntFilter<"UserOrder"> | bigint | number
     deletedTime?: BigIntFilter<"UserOrder"> | bigint | number
@@ -18224,6 +18680,8 @@ export namespace Prisma {
     id?: StringFilter<"UserCard"> | string
     userId?: StringFilter<"UserCard"> | string
     cardId?: StringFilter<"UserCard"> | string
+    createdUserId?: StringFilter<"UserCard"> | string
+    createdUserName?: StringFilter<"UserCard"> | string
     createdTime?: BigIntFilter<"UserCard"> | bigint | number
     updatedTime?: BigIntFilter<"UserCard"> | bigint | number
     deletedTime?: BigIntFilter<"UserCard"> | bigint | number
@@ -18236,7 +18694,8 @@ export namespace Prisma {
     sort?: number
     isActive?: boolean
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18250,7 +18709,8 @@ export namespace Prisma {
     sort?: number
     isActive?: boolean
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18278,7 +18738,8 @@ export namespace Prisma {
     hasPower?: boolean
     status?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18298,7 +18759,8 @@ export namespace Prisma {
     hasPower?: boolean
     status?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18320,7 +18782,8 @@ export namespace Prisma {
     name?: string
     type?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18333,7 +18796,8 @@ export namespace Prisma {
     name?: string
     type?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18352,8 +18816,9 @@ export namespace Prisma {
   export type NoticeCreateWithoutStoreInput = {
     id?: string
     title?: string
-    content?: string
-    createdBy?: string
+    content?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18363,8 +18828,9 @@ export namespace Prisma {
   export type NoticeUncheckedCreateWithoutStoreInput = {
     id?: string
     title?: string
-    content?: string
-    createdBy?: string
+    content?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18384,8 +18850,9 @@ export namespace Prisma {
   export type CommentCreateWithoutStoreInput = {
     id?: string
     type?: number
-    content?: string
-    createdBy?: string
+    content?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18394,8 +18861,9 @@ export namespace Prisma {
   export type CommentUncheckedCreateWithoutStoreInput = {
     id?: string
     type?: number
-    content?: string
-    createdBy?: string
+    content?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18425,7 +18893,7 @@ export namespace Prisma {
     cardId?: string
     nation?: string
     sex?: number
-    birth?: Date | string
+    birth?: bigint | number
     qq?: string
     email?: string
     province?: string
@@ -18459,7 +18927,7 @@ export namespace Prisma {
     cardId?: string
     nation?: string
     sex?: number
-    birth?: Date | string
+    birth?: bigint | number
     qq?: string
     email?: string
     province?: string
@@ -18511,7 +18979,8 @@ export namespace Prisma {
     sort?: IntFilter<"Area"> | number
     isActive?: BoolFilter<"Area"> | boolean
     description?: StringFilter<"Area"> | string
-    createdBy?: StringFilter<"Area"> | string
+    createdUserId?: StringFilter<"Area"> | string
+    createdUserName?: StringFilter<"Area"> | string
     createdTime?: BigIntFilter<"Area"> | bigint | number
     updatedTime?: BigIntFilter<"Area"> | bigint | number
     deletedTime?: BigIntFilter<"Area"> | bigint | number
@@ -18549,7 +19018,8 @@ export namespace Prisma {
     hasPower?: BoolFilter<"Seat"> | boolean
     status?: IntFilter<"Seat"> | number
     description?: StringFilter<"Seat"> | string
-    createdBy?: StringFilter<"Seat"> | string
+    createdUserId?: StringFilter<"Seat"> | string
+    createdUserName?: StringFilter<"Seat"> | string
     createdTime?: BigIntFilter<"Seat"> | bigint | number
     updatedTime?: BigIntFilter<"Seat"> | bigint | number
     deletedTime?: BigIntFilter<"Seat"> | bigint | number
@@ -18581,7 +19051,8 @@ export namespace Prisma {
     name?: StringFilter<"Attachment"> | string
     type?: IntFilter<"Attachment"> | number
     description?: StringFilter<"Attachment"> | string
-    createdBy?: StringFilter<"Attachment"> | string
+    createdUserId?: StringFilter<"Attachment"> | string
+    createdUserName?: StringFilter<"Attachment"> | string
     createdTime?: BigIntFilter<"Attachment"> | bigint | number
     updatedTime?: BigIntFilter<"Attachment"> | bigint | number
     deletedTime?: BigIntFilter<"Attachment"> | bigint | number
@@ -18610,8 +19081,9 @@ export namespace Prisma {
     id?: StringFilter<"Notice"> | string
     storeId?: StringFilter<"Notice"> | string
     title?: StringFilter<"Notice"> | string
-    content?: StringFilter<"Notice"> | string
-    createdBy?: StringFilter<"Notice"> | string
+    content?: StringNullableFilter<"Notice"> | string | null
+    createdUserId?: StringFilter<"Notice"> | string
+    createdUserName?: StringFilter<"Notice"> | string
     createdTime?: BigIntFilter<"Notice"> | bigint | number
     updatedTime?: BigIntFilter<"Notice"> | bigint | number
     deletedTime?: BigIntFilter<"Notice"> | bigint | number
@@ -18640,8 +19112,9 @@ export namespace Prisma {
     id?: StringFilter<"Comment"> | string
     storeId?: StringFilter<"Comment"> | string
     type?: IntFilter<"Comment"> | number
-    content?: StringFilter<"Comment"> | string
-    createdBy?: StringFilter<"Comment"> | string
+    content?: StringNullableFilter<"Comment"> | string | null
+    createdUserId?: StringFilter<"Comment"> | string
+    createdUserName?: StringFilter<"Comment"> | string
     createdTime?: BigIntFilter<"Comment"> | bigint | number
     updatedTime?: BigIntFilter<"Comment"> | bigint | number
     deletedTime?: BigIntFilter<"Comment"> | bigint | number
@@ -18672,7 +19145,7 @@ export namespace Prisma {
     cardId?: StringFieldUpdateOperationsInput | string
     nation?: StringFieldUpdateOperationsInput | string
     sex?: IntFieldUpdateOperationsInput | number
-    birth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birth?: BigIntFieldUpdateOperationsInput | bigint | number
     qq?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
@@ -18706,7 +19179,7 @@ export namespace Prisma {
     cardId?: StringFieldUpdateOperationsInput | string
     nation?: StringFieldUpdateOperationsInput | string
     sex?: IntFieldUpdateOperationsInput | number
-    birth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birth?: BigIntFieldUpdateOperationsInput | bigint | number
     qq?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
@@ -18737,7 +19210,8 @@ export namespace Prisma {
     hasPower?: boolean
     status?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18757,7 +19231,8 @@ export namespace Prisma {
     hasPower?: boolean
     status?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18796,11 +19271,18 @@ export namespace Prisma {
     features?: string
     promotion?: string
     price?: number
-    reviews?: number
-    sales?: number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: string
-    createdBy?: string
+    commentCount?: number
+    saleCount?: number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: string | null
+    reviewUserId?: string
+    reviewUserName?: string
+    reviewStatus?: number
+    reviewTime?: bigint | number
+    reviewRemark?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18808,7 +19290,7 @@ export namespace Prisma {
     attachments?: AttachmentCreateNestedManyWithoutStoreInput
     notices?: NoticeCreateNestedManyWithoutStoreInput
     comments?: CommentCreateNestedManyWithoutStoreInput
-    user?: UserCreateNestedOneWithoutStoresInput
+    user: UserCreateNestedOneWithoutStoresInput
   }
 
   export type StoreUncheckedCreateWithoutAreasInput = {
@@ -18833,12 +19315,19 @@ export namespace Prisma {
     features?: string
     promotion?: string
     price?: number
-    reviews?: number
-    sales?: number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: string
-    userId?: string
-    createdBy?: string
+    commentCount?: number
+    saleCount?: number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: string | null
+    userId: string
+    reviewUserId?: string
+    reviewUserName?: string
+    reviewStatus?: number
+    reviewTime?: bigint | number
+    reviewRemark?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18902,11 +19391,18 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -18939,12 +19435,19 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -18965,6 +19468,8 @@ export namespace Prisma {
     payMethod?: number
     price?: number
     status?: number
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -18983,6 +19488,8 @@ export namespace Prisma {
     payMethod?: number
     price?: number
     status?: number
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -19005,22 +19512,24 @@ export namespace Prisma {
     sort?: number
     isActive?: boolean
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
-    store?: StoreCreateNestedOneWithoutAreasInput
+    store: StoreCreateNestedOneWithoutAreasInput
   }
 
   export type AreaUncheckedCreateWithoutSeatsInput = {
     id?: string
-    storeId?: string
+    storeId: string
     name?: string
     seatCount?: number
     sort?: number
     isActive?: boolean
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -19053,11 +19562,18 @@ export namespace Prisma {
     features?: string
     promotion?: string
     price?: number
-    reviews?: number
-    sales?: number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: string
-    createdBy?: string
+    commentCount?: number
+    saleCount?: number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: string | null
+    reviewUserId?: string
+    reviewUserName?: string
+    reviewStatus?: number
+    reviewTime?: bigint | number
+    reviewRemark?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -19065,7 +19581,7 @@ export namespace Prisma {
     attachments?: AttachmentCreateNestedManyWithoutStoreInput
     notices?: NoticeCreateNestedManyWithoutStoreInput
     comments?: CommentCreateNestedManyWithoutStoreInput
-    user?: UserCreateNestedOneWithoutStoresInput
+    user: UserCreateNestedOneWithoutStoresInput
   }
 
   export type StoreUncheckedCreateWithoutSeatsInput = {
@@ -19090,12 +19606,19 @@ export namespace Prisma {
     features?: string
     promotion?: string
     price?: number
-    reviews?: number
-    sales?: number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: string
-    userId?: string
-    createdBy?: string
+    commentCount?: number
+    saleCount?: number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: string | null
+    userId: string
+    reviewUserId?: string
+    reviewUserName?: string
+    reviewStatus?: number
+    reviewTime?: bigint | number
+    reviewRemark?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -19144,7 +19667,8 @@ export namespace Prisma {
     sort?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -19159,7 +19683,8 @@ export namespace Prisma {
     sort?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -19198,11 +19723,18 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -19235,12 +19767,19 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -19252,6 +19791,8 @@ export namespace Prisma {
 
   export type UserCardCreateWithoutCardInput = {
     id?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -19261,6 +19802,8 @@ export namespace Prisma {
   export type UserCardUncheckedCreateWithoutCardInput = {
     id?: string
     userId: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -19306,7 +19849,7 @@ export namespace Prisma {
     cardId?: string
     nation?: string
     sex?: number
-    birth?: Date | string
+    birth?: bigint | number
     qq?: string
     email?: string
     province?: string
@@ -19340,7 +19883,7 @@ export namespace Prisma {
     cardId?: string
     nation?: string
     sex?: number
-    birth?: Date | string
+    birth?: bigint | number
     qq?: string
     email?: string
     province?: string
@@ -19369,8 +19912,9 @@ export namespace Prisma {
     id?: string
     name?: string
     type?: number
-    description?: string
-    createdBy?: string
+    description?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -19380,8 +19924,9 @@ export namespace Prisma {
     id?: string
     name?: string
     type?: number
-    description?: string
-    createdBy?: string
+    description?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -19417,7 +19962,7 @@ export namespace Prisma {
     cardId?: StringFieldUpdateOperationsInput | string
     nation?: StringFieldUpdateOperationsInput | string
     sex?: IntFieldUpdateOperationsInput | number
-    birth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birth?: BigIntFieldUpdateOperationsInput | bigint | number
     qq?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
@@ -19451,7 +19996,7 @@ export namespace Prisma {
     cardId?: StringFieldUpdateOperationsInput | string
     nation?: StringFieldUpdateOperationsInput | string
     sex?: IntFieldUpdateOperationsInput | number
-    birth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birth?: BigIntFieldUpdateOperationsInput | bigint | number
     qq?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
@@ -19486,8 +20031,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -19497,8 +20043,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -19518,7 +20065,7 @@ export namespace Prisma {
     cardId?: string
     nation?: string
     sex?: number
-    birth?: Date | string
+    birth?: bigint | number
     qq?: string
     email?: string
     province?: string
@@ -19552,7 +20099,7 @@ export namespace Prisma {
     cardId?: string
     nation?: string
     sex?: number
-    birth?: Date | string
+    birth?: bigint | number
     qq?: string
     email?: string
     province?: string
@@ -19588,7 +20135,8 @@ export namespace Prisma {
     hasPower?: boolean
     status?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -19609,7 +20157,8 @@ export namespace Prisma {
     hasPower?: boolean
     status?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -19645,7 +20194,7 @@ export namespace Prisma {
     cardId?: StringFieldUpdateOperationsInput | string
     nation?: StringFieldUpdateOperationsInput | string
     sex?: IntFieldUpdateOperationsInput | number
-    birth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birth?: BigIntFieldUpdateOperationsInput | bigint | number
     qq?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
@@ -19679,7 +20228,7 @@ export namespace Prisma {
     cardId?: StringFieldUpdateOperationsInput | string
     nation?: StringFieldUpdateOperationsInput | string
     sex?: IntFieldUpdateOperationsInput | number
-    birth?: DateTimeFieldUpdateOperationsInput | Date | string
+    birth?: BigIntFieldUpdateOperationsInput | bigint | number
     qq?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
@@ -19721,7 +20270,8 @@ export namespace Prisma {
     hasPower?: BoolFieldUpdateOperationsInput | boolean
     status?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -19742,7 +20292,8 @@ export namespace Prisma {
     hasPower?: BoolFieldUpdateOperationsInput | boolean
     status?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -19770,11 +20321,18 @@ export namespace Prisma {
     features?: string
     promotion?: string
     price?: number
-    reviews?: number
-    sales?: number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: string
-    createdBy?: string
+    commentCount?: number
+    saleCount?: number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: string | null
+    reviewUserId?: string
+    reviewUserName?: string
+    reviewStatus?: number
+    reviewTime?: bigint | number
+    reviewRemark?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -19782,7 +20340,7 @@ export namespace Prisma {
     seats?: SeatCreateNestedManyWithoutStoreInput
     notices?: NoticeCreateNestedManyWithoutStoreInput
     comments?: CommentCreateNestedManyWithoutStoreInput
-    user?: UserCreateNestedOneWithoutStoresInput
+    user: UserCreateNestedOneWithoutStoresInput
   }
 
   export type StoreUncheckedCreateWithoutAttachmentsInput = {
@@ -19807,12 +20365,19 @@ export namespace Prisma {
     features?: string
     promotion?: string
     price?: number
-    reviews?: number
-    sales?: number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: string
-    userId?: string
-    createdBy?: string
+    commentCount?: number
+    saleCount?: number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: string | null
+    userId: string
+    reviewUserId?: string
+    reviewUserName?: string
+    reviewStatus?: number
+    reviewTime?: bigint | number
+    reviewRemark?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -19830,8 +20395,9 @@ export namespace Prisma {
   export type NoticeCreateWithoutAttachmentsInput = {
     id?: string
     title?: string
-    content?: string
-    createdBy?: string
+    content?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -19842,8 +20408,9 @@ export namespace Prisma {
     id?: string
     storeId: string
     title?: string
-    content?: string
-    createdBy?: string
+    content?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -19887,11 +20454,18 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -19924,12 +20498,19 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -19953,8 +20534,9 @@ export namespace Prisma {
   export type NoticeUpdateWithoutAttachmentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -19965,8 +20547,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     storeId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -19994,11 +20577,18 @@ export namespace Prisma {
     features?: string
     promotion?: string
     price?: number
-    reviews?: number
-    sales?: number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: string
-    createdBy?: string
+    commentCount?: number
+    saleCount?: number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: string | null
+    reviewUserId?: string
+    reviewUserName?: string
+    reviewStatus?: number
+    reviewTime?: bigint | number
+    reviewRemark?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20006,7 +20596,7 @@ export namespace Prisma {
     seats?: SeatCreateNestedManyWithoutStoreInput
     attachments?: AttachmentCreateNestedManyWithoutStoreInput
     comments?: CommentCreateNestedManyWithoutStoreInput
-    user?: UserCreateNestedOneWithoutStoresInput
+    user: UserCreateNestedOneWithoutStoresInput
   }
 
   export type StoreUncheckedCreateWithoutNoticesInput = {
@@ -20031,12 +20621,19 @@ export namespace Prisma {
     features?: string
     promotion?: string
     price?: number
-    reviews?: number
-    sales?: number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: string
-    userId?: string
-    createdBy?: string
+    commentCount?: number
+    saleCount?: number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: string | null
+    userId: string
+    reviewUserId?: string
+    reviewUserName?: string
+    reviewStatus?: number
+    reviewTime?: bigint | number
+    reviewRemark?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20056,7 +20653,8 @@ export namespace Prisma {
     name?: string
     type?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20069,7 +20667,8 @@ export namespace Prisma {
     name?: string
     type?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20118,11 +20717,18 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20155,12 +20761,19 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20208,11 +20821,18 @@ export namespace Prisma {
     features?: string
     promotion?: string
     price?: number
-    reviews?: number
-    sales?: number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: string
-    createdBy?: string
+    commentCount?: number
+    saleCount?: number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: string | null
+    reviewUserId?: string
+    reviewUserName?: string
+    reviewStatus?: number
+    reviewTime?: bigint | number
+    reviewRemark?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20220,7 +20840,7 @@ export namespace Prisma {
     seats?: SeatCreateNestedManyWithoutStoreInput
     attachments?: AttachmentCreateNestedManyWithoutStoreInput
     notices?: NoticeCreateNestedManyWithoutStoreInput
-    user?: UserCreateNestedOneWithoutStoresInput
+    user: UserCreateNestedOneWithoutStoresInput
   }
 
   export type StoreUncheckedCreateWithoutCommentsInput = {
@@ -20245,12 +20865,19 @@ export namespace Prisma {
     features?: string
     promotion?: string
     price?: number
-    reviews?: number
-    sales?: number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: string
-    userId?: string
-    createdBy?: string
+    commentCount?: number
+    saleCount?: number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: string | null
+    userId: string
+    reviewUserId?: string
+    reviewUserName?: string
+    reviewStatus?: number
+    reviewTime?: bigint | number
+    reviewRemark?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20298,11 +20925,18 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20335,12 +20969,19 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20372,11 +21013,18 @@ export namespace Prisma {
     features?: string
     promotion?: string
     price?: number
-    reviews?: number
-    sales?: number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: string
-    createdBy?: string
+    commentCount?: number
+    saleCount?: number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: string | null
+    reviewUserId?: string
+    reviewUserName?: string
+    reviewStatus?: number
+    reviewTime?: bigint | number
+    reviewRemark?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20394,6 +21042,8 @@ export namespace Prisma {
     payMethod?: number
     price?: number
     status?: number
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20402,6 +21052,8 @@ export namespace Prisma {
   export type UserCardCreateManyUserInput = {
     id?: string
     cardId: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20429,11 +21081,18 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20466,11 +21125,18 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20503,11 +21169,18 @@ export namespace Prisma {
     features?: StringFieldUpdateOperationsInput | string
     promotion?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
-    reviews?: IntFieldUpdateOperationsInput | number
-    sales?: IntFieldUpdateOperationsInput | number
-    coverImages?: JsonNullValueInput | InputJsonValue
-    description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    commentCount?: IntFieldUpdateOperationsInput | number
+    saleCount?: IntFieldUpdateOperationsInput | number
+    coverImages?: NullableJsonNullValueInput | InputJsonValue
+    layoutImage?: NullableJsonNullValueInput | InputJsonValue
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    reviewUserId?: StringFieldUpdateOperationsInput | string
+    reviewUserName?: StringFieldUpdateOperationsInput | string
+    reviewStatus?: IntFieldUpdateOperationsInput | number
+    reviewTime?: BigIntFieldUpdateOperationsInput | bigint | number
+    reviewRemark?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20524,6 +21197,8 @@ export namespace Prisma {
     payMethod?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     status?: IntFieldUpdateOperationsInput | number
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20542,6 +21217,8 @@ export namespace Prisma {
     payMethod?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     status?: IntFieldUpdateOperationsInput | number
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20559,6 +21236,8 @@ export namespace Prisma {
     payMethod?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     status?: IntFieldUpdateOperationsInput | number
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20566,6 +21245,8 @@ export namespace Prisma {
 
   export type UserCardUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20575,6 +21256,8 @@ export namespace Prisma {
   export type UserCardUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     cardId?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20583,6 +21266,8 @@ export namespace Prisma {
   export type UserCardUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     cardId?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20595,7 +21280,8 @@ export namespace Prisma {
     sort?: number
     isActive?: boolean
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20613,7 +21299,8 @@ export namespace Prisma {
     hasPower?: boolean
     status?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20625,7 +21312,8 @@ export namespace Prisma {
     name?: string
     type?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20634,8 +21322,9 @@ export namespace Prisma {
   export type NoticeCreateManyStoreInput = {
     id?: string
     title?: string
-    content?: string
-    createdBy?: string
+    content?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20644,8 +21333,9 @@ export namespace Prisma {
   export type CommentCreateManyStoreInput = {
     id?: string
     type?: number
-    content?: string
-    createdBy?: string
+    content?: string | null
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20658,7 +21348,8 @@ export namespace Prisma {
     sort?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20672,7 +21363,8 @@ export namespace Prisma {
     sort?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20686,7 +21378,8 @@ export namespace Prisma {
     sort?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20703,7 +21396,8 @@ export namespace Prisma {
     hasPower?: BoolFieldUpdateOperationsInput | boolean
     status?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20723,7 +21417,8 @@ export namespace Prisma {
     hasPower?: BoolFieldUpdateOperationsInput | boolean
     status?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20742,7 +21437,8 @@ export namespace Prisma {
     hasPower?: BoolFieldUpdateOperationsInput | boolean
     status?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20753,7 +21449,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20766,7 +21463,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20778,7 +21476,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20787,8 +21486,9 @@ export namespace Prisma {
   export type NoticeUpdateWithoutStoreInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20798,8 +21498,9 @@ export namespace Prisma {
   export type NoticeUncheckedUpdateWithoutStoreInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20809,8 +21510,9 @@ export namespace Prisma {
   export type NoticeUncheckedUpdateManyWithoutStoreInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20819,8 +21521,9 @@ export namespace Prisma {
   export type CommentUpdateWithoutStoreInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    content?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20829,8 +21532,9 @@ export namespace Prisma {
   export type CommentUncheckedUpdateWithoutStoreInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    content?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20839,8 +21543,9 @@ export namespace Prisma {
   export type CommentUncheckedUpdateManyWithoutStoreInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
-    content?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20858,7 +21563,8 @@ export namespace Prisma {
     hasPower?: boolean
     status?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20875,7 +21581,8 @@ export namespace Prisma {
     hasPower?: BoolFieldUpdateOperationsInput | boolean
     status?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20895,7 +21602,8 @@ export namespace Prisma {
     hasPower?: BoolFieldUpdateOperationsInput | boolean
     status?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20914,7 +21622,8 @@ export namespace Prisma {
     hasPower?: BoolFieldUpdateOperationsInput | boolean
     status?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20932,6 +21641,8 @@ export namespace Prisma {
     payMethod?: number
     price?: number
     status?: number
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20948,6 +21659,8 @@ export namespace Prisma {
     payMethod?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     status?: IntFieldUpdateOperationsInput | number
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20966,6 +21679,8 @@ export namespace Prisma {
     payMethod?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     status?: IntFieldUpdateOperationsInput | number
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20983,6 +21698,8 @@ export namespace Prisma {
     payMethod?: IntFieldUpdateOperationsInput | number
     price?: IntFieldUpdateOperationsInput | number
     status?: IntFieldUpdateOperationsInput | number
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -20991,6 +21708,8 @@ export namespace Prisma {
   export type UserCardCreateManyCardInput = {
     id?: string
     userId: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -20998,6 +21717,8 @@ export namespace Prisma {
 
   export type UserCardUpdateWithoutCardInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -21007,6 +21728,8 @@ export namespace Prisma {
   export type UserCardUncheckedUpdateWithoutCardInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -21015,6 +21738,8 @@ export namespace Prisma {
   export type UserCardUncheckedUpdateManyWithoutCardInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -21026,7 +21751,8 @@ export namespace Prisma {
     name?: string
     type?: number
     description?: string
-    createdBy?: string
+    createdUserId?: string
+    createdUserName?: string
     createdTime?: bigint | number
     updatedTime?: bigint | number
     deletedTime?: bigint | number
@@ -21037,7 +21763,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -21050,7 +21777,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -21062,7 +21790,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
-    createdBy?: StringFieldUpdateOperationsInput | string
+    createdUserId?: StringFieldUpdateOperationsInput | string
+    createdUserName?: StringFieldUpdateOperationsInput | string
     createdTime?: BigIntFieldUpdateOperationsInput | bigint | number
     updatedTime?: BigIntFieldUpdateOperationsInput | bigint | number
     deletedTime?: BigIntFieldUpdateOperationsInput | bigint | number

@@ -21,7 +21,7 @@ model User {
   cardId        String      @default("") @db.VarChar(50)
   nation        String      @default("") @db.VarChar(50)
   sex           Int         @default(0)
-  birth         DateTime    @default(now())
+  birth         BigInt      @default(0)
   qq            String      @default("") @db.VarChar(30)
   email         String      @default("") @db.VarChar(100)
   province      String      @default("") @db.VarChar(50)
@@ -45,85 +45,94 @@ model User {
 }
 
 model Store {
-  id           String       @id @default(uuid())
-  type         Int          @default(0)
-  name         String       @default("") @db.VarChar(100)
-  provinceCode String       @default("") @db.VarChar(20)
-  cityCode     String       @default("") @db.VarChar(20)
-  regionCode   String       @default("") @db.VarChar(20)
-  province     String       @default("") @db.VarChar(50)
-  city         String       @default("") @db.VarChar(50)
-  region       String       @default("") @db.VarChar(50)
-  address      String       @default("") @db.VarChar(500)
-  longitude    Float        @default(0.0)
-  latitude     Float        @default(0.0)
-  seatCount    Int          @default(0)
-  phone        String       @default("") @db.VarChar(20)
-  is24Hours    Boolean      @default(false)
-  openTime     String       @default("06:00") @db.VarChar(20)
-  closeTime    String       @default("23:59") @db.VarChar(20)
-  isActive     Boolean      @default(true)
-  features     String       @default("") @db.VarChar(500)
-  promotion    String       @default("") @db.VarChar(500)
-  price        Int          @default(0)
-  reviews      Int          @default(0)
-  sales        Int          @default(0)
-  coverImages  Json         @default("[]")
-  description  String       @default("") @db.Text
-  userId       String       @default("") @db.VarChar(100)
-  createdBy    String       @default("") @db.VarChar(100)
-  createdTime  BigInt       @default(0)
-  updatedTime  BigInt       @default(0)
-  deletedTime  BigInt       @default(0)
-  areas        Area[]
-  seats        Seat[]
-  attachments  Attachment[]
-  notices      Notice[]
-  comments     Comment[]
-  user         User         @relation(fields: [userId], references: [id], onDelete: Restrict)
+  id              String       @id @default(uuid())
+  type            Int          @default(0)
+  name            String       @default("") @db.VarChar(100)
+  provinceCode    String       @default("") @db.VarChar(20)
+  cityCode        String       @default("") @db.VarChar(20)
+  regionCode      String       @default("") @db.VarChar(20)
+  province        String       @default("") @db.VarChar(50)
+  city            String       @default("") @db.VarChar(50)
+  region          String       @default("") @db.VarChar(50)
+  address         String       @default("") @db.VarChar(500)
+  longitude       Float        @default(0.0)
+  latitude        Float        @default(0.0)
+  seatCount       Int          @default(0)
+  phone           String       @default("") @db.VarChar(20)
+  is24Hours       Boolean      @default(false)
+  openTime        String       @default("06:00") @db.VarChar(20)
+  closeTime       String       @default("23:59") @db.VarChar(20)
+  isActive        Boolean      @default(true)
+  features        String       @default("") @db.VarChar(500)
+  promotion       String       @default("") @db.VarChar(500)
+  price           Int          @default(0)
+  commentCount    Int          @default(0)
+  saleCount       Int          @default(0)
+  coverImages     Json?
+  layoutImage     Json?
+  description     String?      @db.Text
+  userId          String       @db.VarChar(100)
+  reviewUserId    String       @default("") @db.VarChar(100)
+  reviewUserName  String       @default("") @db.VarChar(100)
+  reviewStatus    Int          @default(0)
+  reviewTime      BigInt       @default(0)
+  reviewRemark    String       @default("") @db.VarChar(500)
+  createdUserId   String       @default("") @db.VarChar(100)
+  createdUserName String       @default("") @db.VarChar(100)
+  createdTime     BigInt       @default(0)
+  updatedTime     BigInt       @default(0)
+  deletedTime     BigInt       @default(0)
+  areas           Area[]
+  seats           Seat[]
+  attachments     Attachment[]
+  notices         Notice[]
+  comments        Comment[]
+  user            User         @relation(fields: [userId], references: [id], onDelete: Restrict)
 
   @@map("stores")
 }
 
 model Area {
-  id          String  @id @default(uuid())
-  storeId     String  @default("") @db.VarChar(100)
-  name        String  @default("") @db.VarChar(100)
-  seatCount   Int     @default(0)
-  sort        Int     @default(0)
-  isActive    Boolean @default(true)
-  description String  @default("") @db.VarChar(500)
-  createdBy   String  @default("") @db.VarChar(100)
-  createdTime BigInt  @default(0)
-  updatedTime BigInt  @default(0)
-  deletedTime BigInt  @default(0)
-  seats       Seat[]
-  store       Store   @relation(fields: [storeId], references: [id])
+  id              String  @id @default(uuid())
+  storeId         String  @db.VarChar(100)
+  name            String  @default("") @db.VarChar(100)
+  seatCount       Int     @default(0)
+  sort            Int     @default(0)
+  isActive        Boolean @default(true)
+  description     String  @default("") @db.VarChar(500)
+  createdUserId   String  @default("") @db.VarChar(100)
+  createdUserName String  @default("") @db.VarChar(100)
+  createdTime     BigInt  @default(0)
+  updatedTime     BigInt  @default(0)
+  deletedTime     BigInt  @default(0)
+  seats           Seat[]
+  store           Store   @relation(fields: [storeId], references: [id])
 
   @@index([storeId])
   @@map("areas")
 }
 
 model Seat {
-  id          String      @id @default(uuid())
-  storeId     String      @db.VarChar(100)
-  areaId      String      @db.VarChar(100)
-  type        Int         @default(0)
-  seatNo      String      @default("") @db.VarChar(50)
-  x           Float       @default(0.0)
-  y           Float       @default(0.0)
-  width       Float       @default(0.0)
-  height      Float       @default(0.0)
-  hasPower    Boolean     @default(true)
-  status      Int         @default(0)
-  description String      @default("") @db.VarChar(500)
-  createdBy   String      @default("") @db.VarChar(100)
-  createdTime BigInt      @default(0)
-  updatedTime BigInt      @default(0)
-  deletedTime BigInt      @default(0)
-  orders      UserOrder[]
-  area        Area        @relation(fields: [areaId], references: [id], onDelete: Restrict)
-  store       Store       @relation(fields: [storeId], references: [id])
+  id              String      @id @default(uuid())
+  storeId         String      @db.VarChar(100)
+  areaId          String      @db.VarChar(100)
+  type            Int         @default(0)
+  seatNo          String      @default("") @db.VarChar(50)
+  x               Float       @default(0.0)
+  y               Float       @default(0.0)
+  width           Float       @default(0.0)
+  height          Float       @default(0.0)
+  hasPower        Boolean     @default(true)
+  status          Int         @default(0)
+  description     String      @default("") @db.VarChar(500)
+  createdUserId   String      @default("") @db.VarChar(100)
+  createdUserName String      @default("") @db.VarChar(100)
+  createdTime     BigInt      @default(0)
+  updatedTime     BigInt      @default(0)
+  deletedTime     BigInt      @default(0)
+  orders          UserOrder[]
+  area            Area        @relation(fields: [areaId], references: [id], onDelete: Restrict)
+  store           Store       @relation(fields: [storeId], references: [id])
 
   @@unique([areaId, seatNo])
   @@index([areaId])
@@ -131,28 +140,31 @@ model Seat {
 }
 
 model Card {
-  id          String     @id @default(uuid())
-  name        String     @default("") @db.VarChar(100)
-  type        Int        @default(0)
-  description String     @default("") @db.Text
-  createdBy   String     @default("") @db.VarChar(100)
-  createdTime BigInt     @default(0)
-  updatedTime BigInt     @default(0)
-  deletedTime BigInt     @default(0)
-  userCards   UserCard[]
+  id              String     @id @default(uuid())
+  name            String     @default("") @db.VarChar(100)
+  type            Int        @default(0)
+  description     String?    @db.Text
+  createdUserId   String     @default("") @db.VarChar(100)
+  createdUserName String     @default("") @db.VarChar(100)
+  createdTime     BigInt     @default(0)
+  updatedTime     BigInt     @default(0)
+  deletedTime     BigInt     @default(0)
+  userCards       UserCard[]
 
   @@map("cards")
 }
 
 model UserCard {
-  id          String @id @default(uuid())
-  userId      String @db.VarChar(100)
-  cardId      String @db.VarChar(100)
-  createdTime BigInt @default(0)
-  updatedTime BigInt @default(0)
-  deletedTime BigInt @default(0)
-  user        User   @relation(fields: [userId], references: [id])
-  card        Card   @relation(fields: [cardId], references: [id])
+  id              String @id @default(uuid())
+  userId          String @db.VarChar(100)
+  cardId          String @db.VarChar(100)
+  createdUserId   String @default("") @db.VarChar(100)
+  createdUserName String @default("") @db.VarChar(100)
+  createdTime     BigInt @default(0)
+  updatedTime     BigInt @default(0)
+  deletedTime     BigInt @default(0)
+  user            User   @relation(fields: [userId], references: [id])
+  card            Card   @relation(fields: [cardId], references: [id])
 
   @@index([userId])
   @@index([cardId])
@@ -160,23 +172,25 @@ model UserCard {
 }
 
 model UserOrder {
-  id          String @id @default(uuid())
-  storeId     String @db.VarChar(100)
-  areaId      String @db.VarChar(100)
-  seatId      String @db.VarChar(100)
-  category    Int    @default(0)
-  userId      String @db.VarChar(100)
-  type        Int    @default(0)
-  startTime   BigInt @default(0)
-  endTime     BigInt @default(0)
-  payMethod   Int    @default(0)
-  price       Int    @default(0)
-  status      Int    @default(0)
-  createdTime BigInt @default(0)
-  updatedTime BigInt @default(0)
-  deletedTime BigInt @default(0)
-  user        User   @relation(fields: [userId], references: [id])
-  seat        Seat   @relation(fields: [seatId], references: [id])
+  id              String @id @default(uuid())
+  storeId         String @db.VarChar(100)
+  areaId          String @db.VarChar(100)
+  seatId          String @db.VarChar(100)
+  category        Int    @default(0)
+  userId          String @db.VarChar(100)
+  type            Int    @default(0)
+  startTime       BigInt @default(0)
+  endTime         BigInt @default(0)
+  payMethod       Int    @default(0)
+  price           Int    @default(0)
+  status          Int    @default(0)
+  createdUserId   String @default("") @db.VarChar(100)
+  createdUserName String @default("") @db.VarChar(100)
+  createdTime     BigInt @default(0)
+  updatedTime     BigInt @default(0)
+  deletedTime     BigInt @default(0)
+  user            User   @relation(fields: [userId], references: [id])
+  seat            Seat   @relation(fields: [seatId], references: [id])
 
   @@index([userId])
   @@index([seatId])
@@ -184,47 +198,50 @@ model UserOrder {
 }
 
 model Attachment {
-  id          String  @id @default(uuid())
-  storeId     String? @db.VarChar(100)
-  noticeId    String? @db.VarChar(100)
-  name        String  @default("") @db.VarChar(255)
-  type        Int     @default(0)
-  description String  @default("") @db.VarChar(500)
-  createdBy   String  @default("") @db.VarChar(100)
-  createdTime BigInt  @default(0)
-  updatedTime BigInt  @default(0)
-  deletedTime BigInt  @default(0)
-  store       Store?  @relation(fields: [storeId], references: [id])
-  notice      Notice? @relation(fields: [noticeId], references: [id])
+  id              String  @id @default(uuid())
+  storeId         String? @db.VarChar(100)
+  noticeId        String? @db.VarChar(100)
+  name            String  @default("") @db.VarChar(255)
+  type            Int     @default(0)
+  description     String  @default("") @db.VarChar(500)
+  createdUserId   String  @default("") @db.VarChar(100)
+  createdUserName String  @default("") @db.VarChar(100)
+  createdTime     BigInt  @default(0)
+  updatedTime     BigInt  @default(0)
+  deletedTime     BigInt  @default(0)
+  store           Store?  @relation(fields: [storeId], references: [id])
+  notice          Notice? @relation(fields: [noticeId], references: [id])
 
   @@map("attachments")
 }
 
 model Notice {
-  id          String       @id @default(uuid())
-  storeId     String       @db.VarChar(100)
-  title       String       @default("") @db.VarChar(200)
-  content     String       @default("") @db.Text
-  createdBy   String       @default("") @db.VarChar(100)
-  createdTime BigInt       @default(0)
-  updatedTime BigInt       @default(0)
-  deletedTime BigInt       @default(0)
-  store       Store        @relation(fields: [storeId], references: [id])
-  attachments Attachment[]
+  id              String       @id @default(uuid())
+  storeId         String       @db.VarChar(100)
+  title           String       @default("") @db.VarChar(200)
+  content         String?      @db.Text
+  createdUserId   String       @default("") @db.VarChar(100)
+  createdUserName String       @default("") @db.VarChar(100)
+  createdTime     BigInt       @default(0)
+  updatedTime     BigInt       @default(0)
+  deletedTime     BigInt       @default(0)
+  store           Store        @relation(fields: [storeId], references: [id])
+  attachments     Attachment[]
 
   @@map("notices")
 }
 
 model Comment {
-  id          String @id @default(uuid())
-  storeId     String @db.VarChar(100)
-  type        Int    @default(0)
-  content     String @default("") @db.Text
-  createdBy   String @default("") @db.VarChar(100)
-  createdTime BigInt @default(0)
-  updatedTime BigInt @default(0)
-  deletedTime BigInt @default(0)
-  store       Store  @relation(fields: [storeId], references: [id])
+  id              String  @id @default(uuid())
+  storeId         String  @db.VarChar(100)
+  type            Int     @default(0)
+  content         String? @db.Text
+  createdUserId   String  @default("") @db.VarChar(100)
+  createdUserName String  @default("") @db.VarChar(100)
+  createdTime     BigInt  @default(0)
+  updatedTime     BigInt  @default(0)
+  deletedTime     BigInt  @default(0)
+  store           Store   @relation(fields: [storeId], references: [id])
 
   @@map("comments")
 }

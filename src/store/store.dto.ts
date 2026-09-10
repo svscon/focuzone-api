@@ -28,11 +28,11 @@ export class CreateStoreDto {
 
     @ApiProperty()
     @IsString()
-    openingTime: string;
+    openTime: string;
 
     @ApiProperty()
     @IsString()
-    closingTime: string;
+    closeTime: string;
 
     @ApiProperty({ required: false, default: true })
     @IsOptional()
@@ -75,12 +75,12 @@ export class UpdateStoreDto {
     @ApiProperty({ required: false })
     @IsString()
     @IsOptional()
-    openingTime?: string;
+    openTime?: string;
 
     @ApiProperty({ required: false })
     @IsString()
     @IsOptional()
-    closingTime?: string;
+    closeTime?: string;
 
     @ApiProperty({ required: false })
     @IsBoolean()
@@ -135,10 +135,10 @@ export class StoreResponseDto {
     phone: string;
 
     @ApiProperty()
-    openingTime: string;
+    openTime: string;
 
     @ApiProperty()
-    closingTime: string;
+    closeTime: string;
 
     @ApiProperty()
     isActive: boolean;
